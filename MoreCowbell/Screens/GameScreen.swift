@@ -29,6 +29,7 @@ class GameScreen: SKScene {
         
         setupBackground()
         setupCowbell()
+        setupBar()
         setupButtons()
     }
     
@@ -40,14 +41,17 @@ class GameScreen: SKScene {
         addChild(background)
         
         scoreCounter = SKSpriteNode(texture: SKTexture(imageNamed: "score_counter"))
-        scoreCounter.position = CGPoint(x: (UIScreen.main.bounds.width) / 4, y: UIScreen.main.bounds.height / 11)
+        scoreCounter.position = CGPoint(x: (UIScreen.main.bounds.width) / 4, y: UIScreen.main.bounds.height / 13)
         //scoreCounter.size.width =
         //scoreCounter.size.height =
+        scoreCounter.setScale(0.2)
+        scoreCounter.yScale = 0.15
         addChild(scoreCounter)
         
         comboCounter = SKSpriteNode(texture: SKTexture(imageNamed: "combo_counter"))
-        comboCounter.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
-        comboCounter.setScale(0.1)
+        comboCounter.position = CGPoint(x: scoreCounter.position.x * 0.60, y: scoreCounter.position.y + scoreCounter.size.height)
+        comboCounter.setScale(0.2)
+        comboCounter.yScale = 0.15
         addChild(comboCounter)
     }
     
@@ -57,6 +61,11 @@ class GameScreen: SKScene {
         cowbell.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
         cowbell.setScale(1)
         addChild(cowbell)
+    }
+    
+    func setupBar()
+    {
+        
     }
     
     func setupButtons()

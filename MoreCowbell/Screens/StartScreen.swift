@@ -46,8 +46,8 @@ class StartScreen: SKScene {
     {
         background = SKSpriteNode(texture: SKTexture(imageNamed: "sunburst"))
         background.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
-        background.setScale(2)
-        background.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(-0.3), duration: 1)))
+        background.setScale(1)
+        //background.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(-0.3), duration: 1)))
         addChild(background)
         
     }
@@ -86,7 +86,7 @@ class StartScreen: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
             //TODO: - Create a transition
-            if optionsButton.frame.contains(t.preciseLocation(in: inputView)){
+            if walkenHead.frame.contains(t.preciseLocation(in: inputView)){
                 scene?.view?.presentScene(MapScreen(size: self.frame.size))
             }
             
