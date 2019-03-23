@@ -29,33 +29,10 @@ class StartScreen: SKScene {
     override init(size: CGSize) {
         super.init(size: size)
         
-       background = SKSpriteNode(texture: SKTexture(imageNamed: "sunburst"))
-        background.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
-        background.setScale(2)
-        background.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(-0.3), duration: 1)))
-        addChild(background)
+        setBackground()
+        setTitle()
+        setButtons()
 
-        optionsButton = SKSpriteNode(texture: SKTexture(imageNamed: "gear"))
-        optionsButton.position = CGPoint(x: 5 * (UIScreen.main.bounds.width) / 6, y: UIScreen.main.bounds.height / 10)
-        optionsButton.setScale(0.5)
-        optionsButton.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(0.25), duration: 1)))
-        addChild(optionsButton)
-        
-        titleMore = SKSpriteNode(texture: SKTexture(imageNamed: "title_more"))
-        titleMore.setScale(0.3)
-        titleMore.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: 5 * UIScreen.main.bounds.height / 6.1)
-        addChild(titleMore)
-
-        titleCowbell = SKSpriteNode(texture: SKTexture(imageNamed: "title_cowbell"))
-        titleCowbell.setScale(0.3)
-        titleCowbell.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: 3 * UIScreen.main.bounds.height / 4)
-        addChild(titleCowbell)
-
-        walkenHead = SKSpriteNode(texture: SKTexture(imageNamed: "Walken_head"))
-        walkenHead.setScale(0.3)
-        walkenHead.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
-        addChild(walkenHead)
-        
 //        sliderBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
 //        sliderBar.position = CGPoint(x: 2 * (UIScreen.main.bounds.width) / 3, y: UIScreen.main.bounds.height / 2)
 //        addChild(sliderBar)
@@ -65,7 +42,54 @@ class StartScreen: SKScene {
 //        addChild(slider)
     }
     
+    func setBackground()
+    {
+        background = SKSpriteNode(texture: SKTexture(imageNamed: "sunburst"))
+        background.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
+        background.setScale(2)
+        background.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(-0.3), duration: 1)))
+        addChild(background)
+        
+    }
+    
+    func setTitle()
+    {
+        titleMore = SKSpriteNode(texture: SKTexture(imageNamed: "title_more"))
+        titleMore.setScale(0.3)
+        titleMore.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: 5 * UIScreen.main.bounds.height / 6.1)
+        addChild(titleMore)
+        
+        titleCowbell = SKSpriteNode(texture: SKTexture(imageNamed: "title_cowbell"))
+        titleCowbell.setScale(0.3)
+        titleCowbell.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: 3 * UIScreen.main.bounds.height / 4)
+        addChild(titleCowbell)
+        
+        walkenHead = SKSpriteNode(texture: SKTexture(imageNamed: "Walken_head"))
+        walkenHead.setScale(0.3)
+        walkenHead.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
+        addChild(walkenHead)
+    }
+    
+    func setButtons()
+    {
+        optionsButton = SKSpriteNode(texture: SKTexture(imageNamed: "gear"))
+        optionsButton.position = CGPoint(x: 5 * (UIScreen.main.bounds.width) / 6, y: UIScreen.main.bounds.height / 10)
+        optionsButton.setScale(0.5)
+        optionsButton.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(0.25), duration: 1)))
+        addChild(optionsButton)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+            fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches {
+            //TODO: - Create a transition
+            if optionsButton.frame.contains(t.preciseLocation(in: inputView)){
+                scene?.view?.presentScene(MapScreen(size: self.frame.size))
+            }
+            
+        }
     }
 }
