@@ -6,7 +6,7 @@
 //  Copyright © 2019 BraveNewStudios. All rights reserved.
 //
 
-// import Foundation
+import Foundation
 import SpriteKit
 import GameplayKit
 
@@ -47,7 +47,7 @@ class StartScreen: SKScene {
         background = SKSpriteNode(texture: SKTexture(imageNamed: "sunburst"))
         background.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
         background.setScale(1)
-        //background.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(-0.3), duration: 1)))
+        background.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(-0.3), duration: 1)))
         addChild(background)
         
     }

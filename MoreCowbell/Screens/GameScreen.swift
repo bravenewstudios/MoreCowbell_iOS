@@ -6,7 +6,7 @@
 //  Copyright © 2019 BraveNewStudios. All rights reserved.
 //
 
-// import Foundation
+import Foundation
 import SpriteKit
 import GameplayKit
 
@@ -65,7 +65,10 @@ class GameScreen: SKScene {
     
     func setupBar()
     {
-        
+        beatBar = SKSpriteNode(texture: SKTexture(imageNamed: "beat_bar"))
+        beatBar.position = CGPoint(x:(UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
+        beatBar.setScale(0.8)
+        addChild(beatBar)
     }
     
     func setupButtons()
