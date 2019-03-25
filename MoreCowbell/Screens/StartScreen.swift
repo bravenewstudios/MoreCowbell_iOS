@@ -12,8 +12,16 @@ import GameplayKit
 
 class StartScreen: SKScene {
     
+    lazy var optionsButton:SpriteButton = {
+        var button = SpriteButton(imageName: "gear", buttonAction: {
+            //self.view?.presentScene(GameScene(size: self.frame.size))
+        })
+        button.zPosition = 4
+        return button
+    }()
+    
     //TODO: - Use this to create a menu scene
-    var optionsButton:SKSpriteNode!
+    //var optionsButton:SKSpriteNode!
     var background:SKSpriteNode!
     var titleMore:SKSpriteNode!
     var titleCowbell:SKSpriteNode!
@@ -46,6 +54,7 @@ class StartScreen: SKScene {
     {
         background = SKSpriteNode(texture: SKTexture(imageNamed: "sunburst"))
         background.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
+        background.name = "_background"
         background.setScale(1)
         background.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(-0.3), duration: 1)))
         addChild(background)
@@ -72,7 +81,7 @@ class StartScreen: SKScene {
     
     func setButtons()
     {
-        optionsButton = SKSpriteNode(texture: SKTexture(imageNamed: "gear"))
+        //optionsButton = SKSpriteNode(texture: SKTexture(imageNamed: "gear"))
         optionsButton.position = CGPoint(x: 5 * (UIScreen.main.bounds.width) / 6, y: UIScreen.main.bounds.height / 10)
         optionsButton.setScale(0.5)
         optionsButton.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(0.25), duration: 1)))
@@ -85,9 +94,18 @@ class StartScreen: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
+            let node = nodes(at: t.location(in: self))
+            
+            for n in node {
+                if n.name == "_background" {
+                    //print("YAY!")
+                    scene?.view?.presentScene(MapScreen(size: self.frame.size))
+                }
+            }
             //TODO: - Create a transition
             if walkenHead.frame.contains(t.preciseLocation(in: inputView)){
                 scene?.view?.presentScene(MapScreen(size: self.frame.size))
+                
             }
             
         }

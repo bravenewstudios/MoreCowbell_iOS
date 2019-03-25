@@ -9,17 +9,16 @@
 import UIKit
 import SpriteKit
 import GameplayKit
-
 class GameViewController: UIViewController {
 
-    var scene: GameScreen!
+    var scene: StartScreen!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            scene = GameScreen(size: self.view.frame.size)
+            scene = StartScreen(size: self.view.frame.size)
             scene.scaleMode = .aspectFill
             view.presentScene(scene)
             
