@@ -8,13 +8,19 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene:  SKScene{
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    private var objPlayer : AVAudioPlayer?
+    private var objPlayer2 : SKAudioNode?
     
     override func didMove(to view: SKView) {
+        
+        objPlayer2 = SKAudioNode(fileNamed: "title")
+        objPlayer2!.run(SKAction.play())
         
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
@@ -60,6 +66,28 @@ class GameScene:  SKScene{
             n.strokeColor = SKColor.red
             self.addChild(n)
         }
+    }
+    
+    func playAudioFile()
+    {
+//        guard let url = Bundle.main.url(forResource: "music", withExtension: "mp3") else { return }
+//
+//        do {
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+//            try AVAudioSession.sharedInstance().setActive(true)
+//
+//            // For IOS 11
+//            objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+//
+//            // For IOS versions before 11
+//            objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType)
+//
+//            guard let aPlayer = objPlayer else { return }
+//            aPlayer.play()
+//        }
+//        catch let error {
+//            print(error.localizedDescription)
+//        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
