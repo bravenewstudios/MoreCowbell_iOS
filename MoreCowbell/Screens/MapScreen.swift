@@ -19,6 +19,8 @@ class MapScreen: SKScene {
     var MMLabel:SKLabelNode!
     var stateMap:SKSpriteNode!
     var star:SKSpriteNode!
+    var exitSign:SKSpriteNode!
+    var startSign:SKSpriteNode!
     var test = true
     
     
@@ -29,7 +31,7 @@ class MapScreen: SKScene {
         
         setBackground()
         setButtons()
-        dropMap()
+        mapSetup()
     }
     
     func setBackground()
@@ -53,19 +55,34 @@ class MapScreen: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func dropMap()
+    func mapSetup()
     {
         stateMap = SKSpriteNode(texture: SKTexture(imageNamed: "state_map"))
-        let scaling = CGFloat.maximum(stateMap.size.width/UIScreen.main.bounds.width, CGFloat(stateMap.size.height/UIScreen.main.bounds.height))
-       stateMap.setScale(1 / scaling)
-        stateMap.zRotation = CGFloat(M_PI / 10)
+        let scaling = CGFloat.minimum(UIScreen.main.bounds.width/stateMap.size.width, CGFloat(UIScreen.main.bounds.height/stateMap.size.height))
+        stateMap.zPosition = background.zPosition + 2
+        stateMap.setScale(1.1 * scaling)
+        stateMap.zRotation = CGFloat(-Double.pi / 18)//or 10
         stateMap.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height + stateMap.size.height)
         addChild(stateMap)
+        
         star = SKSpriteNode(texture: SKTexture(imageNamed: "star"))
-        let starScale = CGFloat.maximum(stateMap.size.width/10/star.size.width, stateMap.size.height/10/star.size.height)
+        let starScale = CGFloat.maximum(stateMap.size.width/5/star.size.width, stateMap.size.height/5/star.size.height)
         star.setScale(starScale)
-        star.position = CGPoint(x: -20, y: -100)
-        stateMap.addChild(star)
+        star.position = CGPoint(x: 25, y: -200)
+//        stateMap.addChild(star)
+        
+        exitSign = SKSpriteNode(texture: SKTexture(imageNamed: "exit_sign"))
+        let signScale = CGFloat.maximum(UIScreen.main.bounds.width/3/exitSign.size.width, UIScreen.main.bounds.width/3/exitSign.size.height)
+        exitSign.setScale(signScale)
+        exitSign.zPosition = stateMap.zPosition - 1
+        exitSign.position = CGPoint(x:exitSign.size.width/2 + 10, y:UIScreen.main.bounds.height - exitSign.size.height)
+        addChild(exitSign)
+        
+        startSign = SKSpriteNode(texture: SKTexture(imageNamed: "play_sign"))
+        startSign.setScale(signScale)
+        startSign.zPosition = stateMap.zPosition - 1
+        startSign.position = CGPoint(x:UIScreen.main.bounds.width - (startSign.size.width/2 + 10), y:UIScreen.main.bounds.height - startSign.size.height)
+        addChild(startSign)
         }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -74,6 +91,7 @@ class MapScreen: SKScene {
             {
                 let dropDown = SKAction.moveBy(x: 0,y: -(UIScreen.main.bounds.height + stateMap.size.height/2), duration: 1)
                 stateMap.run(dropDown)
+                stateMap.addChild(star)
                 test = false
             }
             //TODO: - Create a transition
