@@ -21,8 +21,8 @@ class MapScreen: SKScene {
     var star:SKSpriteNode!
     var exitSign:SKSpriteNode!
     var startSign:SKSpriteNode!
-    var test = true
-    
+    var starActive = true
+    var signMove:SKAction!
     
     //TODO: - Add a main menu and play button
     override init(size: CGSize)
@@ -65,34 +65,64 @@ class MapScreen: SKScene {
         stateMap.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height + stateMap.size.height)
         addChild(stateMap)
         
+        let dropDown = SKAction.moveBy(x: 0,y: -(UIScreen.main.bounds.height + stateMap.size.height/2), duration: 0.3)
+        let delay = SKAction.wait(forDuration: 1)
+        
+        
         star = SKSpriteNode(texture: SKTexture(imageNamed: "star"))
+        star.name = "star"
         let starScale = CGFloat.maximum(stateMap.size.width/5/star.size.width, stateMap.size.height/5/star.size.height)
-        star.setScale(starScale)
-        star.position = CGPoint(x: 25, y: -200)
+        star.setScale(0.01)
+        star.position = CGPoint(x: 75, y: -150)
 //        stateMap.addChild(star)
+        let starGrow = SKAction.scale(to: starScale, duration: 0.3)
         
         exitSign = SKSpriteNode(texture: SKTexture(imageNamed: "exit_sign"))
         let signScale = CGFloat.maximum(UIScreen.main.bounds.width/3/exitSign.size.width, UIScreen.main.bounds.width/3/exitSign.size.height)
+        exitSign.name = "exit"
         exitSign.setScale(signScale)
         exitSign.zPosition = stateMap.zPosition - 1
-        exitSign.position = CGPoint(x:exitSign.size.width/2 + 10, y:UIScreen.main.bounds.height - exitSign.size.height)
-        addChild(exitSign)
+        exitSign.position = CGPoint(x:exitSign.size.width/2 + 10, y: UIScreen.main.bounds.height / 2)
+                                    //y:UIScreen.main.bounds.height - exitSign.size.height)
+        signMove = SKAction.moveBy(x: 0, y: (UIScreen.main.bounds.height / 2.25) - exitSign.size.height, duration: 0.3)
         
         startSign = SKSpriteNode(texture: SKTexture(imageNamed: "play_sign"))
         startSign.setScale(signScale)
+        startSign.name = "start"
         startSign.zPosition = stateMap.zPosition - 1
-        startSign.position = CGPoint(x:UIScreen.main.bounds.width - (startSign.size.width/2 + 10), y:UIScreen.main.bounds.height - startSign.size.height)
-        addChild(startSign)
+        startSign.position = CGPoint(x:UIScreen.main.bounds.width - (startSign.size.width/2 + 10), y: UIScreen.main.bounds.height / 2)//y:UIScreen.main.bounds.height - startSign.size.height)
+        
+        stateMap.run(SKAction.sequence([delay, dropDown, delay, delay]), completion: {self.stateMap.addChild(self.star)
+            self.addChild(self.exitSign)
+            self.star.run(starGrow)
+            self.exitSign.run(self.signMove)
+        })
         }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            if(test)
-            {
-                let dropDown = SKAction.moveBy(x: 0,y: -(UIScreen.main.bounds.height + stateMap.size.height/2), duration: 1)
-                stateMap.run(dropDown)
-                stateMap.addChild(star)
-                test = false
+            let node = nodes(at: t.location(in: self))
+            
+            for n in node {
+                if (n.name == "star" && starActive){
+                    addChild(startSign)
+                    startSign.run(signMove)
+                    starActive = false
+                }
+                if n.name == "start" {
+                    //print("YAY!")
+                    let gameScreen:SKScene = GameScreen(size: self.frame.size)
+                    let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
+                    self.view?.presentScene(gameScreen, transition: transition)
+//                    scene?.view?.presentScene(GameScreen(size: self.frame.size))
+                }
+                if n.name == "exit" {
+                    //print("YAY!")
+                    let gameScreen:SKScene = StartScreen(size: self.frame.size)
+                    let transition = SKTransition.doorsOpenHorizontal(withDuration: 0.5)
+                    self.view?.presentScene(gameScreen, transition: transition)
+                    //                    scene?.view?.presentScene(GameScreen(size: self.frame.size))
+                }
             }
             //TODO: - Create a transition
             //if optionsButton.frame.contains(t.preciseLocation(in: inputView)){
