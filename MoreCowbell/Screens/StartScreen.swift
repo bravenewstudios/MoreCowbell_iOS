@@ -29,6 +29,7 @@ class StartScreen: SKScene {
     var sliderBar:SKSpriteNode!
     var slider:SKSpriteNode!
     var MMLabel:SKLabelNode!
+    var objPlayer2:SKAudioNode! //= nil
 //    private var spinnyNode : SKShapeNode?
 //    private var label : SKLabelNode?
     
@@ -36,6 +37,11 @@ class StartScreen: SKScene {
     //TODO: - Add a main menu and play button
     override init(size: CGSize) {
         super.init(size: size)
+        
+        objPlayer2 = SKAudioNode(fileNamed: "surf.mp3")
+        //print(objPlayer2?.avAudioNode!)
+        addChild(objPlayer2)
+        objPlayer2.run(SKAction.play())
         
         setBackground()
         setTitle()
