@@ -23,6 +23,7 @@ class MapScreen: SKScene {
     var startSign:SKSpriteNode!
     var paper:SKSpriteNode!
     var text:SKSpriteNode!
+    var xPaper:SKSpriteNode!
     var starActive = true
     var dropDown:SKAction!
     var signMove:SKAction!
@@ -104,6 +105,12 @@ class MapScreen: SKScene {
         text.zPosition = 11;
         paper.addChild(text)
         
+        xPaper = SKSpriteNode(texture: SKTexture(imageNamed: "Xbutton"))
+        xPaper.setScale(0.05) //WIP
+        xPaper.name = "x"
+        xPaper.position = CGPoint(x:paper.size.width - xPaper.size.width/2, y:paper.size.height - xPaper.size.height/2)
+        paper.addChild(xPaper)
+        
         stateMap.run(SKAction.sequence([delay, dropDown, delay, delay]), completion: {self.stateMap.addChild(self.star)
             self.addChild(self.exitSign)
             self.star.run(starGrow)
@@ -121,6 +128,11 @@ class MapScreen: SKScene {
                     startSign.run(signMove)
                     starActive = false
                     paper.run(dropDown)
+                }
+                if (n.name == "x" && !starActive){ //WIP - closing the paper
+//                    startSign.run(signMove)
+//                    starActive = false
+//                    paper.run(dropDown)
                 }
                 if n.name == "start" {
                     //print("YAY!")
