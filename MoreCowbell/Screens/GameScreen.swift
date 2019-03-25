@@ -76,6 +76,7 @@ class GameScreen: SKScene {
         exitButton = SKSpriteNode(texture: SKTexture(imageNamed: "exit"))
         exitButton.position = CGPoint(x: 9 * (UIScreen.main.bounds.width) / 10, y: UIScreen.main.bounds.height / 13)
         exitButton.setScale(0.2)
+        exitButton.name = "_exit"
         addChild(exitButton)
     }
     
@@ -85,11 +86,19 @@ class GameScreen: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            //TODO: - Create a transition
-            if exitButton.frame.contains(t.preciseLocation(in: inputView)){
-                scene?.view?.presentScene(MapScreen(size: self.frame.size))
-            }
+            let node = nodes(at: t.location(in: self))
             
+            for n in node {
+                
+                //MARK: - If notification button is pressed
+                if n.name == "_exit" {
+                    //print("YAY!")
+                    scene?.view?.presentScene(MapScreen(size: self.frame.size))
+//                    let mapScene:SKScene = MapScreen(size: self.frame.size)
+//                    let transition = SKTransition.push(with: .down, duration: 1)
+//                    self.view?.presentScene(mapScene, transition: transition)
+                }
+            }
         }
     }
 }
