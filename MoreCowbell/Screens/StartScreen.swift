@@ -69,20 +69,36 @@ class StartScreen: SKScene {
     
     func setTitle()
     {
-        titleMore = SKSpriteNode(texture: SKTexture(imageNamed: "title_more"))
-        titleMore.setScale(0.3)
-        titleMore.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: 5 * UIScreen.main.bounds.height / 6.1)
-        addChild(titleMore)
-        
         titleCowbell = SKSpriteNode(texture: SKTexture(imageNamed: "title_cowbell"))
         titleCowbell.setScale(0.3)
-        titleCowbell.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: 3 * UIScreen.main.bounds.height / 4)
+        titleCowbell.position = CGPoint(x: UIScreen.main.bounds.width / 2 - titleCowbell.size.width / 2.8, y: 3 * UIScreen.main.bounds.height / 4 - titleCowbell.size.height / 2)
+        titleCowbell.anchorPoint = CGPoint(x: 0.2,y: 0.0)
         addChild(titleCowbell)
+        
+        titleMore = SKSpriteNode(texture: SKTexture(imageNamed: "title_more"))
+        titleMore.setScale(0.3)
+//        titleMore.zPosition = 5
+        titleMore.position = CGPoint(x: titleCowbell.position.x + titleCowbell.size.width * 0.48 + titleMore.size.width * 0.33, y: titleCowbell.position.y + titleMore.size.height * 0.8)
+        titleMore.anchorPoint = CGPoint(x: 1.0,y: 0.0)
+        addChild(titleMore)
+        
+        let rotateMoreText = SKAction.rotate(byAngle: CGFloat(Double.pi / 9), duration: 0)
+        let reverseMoreText = SKAction.rotate(byAngle: CGFloat(-Double.pi / 9), duration: 0)
+        let rotateCowText = SKAction.rotate(byAngle: CGFloat(Double.pi / 36), duration: 0)
+        let reverseCowText = SKAction.rotate(byAngle: CGFloat(-Double.pi / 36), duration: 0)
+        let rotHead = SKAction.rotate(byAngle: CGFloat(-Double.pi / 9), duration: 0)
+        let rotRevHead = SKAction.rotate(byAngle: CGFloat(Double.pi / 9), duration: 0)
+        let delay = SKAction.wait(forDuration: 0.98)
         
         walkenHead = SKSpriteNode(texture: SKTexture(imageNamed: "Walken_head"))
         walkenHead.setScale(0.3)
+        walkenHead.zRotation = CGFloat(Double.pi / 18)
         walkenHead.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
         addChild(walkenHead)
+        
+        titleMore.run(SKAction.repeatForever(SKAction.sequence([reverseMoreText,delay,rotateMoreText,delay])))
+        titleCowbell.run(SKAction.repeatForever(SKAction.sequence([delay,reverseCowText,delay,rotateCowText])))
+        walkenHead.run(SKAction.repeatForever(SKAction.sequence([delay,rotHead,delay,rotRevHead])))
     }
     
     func setButtons()

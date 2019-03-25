@@ -21,7 +21,10 @@ class MapScreen: SKScene {
     var star:SKSpriteNode!
     var exitSign:SKSpriteNode!
     var startSign:SKSpriteNode!
+    var paper:SKSpriteNode!
+    var text:SKSpriteNode!
     var starActive = true
+    var dropDown:SKAction!
     var signMove:SKAction!
     
     //TODO: - Add a main menu and play button
@@ -65,9 +68,8 @@ class MapScreen: SKScene {
         stateMap.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height + stateMap.size.height)
         addChild(stateMap)
         
-        let dropDown = SKAction.moveBy(x: 0,y: -(UIScreen.main.bounds.height + stateMap.size.height/2), duration: 0.3)
+        dropDown = SKAction.moveBy(x: 0,y: -(UIScreen.main.bounds.height + stateMap.size.height/2), duration: 0.3)
         let delay = SKAction.wait(forDuration: 1)
-        
         
         star = SKSpriteNode(texture: SKTexture(imageNamed: "star"))
         star.name = "star"
@@ -90,7 +92,17 @@ class MapScreen: SKScene {
         startSign.setScale(signScale)
         startSign.name = "start"
         startSign.zPosition = stateMap.zPosition - 1
-        startSign.position = CGPoint(x:UIScreen.main.bounds.width - (startSign.size.width/2 + 10), y: UIScreen.main.bounds.height / 2)//y:UIScreen.main.bounds.height - startSign.size.height)
+        startSign.position = CGPoint(x:UIScreen.main.bounds.width - (startSign.size.width/2 + 10), y: UIScreen.main.bounds.height / 2 - startSign.size.height / 8)//y:UIScreen.main.bounds.height - startSign.size.height)
+        
+        paper = SKSpriteNode(texture: SKTexture(imageNamed: "paper_narrow"))
+        paper.setScale(1.25)
+        paper.position = CGPoint(x:UIScreen.main.bounds.width/2, y:UIScreen.main.bounds.height/2.75 + (UIScreen.main.bounds.height + stateMap.size.height/2))
+        paper.zPosition = 10;
+        addChild(paper)
+        
+        text = SKSpriteNode(texture: SKTexture(imageNamed: "venue_overlay"))
+        text.zPosition = 11;
+        paper.addChild(text)
         
         stateMap.run(SKAction.sequence([delay, dropDown, delay, delay]), completion: {self.stateMap.addChild(self.star)
             self.addChild(self.exitSign)
@@ -108,6 +120,7 @@ class MapScreen: SKScene {
                     addChild(startSign)
                     startSign.run(signMove)
                     starActive = false
+                    paper.run(dropDown)
                 }
                 if n.name == "start" {
                     //print("YAY!")
