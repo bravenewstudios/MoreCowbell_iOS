@@ -28,10 +28,15 @@ class MapScreen: SKScene {
     var dropDown:SKAction!
     var signMove:SKAction!
     
+    var mapMusic:SKAudioNode!
+
     //TODO: - Add a main menu and play button
     override init(size: CGSize)
     {
         super.init(size: size)
+        let music = SKAudioNode(fileNamed: "surf.mp3")
+        addChild(music)
+        mapMusic = music // save reference for outside of this scope
         
         setBackground()
         setButtons()

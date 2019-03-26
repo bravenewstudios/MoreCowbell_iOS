@@ -17,6 +17,8 @@ class SpriteButton: SKNode
     private var action: () -> Void
     var isEnabled = true
     
+    let buttonSound = SKAction.playSoundFileNamed("cowbell.wav", waitForCompletion: false)
+    
     init(imageName: String, buttonAction: @escaping () -> Void)
     {
         button = SKSpriteNode(imageNamed: imageName)
@@ -85,6 +87,7 @@ class SpriteButton: SKNode
                 
                 if button.contains(location) {
                     mask.alpha = 0.5
+                    run(buttonSound)
                 }
                 else {
                     mask.alpha = 0.0

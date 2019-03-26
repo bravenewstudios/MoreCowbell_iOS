@@ -15,6 +15,7 @@ class StartScreen: SKScene {
     lazy var optionsButton:SpriteButton = {
         var button = SpriteButton(imageName: "gear", buttonAction: {
             //self.view?.presentScene(GameScene(size: self.frame.size))
+            self.onButtonClick()
         })
         button.zPosition = 4
         return button
@@ -29,7 +30,15 @@ class StartScreen: SKScene {
     var sliderBar:SKSpriteNode!
     var slider:SKSpriteNode!
     var MMLabel:SKLabelNode!
-    var objPlayer2:SKAudioNode! //= nil
+    
+    var paper:SKSpriteNode!
+    var text:SKSpriteNode!
+    var optionsDropDown:SKAction!
+    var optionsSlideUp:SKAction!
+    var isOptionsOpen = false
+    
+    var titleMusic:SKAudioNode!
+    
 //    private var spinnyNode : SKShapeNode?
 //    private var label : SKLabelNode?
     
@@ -37,15 +46,13 @@ class StartScreen: SKScene {
     //TODO: - Add a main menu and play button
     override init(size: CGSize) {
         super.init(size: size)
-        let music = SKAudioNode(fileNamed: "diapers.wav")
+        let music = SKAudioNode(fileNamed: "title.mp3")
         addChild(music)
-        //objPlayer2 = SKAudioNode(url: (fileURLWithPath: musicFile))
-        //print(objPlayer2?.avAudioNode!)
-        //self.addChild(objPlayer2)
-        //objPlayer2.run(SKAction.play())
+        titleMusic = music // save reference for outside of this scope
         
         setBackground()
         setTitle()
+        setOptionsMenu()
         setButtons()
 
 //        sliderBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
@@ -55,6 +62,21 @@ class StartScreen: SKScene {
 //        slider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
 //        slider.position = CGPoint(x: 2 * (UIScreen.main.bounds.width) / 3, y: UIScreen.main.bounds.height / 2)
 //        addChild(slider)
+    }
+    
+    // not sure of syntax for buttonAction, using this for now
+    func onButtonClick()
+    {
+        if (isOptionsOpen)
+        {
+            paper.run(optionsSlideUp)
+            isOptionsOpen = false
+        }
+        else
+        {
+            paper.run(optionsDropDown)
+            isOptionsOpen = true
+        }
     }
     
     func setBackground()
@@ -102,6 +124,22 @@ class StartScreen: SKScene {
         walkenHead.run(SKAction.repeatForever(SKAction.sequence([delay,rotHead,delay,rotRevHead])))
     }
     
+    func setOptionsMenu()
+    {
+        paper = SKSpriteNode(texture: SKTexture(imageNamed: "paper_narrow"))
+        paper.setScale(1.25)
+        paper.position = CGPoint(x:UIScreen.main.bounds.width/2, y:UIScreen.main.bounds.height + paper.size.height * 0.5)
+        paper.zPosition = 10;
+        addChild(paper)
+        
+        text = SKSpriteNode(texture: SKTexture(imageNamed: "options_template_text"))
+        text.zPosition = 11;
+        paper.addChild(text)
+        
+        optionsDropDown = SKAction.moveTo(y: UIScreen.main.bounds.height * 0.5, duration: 0.3)
+        optionsSlideUp = SKAction.moveTo(y: UIScreen.main.bounds.height + paper.size.height * 0.5, duration: 0.3)
+    }
+    
     func setButtons()
     {
         //optionsButton = SKSpriteNode(texture: SKTexture(imageNamed: "gear"))
@@ -121,8 +159,11 @@ class StartScreen: SKScene {
             
             for n in node {
                 if n.name == "_background" {
-                    //print("YAY!")
-                    scene?.view?.presentScene(MapScreen(size: self.frame.size))
+                    if (!isOptionsOpen)
+                    {
+                        //print("YAY!")
+                        scene?.view?.presentScene(MapScreen(size: self.frame.size))
+                    }
                 }
             }
             //TODO: - Create a transition

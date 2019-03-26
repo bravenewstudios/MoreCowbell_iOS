@@ -29,7 +29,7 @@
 		840094232249C45200FED121 /* comeongene.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8400941A2249C45100FED121 /* comeongene.wav */; };
 		840094242249C45200FED121 /* prescription.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8400941B2249C45100FED121 /* prescription.wav */; };
 		840094252249C45200FED121 /* dynamitesound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8400941C2249C45100FED121 /* dynamitesound.wav */; };
-		840094262249C45200FED121 /* Cowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8400941D2249C45100FED121 /* Cowbell.wav */; };
+		840094262249C45200FED121 /* cowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8400941D2249C45100FED121 /* cowbell.wav */; };
 		840094272249C45200FED121 /* couldusemore.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8400941E2249C45100FED121 /* couldusemore.wav */; };
 		840094282249C45200FED121 /* dontblowthis.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8400941F2249C45100FED121 /* dontblowthis.wav */; };
 		840094292249C45200FED121 /* reaper.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094202249C45200FED121 /* reaper.wav */; };
@@ -82,7 +82,7 @@
 		8400941A2249C45100FED121 /* comeongene.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = comeongene.wav; sourceTree = "<group>"; };
 		8400941B2249C45100FED121 /* prescription.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = prescription.wav; sourceTree = "<group>"; };
 		8400941C2249C45100FED121 /* dynamitesound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dynamitesound.wav; sourceTree = "<group>"; };
-		8400941D2249C45100FED121 /* Cowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Cowbell.wav; sourceTree = "<group>"; };
+		8400941D2249C45100FED121 /* cowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cowbell.wav; sourceTree = "<group>"; };
 		8400941E2249C45100FED121 /* couldusemore.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = couldusemore.wav; sourceTree = "<group>"; };
 		8400941F2249C45100FED121 /* dontblowthis.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dontblowthis.wav; sourceTree = "<group>"; };
 		840094202249C45200FED121 /* reaper.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reaper.wav; sourceTree = "<group>"; };
@@ -201,6 +201,7 @@
 		8400940E2249C0B900FED121 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				CE29A6F02249CD3F00E3720C /* Effects */,
 				840094122249C43200FED121 /* Music */,
 				840094112249C42B00FED121 /* Voice */,
 			);
@@ -212,7 +213,6 @@
 			children = (
 				8400941A2249C45100FED121 /* comeongene.wav */,
 				8400941E2249C45100FED121 /* couldusemore.wav */,
-				8400941D2249C45100FED121 /* Cowbell.wav */,
 				840094192249C45100FED121 /* diapers.wav */,
 				8400941F2249C45100FED121 /* dontblowthis.wav */,
 				8400941C2249C45100FED121 /* dynamitesound.wav */,
@@ -231,6 +231,14 @@
 				840094152249C44300FED121 /* title.mp3 */,
 			);
 			path = Music;
+			sourceTree = "<group>";
+		};
+		CE29A6F02249CD3F00E3720C /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				8400941D2249C45100FED121 /* cowbell.wav */,
+			);
+			path = Effects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,7 +356,7 @@
 				840094242249C45200FED121 /* prescription.wav in Resources */,
 				840094162249C44300FED121 /* reaper.mp3 in Resources */,
 				18EDEBCA22453B6400E64F66 /* GameScene.sks in Resources */,
-				840094262249C45200FED121 /* Cowbell.wav in Resources */,
+				840094262249C45200FED121 /* cowbell.wav in Resources */,
 				18EDEBD522453B6500E64F66 /* Assets.xcassets in Resources */,
 				840094282249C45200FED121 /* dontblowthis.wav in Resources */,
 				18EDEBD822453B6500E64F66 /* LaunchScreen.storyboard in Resources */,
