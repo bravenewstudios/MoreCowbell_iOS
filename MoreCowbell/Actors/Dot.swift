@@ -11,39 +11,42 @@ import SpriteKit
 
 class Dot:SKSpriteNode {
     
-    MoveToAction movein;
-    MoveToAction moveout;
-    AlphaAction fadeout;
-    AlphaAction fadein;
-    ParallelAction enter;
-    ParallelAction exit;
-    SequenceAction sequence;
+    var movein:SKAction
+    var moveout:SKAction
+    var fadeout:SKAction
+    var fadein:SKAction
+    var enter:SKAction
+    var exit:SKAction
+    var sequence:SKAction
+    var bar:SKSpriteNode!
+    var startPoint:CGPoint!
+    var hit = false
     
-    var startPoint:CGPoint!;
-    var hit = false;
-    
-    init(ActorBeta bar, float screenHeight){
-        loadTexture("dot.png");
-        setSize(bar.getWidth()*0.1f,bar.getWidth()*0.1f);
-        startX = bar.getX()+bar.getWidth();
-        startY = screenHeight*0.5f-getHeight()*0.5f;
-        setPosition(startX,startY);
-        getColor().a = 0.0f;
-        fadein = Actions.fadeIn(0.2f);
-        fadeout = Actions.fadeOut(0.2f);
-        movein = Actions.moveTo(bar.getX()+bar.getWidth()*0.07f,getY(),Conductor.DOTMOVETIME);
-        moveout = Actions.moveTo(bar.getX()-getWidth(),getY(),Conductor.DOTMOVETIME*0.2f);
-        enter = Actions.parallel(fadein, movein);
-        exit = Actions.parallel(fadeout, moveout);
-        sequence = Actions.sequence(enter,exit);
+    init(Bar: SKSpriteNode, screenHeight: Double){
+        let texture = SKTexture(imageNamed: "dot")
+        let imgSize = CGSize(width: Bar.size.width * 0.1,height: Bar.size.width * 0.1)
+        startPoint.x = Bar.size.width + Bar.size.width / 2
+        startPoint.y = CGFloat(screenHeight * 0.5)
+        fadein = SKAction.fadeIn(withDuration: 0.2)
+        fadeout = SKAction.fadeOut(withDuration: 0.2)
+        movein = SKAction.moveTo(x: Bar.position.x + Bar.size.width * 0.07, duration: Conductor.DOTMOVETIME)
+        moveout = SKAction.moveTo(x: Bar.position.x - imgSize.width, duration: 0.2 * Conductor.DOTMOVETIME)
+        enter = SKAction.group([fadein,movein])
+        exit = SKAction.group([fadeout,moveout])
+        sequence = SKAction.sequence([enter,exit])
+        super.init(texture: texture, color:UIColor.clear, size:bar.size)
     }
     
-    void FireAction() {
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func FireAction() {
         hit = false;
-        setPosition(startX,startY);
-        enter = Actions.parallel(fadein, movein);
-        exit = Actions.parallel(fadeout, moveout);
-        sequence = Actions.sequence(enter,exit);
-        addAction(sequence);
+        position = startPoint
+//        enter = SKAction.group([fadein, movein])
+//        exit = SKAction.group([fadeout, moveout])
+//        sequence = SKAction.group([enter,exit])
+        run(sequence)
     }
 }
