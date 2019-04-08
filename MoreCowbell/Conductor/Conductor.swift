@@ -50,9 +50,9 @@ class Conductor {
     }
     
     func SpawnDot() {
-        dots[dotIndex].FireAction();
+        dots[dotIndex].FireAction()
         dotIndex += 1
-        if (dotIndex >= dots.length)
+        if (dotIndex >= dots.count)
         {
             dotIndex = 0;
         }
