@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import AVFoundation
 
 class Conductor {
     var song:Song!
+    var audioPlayer = AVAudioPlayer()
     
     static let DOTMOVETIME = 1.5
     
