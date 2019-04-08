@@ -21,11 +21,11 @@ public class Song {
     var timeSigBottom = 0.0;
     var startOffset = 0.0;
     
-    var musicTrack:SKAudioNode!
+    var songFile:String?
     
-    init(numBars:Int, bpm:Double, timeSigTop:Double, timeSigBottom:Double, startOffset:Double, filePath:String) {
-        let music = SKAudioNode(fileNamed: filePath)
-        musicTrack = music
+    init(numBars:Int, bpm:Double, timeSigTop:Double, timeSigBottom:Double, startOffset:Double, fileName:String, fileType:String) {
+        
+        songFile = Bundle.main.path(forResource: fileName, ofType: fileType)
         
         self.totalNotes = 0;
         self.numBars = numBars;
