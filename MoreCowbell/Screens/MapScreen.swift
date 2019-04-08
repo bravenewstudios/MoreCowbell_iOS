@@ -10,6 +10,19 @@
 import SpriteKit
 import GameplayKit
 
+class levelStar : SKSpriteNode
+{
+    init()
+    {
+        let texture = SKTexture(imageNamed: "star")
+        super.init(texture: texture, color:UIColor.clear, size:texture.size())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 class MapScreen: SKScene {
     
     //TODO: - Use this to create a menu scene
@@ -18,11 +31,17 @@ class MapScreen: SKScene {
     var background:SKSpriteNode!
     var MMLabel:SKLabelNode!
     var stateMap:SKSpriteNode!
-    var star:SKSpriteNode!
+    var starSize: SKSpriteNode!
+    var star1:levelStar!
+    var star2:levelStar!
+    var star3:levelStar!
+    var levels: [levelStar] = [levelStar]()
     var exitSign:SKSpriteNode!
     var startSign:SKSpriteNode!
     var paper:SKSpriteNode!
-    var text:SKSpriteNode!
+    var text1:SKSpriteNode!
+    var text2:SKSpriteNode!
+    var text3:SKSpriteNode!
     var xPaper:SKSpriteNode!
     var starActive = true
     var dropDown:SKAction!
@@ -77,13 +96,29 @@ class MapScreen: SKScene {
         dropDown = SKAction.moveBy(x: 0,y: -(UIScreen.main.bounds.height + stateMap.size.height/2), duration: 0.3)
         let delay = SKAction.wait(forDuration: 1)
         
-        star = SKSpriteNode(texture: SKTexture(imageNamed: "star"))
-        star.name = "star"
-        let starScale = CGFloat.maximum(stateMap.size.width/5/star.size.width, stateMap.size.height/5/star.size.height)
-        star.setScale(0.01)
-        star.position = CGPoint(x: 75, y: -150)
-//        stateMap.addChild(star)
+        starSize = SKSpriteNode(texture: SKTexture(imageNamed: "star"))
+        let starScale = CGFloat.maximum(stateMap.size.width/5/starSize.size.width, stateMap.size.height/5/starSize.size.height)
         let starGrow = SKAction.scale(to: starScale, duration: 0.3)
+        
+        star1 = levelStar()
+        star1.name = "star1"
+        star1.position = CGPoint(x: 90, y: -180)
+        levels.append(star1)
+        
+        star2 = levelStar()
+        star2.name = "star2"
+        star2.position = CGPoint(x: -140, y: 80)
+        levels.append(star2)
+        
+        star3 = levelStar()
+        star3.name = "star3"
+        star3.position = CGPoint(x:10, y: 0)
+        levels.append(star3)
+        
+        for levelStar in levels
+        {
+            levelStar.setScale(0.01)
+        }
         
         exitSign = SKSpriteNode(texture: SKTexture(imageNamed: "exit_sign"))
         let signScale = CGFloat.maximum(UIScreen.main.bounds.width/3/exitSign.size.width, UIScreen.main.bounds.width/3/exitSign.size.height)
@@ -106,19 +141,28 @@ class MapScreen: SKScene {
         paper.zPosition = 10;
         addChild(paper)
         
-        text = SKSpriteNode(texture: SKTexture(imageNamed: "venue_overlay"))
-        text.zPosition = 11;
-        paper.addChild(text)
+        text1 = SKSpriteNode(texture: SKTexture(imageNamed: "venue_overlay"))
+        text1.zPosition = 11;
+        
+        text2 = SKSpriteNode(texture: SKTexture(imageNamed: "venue_overlay"))
+        text2.zPosition = 11;
+        
+        text3 = SKSpriteNode(texture: SKTexture(imageNamed: "venue_overlay"))
+        text3.zPosition = 11;
         
         xPaper = SKSpriteNode(texture: SKTexture(imageNamed: "Xbutton"))
-        xPaper.setScale(0.05) //WIP
+        xPaper.setScale(0.1) //WIP
+        xPaper.zPosition = 12;
         xPaper.name = "x"
-        xPaper.position = CGPoint(x:paper.size.width - xPaper.size.width/2, y:paper.size.height - xPaper.size.height/2)
-        paper.addChild(xPaper)
+        xPaper.position = CGPoint(x:paper.size.width/2 - xPaper.size.width * 1.75, y:paper.size.height/2 - xPaper.size.height * 2)
         
-        stateMap.run(SKAction.sequence([delay, dropDown, delay, delay]), completion: {self.stateMap.addChild(self.star)
+        stateMap.run(SKAction.sequence([delay, dropDown, delay, delay]), completion: {
+            for levelStar in self.levels
+            {
+                self.stateMap.addChild(levelStar)
+                levelStar.run(starGrow)
+            }
             self.addChild(self.exitSign)
-            self.star.run(starGrow)
             self.exitSign.run(self.signMove)
         })
         }
@@ -128,16 +172,38 @@ class MapScreen: SKScene {
             let node = nodes(at: t.location(in: self))
             
             for n in node {
-                if (n.name == "star" && starActive){
+                if (n.name == "star1" && starActive){
                     addChild(startSign)
                     startSign.run(signMove)
                     starActive = false
+                    paper.addChild(text1)
+                    paper.addChild(xPaper)
                     paper.run(dropDown)
                 }
-                if (n.name == "x" && !starActive){ //WIP - closing the paper
-//                    startSign.run(signMove)
-//                    starActive = false
-//                    paper.run(dropDown)
+                if (n.name == "star2" && starActive){
+                    addChild(startSign)
+                    startSign.run(signMove)
+                    starActive = false
+                    paper.addChild(text2)
+                    paper.addChild(xPaper)
+                    paper.run(dropDown)
+                }
+                if (n.name == "star3" && starActive){
+                    addChild(startSign)
+                    startSign.run(signMove)
+                    starActive = false
+                    paper.addChild(text3)
+                    paper.addChild(xPaper)
+                    paper.run(dropDown)
+                }
+                if (n.name == "x" && !starActive)
+                { //WIP - closing the paper
+                    startSign.run(signMove.reversed(), completion:
+                        { self.startSign.removeFromParent() })
+                    paper.run(dropDown.reversed(), completion:
+                        { self.paper.removeAllChildren() })
+                    
+                    starActive = true
                 }
                 if n.name == "start" {
                     //print("YAY!")
