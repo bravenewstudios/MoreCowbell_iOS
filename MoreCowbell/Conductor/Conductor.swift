@@ -63,6 +63,7 @@ class Conductor {
         numNotes = song.bars[barIndex].numNotes;
         nextBeatTime = song.startOffset - Conductor.DOTMOVETIME;
         isRest = song.bars[barIndex].notes[noteIndex].isRest;
+        audioPlayer.volume = GameInstance.musicVolume
         audioPlayer.play()
     }
     

@@ -12,8 +12,8 @@ struct GameInstance {
     static var currentSong = 0
     
     static var highscoreTable = [0,0,0]
-    static var musicVolume = 1.0
-    static var sfxVolume = 1.0
+    static var musicVolume:Float = 1.0
+    static var sfxVolume:Float = 1.0
     static func updateHighscore(_ score:Int, level:Int){
        if(highscoreTable[level] < score){
                 highscoreTable[level] = score
@@ -21,10 +21,10 @@ struct GameInstance {
         }
     
     static func sfxVolumeChange(_ vol:Float){
-        sfxVolume = Double(vol)
+        sfxVolume = vol
     }
     
     static func musicVolumeChange(_ vol:Float){
-        musicVolume = Double(vol)
+        musicVolume = vol
     }
 }
