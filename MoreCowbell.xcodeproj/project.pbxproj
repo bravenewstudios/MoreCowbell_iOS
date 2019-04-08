@@ -12,6 +12,7 @@
 		181EA7A7225BD54A00D2478C /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EA7A6225BD54A00D2478C /* Note.swift */; };
 		181EA7A9225BD56500D2478C /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EA7A8225BD56500D2478C /* Bar.swift */; };
 		18441143225BE8BC00F4CEF5 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18441142225BE8BC00F4CEF5 /* Dot.swift */; };
+		18441146225BF86300F4CEF5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18441145225BF86300F4CEF5 /* AVFoundation.framework */; };
 		186632CA22494ABA009BE45A /* SpriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186632C922494ABA009BE45A /* SpriteButton.swift */; };
 		18EDEBC822453B6400E64F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEBC722453B6400E64F66 /* AppDelegate.swift */; };
 		18EDEBCA22453B6400E64F66 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18EDEBC922453B6400E64F66 /* GameScene.sks */; };
@@ -64,6 +65,7 @@
 		181EA7A6225BD54A00D2478C /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		181EA7A8225BD56500D2478C /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		18441142225BE8BC00F4CEF5 /* Dot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dot.swift; sourceTree = "<group>"; };
+		18441145225BF86300F4CEF5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		186632C922494ABA009BE45A /* SpriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteButton.swift; sourceTree = "<group>"; };
 		18EDEBC422453B6400E64F66 /* MoreCowbell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoreCowbell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EDEBC722453B6400E64F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18441146225BF86300F4CEF5 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +127,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18441144225BF86200F4CEF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18441145225BF86300F4CEF5 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		18EDEBBB22453B6400E64F66 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +142,7 @@
 				18EDEBE122453B6500E64F66 /* MoreCowbellTests */,
 				18EDEBEC22453B6500E64F66 /* MoreCowbellUITests */,
 				18EDEBC522453B6400E64F66 /* Products */,
+				18441144225BF86200F4CEF5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
