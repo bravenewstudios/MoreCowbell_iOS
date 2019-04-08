@@ -19,10 +19,11 @@ public class Bar {
     var numNotes = 0
     
     init(numNotes:Int) {
-    self.numNotes = numNotes;
+        self.numNotes = numNotes;
+        //self.notes = new Note[numNotes];
     }
     
-       // doesn't work because of float arithmetic error
+    // doesn't work because of float arithmetic error
     func Verify(beat:Double, timeSigTop:Double, timeSigBottom:Double) -> Bool
     {
         let expectedDuration = timeSigTop * beat;
