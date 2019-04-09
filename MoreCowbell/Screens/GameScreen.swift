@@ -16,6 +16,11 @@ class GameScreen: SKScene {
     var background:SKSpriteNode!
     var exitButton:SKSpriteNode!
     var scoreCounter:SKSpriteNode!
+    var score0:SKSpriteNode!; var score1:SKSpriteNode!; var score2:SKSpriteNode!;
+    var score3:SKSpriteNode!; var score4:SKSpriteNode!; var score5:SKSpriteNode!;
+    var combo0:SKSpriteNode!; var combo1:SKSpriteNode!; var combo2:SKSpriteNode!;
+    var scoreCountArray: [SKSpriteNode] = [SKSpriteNode]()
+    var comboCountArray: [SKSpriteNode] = [SKSpriteNode]()
     var comboCounter:SKSpriteNode!
     var beatBar:SKSpriteNode!
     var cowbell:SKSpriteNode!
@@ -40,19 +45,21 @@ class GameScreen: SKScene {
         background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         addChild(background)
         
-        scoreCounter = SKSpriteNode(texture: SKTexture(imageNamed: "score_counter"))
-        scoreCounter.position = CGPoint(x: (UIScreen.main.bounds.width) / 4, y: UIScreen.main.bounds.height / 13)
-        //scoreCounter.size.width =
-        //scoreCounter.size.height =
-        scoreCounter.setScale(0.2)
-        scoreCounter.yScale = 0.15
-        addChild(scoreCounter)
         
-        comboCounter = SKSpriteNode(texture: SKTexture(imageNamed: "combo_counter"))
-        comboCounter.position = CGPoint(x: scoreCounter.position.x * 0.60, y: scoreCounter.position.y + scoreCounter.size.height)
-        comboCounter.setScale(0.2)
-        comboCounter.yScale = 0.15
-        addChild(comboCounter)
+        
+//        scoreCounter = SKSpriteNode(texture: SKTexture(imageNamed: "score_counter"))
+//        scoreCounter.position = CGPoint(x: (UIScreen.main.bounds.width) / 4, y: UIScreen.main.bounds.height / 13)
+//        //scoreCounter.size.width =
+//        //scoreCounter.size.height =
+//        scoreCounter.setScale(0.2)
+//        scoreCounter.yScale = 0.15
+//        addChild(scoreCounter)
+//
+//        comboCounter = SKSpriteNode(texture: SKTexture(imageNamed: "combo_counter"))
+//        comboCounter.position = CGPoint(x: scoreCounter.position.x * 0.60, y: scoreCounter.position.y + scoreCounter.size.height)
+//        comboCounter.setScale(0.2)
+//        comboCounter.yScale = 0.15
+//        addChild(comboCounter)
     }
     
     func setupCowbell()

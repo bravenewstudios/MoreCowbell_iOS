@@ -32,9 +32,7 @@ class MapScreen: SKScene {
     var MMLabel:SKLabelNode!
     var stateMap:SKSpriteNode!
     var starSize: SKSpriteNode!
-    var star1:levelStar!
-    var star2:levelStar!
-    var star3:levelStar!
+    var star1:levelStar!; var star2:levelStar!; var star3:levelStar!
     var levels: [levelStar] = [levelStar]()
     var exitSign:SKSpriteNode!
     var startSign:SKSpriteNode!
