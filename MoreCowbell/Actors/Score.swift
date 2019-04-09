@@ -7,10 +7,21 @@
 //
 
 import Foundation
+import SpriteKit
 
 class Score{
     
+    var scoreCountArray: [SKSpriteNode] = [SKSpriteNode]()
     var scoreHolder = [Int](arrayLiteral: 0,0,0,0,0,0)
+    
+    var numberHolder: [SKTexture] = [SKTexture(imageNamed: "0.png"), SKTexture(imageNamed: "1.png"), SKTexture(imageNamed: "2.png"), SKTexture(imageNamed: "3.png"), SKTexture(imageNamed: "4.png"), SKTexture(imageNamed: "5.png"), SKTexture(imageNamed: "6.png"), SKTexture(imageNamed: "7.png"), SKTexture(imageNamed: "8.png"), SKTexture(imageNamed: "9.png")]
+    
+    init(){
+        for i in 0..<6
+        {
+            scoreCountArray[i] = SKSpriteNode()
+        }
+    }
     
     func scoreUpdate(_ score:Int){
         var s = score
@@ -19,6 +30,7 @@ class Score{
         for i in 0..<count
         {
             scoreHolder[i] = Int((temp / pow(10.0, (Float)(count - 1 - i))).truncatingRemainder(dividingBy: 10.0))
+            scoreCountArray[i].texture = numberHolder[scoreHolder[i]]
 //            holder[i].sprite = numerals[scoreDigits[i]];
         }
     }
@@ -54,7 +66,10 @@ class Score{
 
 class Combo{
     
+    var comboCountArray: [SKSpriteNode] = [SKSpriteNode]()
     var comboHolder = [Int](arrayLiteral: 0,0,0)
+    
+    var numberHolder: [SKTexture] = [SKTexture(imageNamed: "0.png"), SKTexture(imageNamed: "1.png"), SKTexture(imageNamed: "2.png"), SKTexture(imageNamed: "3.png"), SKTexture(imageNamed: "4.png"), SKTexture(imageNamed: "5.png"), SKTexture(imageNamed: "6.png"), SKTexture(imageNamed: "7.png"), SKTexture(imageNamed: "8.png"), SKTexture(imageNamed: "9.png")]
     
     func comboUpdate(_ combo:Int){
         var c = combo
@@ -63,6 +78,7 @@ class Combo{
         for i in 0..<count
         {
             comboHolder[i] = Int((temp / pow(10.0, (Float)(count - 1 - i))).truncatingRemainder(dividingBy: 10.0))
+            comboCountArray[i].texture = numberHolder[comboHolder[i]]
             //           comboHolder[i].sprite = numerals[comboDigits[i]];
         }
     }
