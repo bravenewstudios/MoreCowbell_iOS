@@ -54,6 +54,7 @@ class MapScreen: SKScene {
     {
         super.init(size: size)
         let music = SKAudioNode(fileNamed: "surf.mp3")
+        music.run(SKAction.changeVolume(to: GameInstance.musicVolume, duration: 0.0))
         addChild(music)
         mapMusic = music // save reference for outside of this scope
         

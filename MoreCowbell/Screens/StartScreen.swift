@@ -72,6 +72,7 @@ class StartScreen: SKScene {
         {
             paper.run(optionsSlideUp)
             isOptionsOpen = false
+            
         }
         else
         {
