@@ -36,6 +36,7 @@ class StartScreen: SKScene {
     var optionsDropDown:SKAction!
     var optionsSlideUp:SKAction!
     var isOptionsOpen = false
+    var xPaper:SKSpriteNode!
     
     var titleMusic:SKAudioNode!
     
@@ -130,11 +131,31 @@ class StartScreen: SKScene {
         paper.setScale(1.25)
         paper.position = CGPoint(x:UIScreen.main.bounds.width/2, y:UIScreen.main.bounds.height + paper.size.height * 0.5)
         paper.zPosition = 10;
+        
+        xPaper = SKSpriteNode(texture: SKTexture(imageNamed: "Xbutton"))
+        xPaper.setScale(0.1) //WIP
+        xPaper.zPosition = 12
+        xPaper.name = "x"
+        xPaper.position = CGPoint(x:paper.size.width/2 - xPaper.size.width * 1.75, y:paper.size.height/2 - xPaper.size.height * 2)
+        
         addChild(paper)
+        paper.addChild(xPaper)
         
         text = SKSpriteNode(texture: SKTexture(imageNamed: "options_template_text"))
-        text.zPosition = 11;
-        paper.addChild(text)
+        text.zPosition = 11
+        //paper.addChild(text)
+        
+        sliderBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
+        sliderBar.setScale(0.9)
+        sliderBar.position = CGPoint(x:(paper.size.width/20), y:paper.size.height/6)
+        //sliderBar.zPosition = 12;
+        paper.addChild(sliderBar)
+        
+        slider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
+        slider.setScale(0.9)
+        slider.position = CGPoint(x:0, y:0)
+        //slider.anchorPoint = CGPoint(x:0.5, y:0.5)
+        sliderBar.addChild(slider)
         
         optionsDropDown = SKAction.moveTo(y: UIScreen.main.bounds.height * 0.5, duration: 0.3)
         optionsSlideUp = SKAction.moveTo(y: UIScreen.main.bounds.height + paper.size.height * 0.5, duration: 0.3)
@@ -153,7 +174,8 @@ class StartScreen: SKScene {
             fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
         for t in touches {
             let node = nodes(at: t.location(in: self))
             
@@ -165,12 +187,28 @@ class StartScreen: SKScene {
                         scene?.view?.presentScene(MapScreen(size: self.frame.size))
                     }
                 }
+                if n.name == "x"
+                { //WIP - closing the paper
+                    paper.run(optionsSlideUp, completion: {self.isOptionsOpen = false})
+                    //isOptionsOpen = false
+                }
             }
             //TODO: - Create a transition
-            if walkenHead.frame.contains(t.preciseLocation(in: inputView)){
-                scene?.view?.presentScene(MapScreen(size: self.frame.size))
-                
-            }
+//            if walkenHead.frame.contains(t.preciseLocation(in: inputView)){
+//                scene?.view?.presentScene(MapScreen(size: self.frame.size))
+//                
+//            }
+            
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        for t in touches {
+            let location = t.location(in: self)
+            
+            slider.position.x = location.x - sliderBar.size.width
+            
             
         }
     }
