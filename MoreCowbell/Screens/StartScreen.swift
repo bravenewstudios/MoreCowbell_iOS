@@ -12,6 +12,8 @@ import GameplayKit
 
 class StartScreen: SKScene {
     
+    var sliderActiveLength:CGFloat = 0.0
+    
     lazy var optionsButton:SpriteButton = {
         var button = SpriteButton(imageName: "gear", buttonAction: {
             //self.view?.presentScene(GameScene(size: self.frame.size))
@@ -147,16 +149,20 @@ class StartScreen: SKScene {
         //paper.addChild(text)
         
         sliderBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
-        sliderBar.setScale(0.9)
-        sliderBar.position = CGPoint(x:(paper.size.width/20), y:paper.size.height/6)
-        //sliderBar.zPosition = 12;
-        paper.addChild(sliderBar)
+        //sliderBar.setScale(0.9)
+        sliderBar.position = CGPoint(x:(UIScreen.main.bounds.width/2), y:paper.size.height/2)
+        sliderBar.anchorPoint = CGPoint(x:0.5, y:0.5)
+        sliderBar.zPosition = 12;
+        addChild(sliderBar)
         
         slider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
-        slider.setScale(0.9)
-        slider.position = CGPoint(x:0, y:0)
+        //slider.setScale(0.9)
+        sliderActiveLength = sliderBar.size.width - 2*slider.size.width
+        slider.position = CGPoint(x: sliderBar.position.x + (sliderActiveLength / 4), y:0)
+        slider.zPosition = 13
         //slider.anchorPoint = CGPoint(x:0.5, y:0.5)
-        sliderBar.addChild(slider)
+        addChild(slider)
+       
         
         optionsDropDown = SKAction.moveTo(y: UIScreen.main.bounds.height * 0.5, duration: 0.3)
         optionsSlideUp = SKAction.moveTo(y: UIScreen.main.bounds.height + paper.size.height * 0.5, duration: 0.3)
@@ -175,17 +181,30 @@ class StartScreen: SKScene {
             fatalError("init(coder:) has not been implemented")
     }
     
+    override func update(_ currentTime: TimeInterval) {
+        //super.update(<#T##currentTime: TimeInterval##TimeInterval#>)
+        slider.position.y = paper.position.y + paper.size.height*1.25/6
+        sliderBar.position.y = paper.position.y + paper.size.height*1.25/6
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         for t in touches {
             let node = nodes(at: t.location(in: self))
+            let location = t.location(in: self)
             
             for n in node {
-                if n.name == "_background" {
-                    if (!isOptionsOpen)
+                
+                if (!isOptionsOpen)
+                {
+                    //print("YAY!")
+                    scene?.view?.presentScene(MapScreen(size: self.frame.size))
+                }
+                else
+                {
+                    if sliderBar.frame.contains(t.preciseLocation(in: inputView))
                     {
-                        //print("YAY!")
-                        scene?.view?.presentScene(MapScreen(size: self.frame.size))
+                        slider.position.x = location.x
                     }
                 }
                 if n.name == "x"
@@ -195,10 +214,10 @@ class StartScreen: SKScene {
                 }
             }
             //TODO: - Create a transition
-//            if walkenHead.frame.contains(t.preciseLocation(in: inputView)){
-//                scene?.view?.presentScene(MapScreen(size: self.frame.size))
-//                
-//            }
+            //            if walkenHead.frame.contains(t.preciseLocation(in: inputView)){
+            //                scene?.view?.presentScene(MapScreen(size: self.frame.size))
+            //
+            //            }
             
         }
     }
@@ -208,7 +227,15 @@ class StartScreen: SKScene {
         for t in touches {
             let location = t.location(in: self)
             
-            slider.position.x = location.x - sliderBar.size.width
+            slider.position.x = location.x //- sliderBar.size.width
+            if (slider.position.x > sliderBar.position.x + sliderActiveLength*0.5)
+            {
+                slider.position.x = sliderBar.position.x + sliderActiveLength*0.5
+            }
+            else if (slider.position.x < sliderBar.position.x - sliderActiveLength*0.5)
+            {
+                slider.position.x = sliderBar.position.x - sliderActiveLength*0.5
+            }
             
             
         }
