@@ -67,7 +67,7 @@ class GameScreen: SKScene {
     func setupCowbell()
     {
         cowbell = SKSpriteNode(texture: SKTexture(imageNamed: "cowbell"))
-        cowbell.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
+        cowbell.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height * 9 / 16)
         cowbell.setScale(1)
         cowbell.name = "cowbell"
         addChild(cowbell)
@@ -76,7 +76,7 @@ class GameScreen: SKScene {
     func setupBar()
     {
         beatBar = SKSpriteNode(texture: SKTexture(imageNamed: "beat_bar"))
-        beatBar.position = CGPoint(x:(UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
+        beatBar.position = CGPoint(x:(UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height * 9 / 16)
         beatBar.setScale(0.8)
         addChild(beatBar)
     }
@@ -93,30 +93,31 @@ class GameScreen: SKScene {
     func setupScore()
     {
         scoreAssets = Score()
-        score0 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score0)
-        score1 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score1)
-        score2 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score2)
-        score3 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score3)
-        score4 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score4)
-        score5 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score5)
-        combo0 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); comboCountArray.append(combo0)
-        combo1 = SKSpriteNode(texture: scoreAssets.numberHolder[1]); comboCountArray.append(combo1)
-        combo2 = SKSpriteNode(texture: scoreAssets.numberHolder[2]); comboCountArray.append(combo2)
+        score0 = scoreAssets.scoreCountArray[0]; scoreCountArray.append(score0)
+        score1 = scoreAssets.scoreCountArray[1]; scoreCountArray.append(score1)
+        score2 = scoreAssets.scoreCountArray[2]; scoreCountArray.append(score2)
+        score3 = scoreAssets.scoreCountArray[3]; scoreCountArray.append(score3)
+        score4 = scoreAssets.scoreCountArray[4]; scoreCountArray.append(score4)
+        score5 = scoreAssets.scoreCountArray[5]; scoreCountArray.append(score5)
+        combo0 = scoreAssets.comboCountArray[0]; comboCountArray.append(combo0)
+        combo1 = scoreAssets.comboCountArray[1]; comboCountArray.append(combo1)
+        combo2 = scoreAssets.comboCountArray[2]; comboCountArray.append(combo2)
         
         for s in 0...5 {
-            scoreCountArray[s].position = CGPoint(x: UIScreen.main.bounds.width * CGFloat(s + 1) / 6, y: UIScreen.main.bounds.height / 7)
+            scoreCountArray[s].setScale(0.3)
+            let i = scoreCountArray[s].size.width * CGFloat(2 * s + 2)
+            let r = 3 * (0.5 - drand48())
+            scoreCountArray[s].position = CGPoint(x: i / 2, y: UIScreen.main.bounds.height / 7 - scoreCountArray[s].size.height * 1.5 + CGFloat(r))
             addChild(scoreCountArray[s])
         }
         
         for c in 0...2 {
-            comboCountArray[c].position = CGPoint(x: UIScreen.main.bounds.width * CGFloat(c + 1) / 6, y: UIScreen.main.bounds.height / 8)
+            comboCountArray[c].setScale(0.3)
+            let i = comboCountArray[c].size.width * CGFloat(2 * c + 2)
+            let r = 3 * (0.5 - drand48())
+            comboCountArray[c].position = CGPoint(x: i / 2, y: UIScreen.main.bounds.height / 7 + comboCountArray[c].size.height * 1.5 + CGFloat(r))
             addChild(comboCountArray[c])
         }
-    }
-    
-    func addScore(i: Int)
-    {
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -139,7 +140,9 @@ class GameScreen: SKScene {
                 }
                 
                 if n.name == "cowbell" {
-                    addScore(i: 1) //Scoring
+                    //if it's a valid "hit"
+                    scoreAssets.gainPoints(1)
+                    //else
                 }
             }
         }
