@@ -15,6 +15,7 @@
 		18441146225BF86300F4CEF5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18441145225BF86300F4CEF5 /* AVFoundation.framework */; };
 		184E73D6225C000500187D92 /* GameInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E73D5225C000500187D92 /* GameInstance.swift */; };
 		186632CA22494ABA009BE45A /* SpriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186632C922494ABA009BE45A /* SpriteButton.swift */; };
+		1872AD732261217200F2511E /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1872AD712261217200F2511E /* Score.swift */; };
 		189650FE225C1DC6005F42CB /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189650FD225C1DC6005F42CB /* Slider.swift */; };
 		18EDEBC822453B6400E64F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEBC722453B6400E64F66 /* AppDelegate.swift */; };
 		18EDEBCA22453B6400E64F66 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18EDEBC922453B6400E64F66 /* GameScene.sks */; };
@@ -70,6 +71,7 @@
 		18441145225BF86300F4CEF5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		184E73D5225C000500187D92 /* GameInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInstance.swift; sourceTree = "<group>"; };
 		186632C922494ABA009BE45A /* SpriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteButton.swift; sourceTree = "<group>"; };
+		1872AD712261217200F2511E /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		189650FD225C1DC6005F42CB /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		18EDEBC422453B6400E64F66 /* MoreCowbell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoreCowbell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EDEBC722453B6400E64F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,10 +214,11 @@
 		18EDEC042245447000E64F66 /* Actors */ = {
 			isa = PBXGroup;
 			children = (
-				186632C922494ABA009BE45A /* SpriteButton.swift */,
+				1872AD712261217200F2511E /* Score.swift */,
 				18441142225BE8BC00F4CEF5 /* Dot.swift */,
 				184E73D5225C000500187D92 /* GameInstance.swift */,
 				189650FD225C1DC6005F42CB /* Slider.swift */,
+				186632C922494ABA009BE45A /* SpriteButton.swift */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 			files = (
 				186632CA22494ABA009BE45A /* SpriteButton.swift in Sources */,
 				181EA7A9225BD56500D2478C /* Bar.swift in Sources */,
+				1872AD732261217200F2511E /* Score.swift in Sources */,
 				184E73D6225C000500187D92 /* GameInstance.swift in Sources */,
 				18EDEBCE22453B6400E64F66 /* GameScene.swift in Sources */,
 				189650FE225C1DC6005F42CB /* Slider.swift in Sources */,

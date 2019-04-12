@@ -25,6 +25,7 @@ class GameScreen: SKScene {
     var beatBar:SKSpriteNode!
     var cowbell:SKSpriteNode!
     var MMLabel:SKLabelNode!
+    var scoreAssets:Score!
     
     
     //TODO: - Add a main menu and play button
@@ -36,6 +37,7 @@ class GameScreen: SKScene {
         setupCowbell()
         setupBar()
         setupButtons()
+        setupScore()
     }
     
     func setupBackground()
@@ -67,6 +69,7 @@ class GameScreen: SKScene {
         cowbell = SKSpriteNode(texture: SKTexture(imageNamed: "cowbell"))
         cowbell.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
         cowbell.setScale(1)
+        cowbell.name = "cowbell"
         addChild(cowbell)
     }
     
@@ -87,6 +90,35 @@ class GameScreen: SKScene {
         addChild(exitButton)
     }
     
+    func setupScore()
+    {
+        scoreAssets = Score()
+        score0 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score0)
+        score1 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score1)
+        score2 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score2)
+        score3 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score3)
+        score4 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score4)
+        score5 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); scoreCountArray.append(score5)
+        combo0 = SKSpriteNode(texture: scoreAssets.numberHolder[0]); comboCountArray.append(combo0)
+        combo1 = SKSpriteNode(texture: scoreAssets.numberHolder[1]); comboCountArray.append(combo1)
+        combo2 = SKSpriteNode(texture: scoreAssets.numberHolder[2]); comboCountArray.append(combo2)
+        
+        for s in 0...5 {
+            scoreCountArray[s].position = CGPoint(x: UIScreen.main.bounds.width * CGFloat(s + 1) / 6, y: UIScreen.main.bounds.height / 7)
+            addChild(scoreCountArray[s])
+        }
+        
+        for c in 0...2 {
+            comboCountArray[c].position = CGPoint(x: UIScreen.main.bounds.width * CGFloat(c + 1) / 6, y: UIScreen.main.bounds.height / 8)
+            addChild(comboCountArray[c])
+        }
+    }
+    
+    func addScore(i: Int)
+    {
+        
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -104,6 +136,10 @@ class GameScreen: SKScene {
 //                    let mapScene:SKScene = MapScreen(size: self.frame.size)
 //                    let transition = SKTransition.push(with: .down, duration: 1)
 //                    self.view?.presentScene(mapScene, transition: transition)
+                }
+                
+                if n.name == "cowbell" {
+                    addScore(i: 1) //Scoring
                 }
             }
         }
