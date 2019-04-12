@@ -8,23 +8,28 @@
 
 import Foundation
 
-struct GameInstance {
-    static var currentSong = 0
+class GameInstance {
+    var currentSong = 0
     
-    static var highscoreTable = [0,0,0]
-    static var musicVolume:Float = 1.0
-    static var sfxVolume:Float = 1.0
-    static func updateHighscore(_ score:Int, level:Int){
+    var highscoreTable = [0,0,0]
+    var musicVolume:Float = 1.0
+    var sfxVolume:Float = 1.0
+    
+    init(){
+        
+    }
+    
+    func updateHighscore(_ score:Int, level:Int){
        if(highscoreTable[level] < score){
                 highscoreTable[level] = score
             }
         }
     
-    static func sfxVolumeChange(_ vol:Float){
+    func sfxVolumeChange(_ vol:Float){
         sfxVolume = vol
     }
     
-    static func musicVolumeChange(_ vol:Float){
+    func musicVolumeChange(_ vol:Float){
         musicVolume = vol
     }
 }
