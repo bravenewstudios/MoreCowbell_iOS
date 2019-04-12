@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class StartScreen: SKScene {
+class StartScreen: BaseScene {
     
     var sliderActiveLength:CGFloat = 0.0
     

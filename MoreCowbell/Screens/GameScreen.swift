@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class GameScreen: SKScene {
+class GameScreen: BaseScene {
     
     //TODO: - Use this to create a menu scene
     var background:SKSpriteNode!
