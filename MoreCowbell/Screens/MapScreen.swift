@@ -23,7 +23,7 @@ class levelStar : SKSpriteNode
     }
 }
 
-class MapScreen: SKScene {
+class MapScreen: BaseScene {
     
     //TODO: - Use this to create a menu scene
     var exitButton:SKSpriteNode!
@@ -52,7 +52,7 @@ class MapScreen: SKScene {
     {
         super.init(size: size)
         let music = SKAudioNode(fileNamed: "surf.mp3")
-        music.run(SKAction.changeVolume(to: GameInstance.musicVolume, duration: 0.0))
+        music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0))
         addChild(music)
         mapMusic = music // save reference for outside of this scope
         
