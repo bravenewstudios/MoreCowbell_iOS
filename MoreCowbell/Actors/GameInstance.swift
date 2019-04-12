@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 class GameInstance {
     var currentSong = 0
@@ -15,8 +16,27 @@ class GameInstance {
     var musicVolume:Float = 1.0
     var sfxVolume:Float = 1.0
     
-    init(){
+    var viewSize:CGSize!
+    
+    var startScreen:StartScreen!
+    var mapScreen:MapScreen!
+    var gameScreen:GameScreen!
+    var resultScreen:ResultScreen!
+    
+    init(viewSize:CGSize){
+        self.viewSize = viewSize
+    }
+    
+    func LoadScenes() {
+        startScreen = StartScreen(size: viewSize)
+        mapScreen = MapScreen(size: viewSize)
+        gameScreen = GameScreen(size: viewSize)
+        resultScreen = ResultScreen(size: viewSize)
         
+        startScreen.SetGameInstance(inst: self)
+        mapScreen.SetGameInstance(inst: self)
+        gameScreen.SetGameInstance(inst: self)
+        resultScreen.SetGameInstance(inst: self)
     }
     
     func updateHighscore(_ score:Int, level:Int){
