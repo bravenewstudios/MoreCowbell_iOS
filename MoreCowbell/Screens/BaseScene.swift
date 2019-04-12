@@ -20,4 +20,8 @@ class BaseScene: SKScene {
     func SetGameInstance(inst:GameInstance) {
         gameInstance = inst
     }
+    
+    func OnSceneDisplay(){
+        // virtual function
+    }
 }
