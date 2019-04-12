@@ -20,104 +20,94 @@ class ResultScreen: BaseScene {
     var score:UILabel!
     var combo:UILabel!
     var grade:UILabel!
+    var labelRect:CGRect!
     
     override init(size: CGSize)
     {
         super.init(size: size)
         
         setupResults()
-        setupCowbell()
-        setupBar()
-        setupButtons()
-        setupScore()
+        SetupBackground()
+        GetResultData()
+        
     }
     
-    func SetupResults() {
-    NotePaper = SKSpriteNode(texture: SKTexture(imageNamed: "paper_narrow"))
-    NotePaper.size(screenHeight,screenWidth,0.8f,mainStage,"results_overlay.png");
-    result.SetStartPosition(screenWidth * 0.5f - result.getWidth()*0.5f, screenHeight);
+    func setupResults() {
+        NotePaper = SKSpriteNode(texture: SKTexture(imageNamed: "paper_narrow"))
+    //NotePaper.size(screenHeight,screenWidth,0.8f,mainStage,"results_overlay.png");
+        NotePaper.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height)
     
-    resultsFont = new BitmapFont(Gdx.files.internal("fonts/jitters.fnt"), Gdx.files.internal("fonts/jitters.png"), false);
-    percentage = new Label("00", new Label.LabelStyle(resultsFont, Color.BLACK));
-    score = new Label("00", new Label.LabelStyle(resultsFont, Color.BLACK));
-    combo = new Label("00", new Label.LabelStyle(resultsFont, Color.BLACK));
-    grade = new Label("B", new Label.LabelStyle(resultsFont, Color.RED));
-    percentage.setPosition(screenWidth*0.655f,screenHeight * 0.659f);
-    percentage.setFontScale(2);
-    combo.setPosition(screenWidth*0.49f,screenHeight * 0.59f);
-    combo.setFontScale(2);
-    score.setPosition(screenWidth*0.7f,screenHeight * 0.52f);
-    score.setFontScale(2);
-    grade.setPosition(screenWidth*0.61f,screenHeight * 0.38f);
-    grade.setFontScale(5);
-    mainStage.addActor(percentage);
-    mainStage.addActor(score);
-    mainStage.addActor(combo);
-    mainStage.addActor(grade);
+        labelRect = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+        accuracy = UILabel(frame: labelRect)
+        score = UILabel(frame: labelRect)
+        combo = UILabel(frame: labelRect)
+        grade = UILabel(frame: labelRect)//new Label("B", new Label.LabelStyle(resultsFont, Color.RED));
+        accuracy.frame(to: CGPoint(x:UIScreen.main.bounds.width * 0.655, y:UIScreen.main.bounds.height * 0.659))
+        accuracy.font = resultsFont
+    combo.closestPosition(to: CGPoint(x:UIScreen.main.bounds.width * 0.49, y:UIScreen.main.bounds.height * 0.59))
+    combo.font = resultsFont
+        //combo.setFontScale(2);
+    score.closestPosition(to: CGPoint(x:UIScreen.main.bounds.width * 0.7, y:UIScreen.main.bounds.height * 0.52))
+    score.font = resultsFont
+//        score.setFontScale(2);
+    grade.closestPosition(to: CGPoint(x:UIScreen.main.bounds.width * 0.61, y:UIScreen.main.bounds.height * 0.38))
+    grade.font = resultsFont
+        //grade.setFontScale(5);
+    addChild(accuracy);
+    addChild(score);
+    addChild(combo);
+    addChild(grade);
     }
     
-    void GetResultData() {
-    int pct = game.result.notesHit * 100 / game.result.totalNotes;
-    percentage.setText(Integer.toString(pct));
-    String letter;
+    func GetResultData() {
+    let pct = game.result.notesHit * 100 / game.result.totalNotes;
+    accuracy.setText(Integer.toString(pct));
+        var letter:String
+        var music:SKAudioNode!
     if (pct >= 80)
     {
-    letter = "A";
-    if (pct >= 90)
-    game.diapers.play();
-    else
-    game.dynamiteSound.play();
+    letter = "A"
+        if (pct >= 90) {
+    music = SKAudioNode(fileNamed: "diapers.wav")
+        }
+        else {
+    music = SKAudioNode(fileNamed: "dynamiteSound.wav")
+    }
     }
     else if (pct >= 70)
     {
-    letter = "B";
-    game.couldUseMore.play();
+    letter = "B"
+    music = SKAudioNode(fileNamed: "couldusemore.wav")
     }
     else if (pct >= 60)
     {
-    letter = "C";
-    game.couldUseMore.play();
+    letter = "C"
+        music = SKAudioNode(fileNamed: "couldusemore.wav")
     }
     else if (pct >= 50)
     {
-    letter = "D";
-    game.couldUseMore.play();
+    letter = "D"
+        music = SKAudioNode(fileNamed: "couldusemore.wav")
     }
     else
     {
     letter = "F";
-    game.couldUseMore.play();
+        music = SKAudioNode(fileNamed: "couldusemore.wav")
     }
-    if (!game.result.win)
+    if (pct == 0)
     {
     letter = "F";
-    game.comeOnGene.play();
+        music = SKAudioNode(fileNamed: "comeongene.wav")
     }
+        music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0))
+        addChild(music)
     grade.setText(letter);
     score.setText(Integer.toString(game.result.score));
     combo.setText(Integer.toString(game.result.maxCombo));
     }
     
-    void SetupBackground() {
-    background = new ActorBeta();
-    background.loadTexture("stage_dark.png");
-    background.setSize(screenWidth,screenHeight);
-    mainStage.addActor(background);
-    }
-    
-    @Override
-    public void initialize() {
-    ActorBeta.setWorldBounds(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    
-    SetupBackground();
-    SetupResults();
-    }
-    
-    @Override
-    public void show() {
-    super.show();
-    if (game.result != null)
-    GetResultData();
-    result.SlideToPosition(screenWidth*0.5f-result.getWidth()*0.5f, screenHeight * 0.2f);
+    func SetupBackground() {
+    background = SKSpriteNode(texture: SKTexture(imageNamed: "stage_dark.png"))
+    addChild(background)
     }
 }
