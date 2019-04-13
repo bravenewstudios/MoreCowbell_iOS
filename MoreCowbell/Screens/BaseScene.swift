@@ -11,7 +11,7 @@ import SpriteKit
 
 class BaseScene: SKScene {
     
-    var gameInstance:GameInstance!
+    //var gameInstance:GameInstance!
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -22,7 +22,7 @@ class BaseScene: SKScene {
     }
     
     func SetGameInstance(inst:GameInstance) {
-        gameInstance = inst
+        //gameInstance = inst
     }
     
     func OnScenePresent(){

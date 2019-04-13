@@ -35,10 +35,12 @@ class GameInstance {
         gameScreen.scaleMode = .aspectFill
         resultScreen.scaleMode = .aspectFill
         
+        /*
         startScreen.SetGameInstance(inst: self)
         mapScreen.SetGameInstance(inst: self)
         gameScreen.SetGameInstance(inst: self)
         resultScreen.SetGameInstance(inst: self)
+         */
     }
     
     func updateHighscore(_ score:Int, level:Int){

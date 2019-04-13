@@ -9,17 +9,18 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+
+var gameInstance = GameInstance()
+
 class GameViewController: UIViewController {
 
     var scene: StartScreen!
-    var gameInstance:GameInstance!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             
-            gameInstance = GameInstance()
             gameInstance.LoadScenes(viewSize: self.view.frame.size)
 
             view.presentScene(gameInstance.startScreen)
