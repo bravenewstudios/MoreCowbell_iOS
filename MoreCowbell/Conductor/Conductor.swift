@@ -21,21 +21,16 @@ class Conductor {
     var barIndex = 0;
     var numBars = 0;
     var numNotes = 0;
-    var dotIndex = 0;
     
     var isRest = false;
     var isFinished = false;
     
-    var dots:[Dot] = [Dot]();
-    
     init() {
-        dotIndex = 0;
         barIndex = 0;
         noteIndex = 0;
     }
     
     init(song:Song) {
-        dotIndex = 0;
         barIndex = 0;
         noteIndex = 0;
         self.song = song
@@ -68,23 +63,17 @@ class Conductor {
     }
     
     func Stop() {
-        dotIndex = 0;
         barIndex = 0;
         noteIndex = 0;
         isFinished = false;
         audioPlayer.stop()
     }
     
-    func SpawnDot() {
-        dots[dotIndex].FireAction()
-        dotIndex += 1
-        if (dotIndex >= dots.count)
-        {
-            dotIndex = 0;
-        }
+    private func SpawnDot() {
+        gameInstance.gameScreen.SpawnDot()
     }
     
-    func AdvanceBeat() {
+    private func AdvanceBeat() {
         noteIndex += 1
         if (noteIndex >= numNotes)
         {

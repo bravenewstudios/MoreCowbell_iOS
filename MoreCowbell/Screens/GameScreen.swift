@@ -44,6 +44,18 @@ class GameScreen: BaseScene {
         
     }
     
+    func SpawnDot() {
+        //called by conductor
+        /*
+         dots[dotIndex].FireAction()
+         dotIndex += 1
+         if (dotIndex >= dots.count)
+         {
+         dotIndex = 0;
+         }
+         */
+    }
+    
     func setupBackground()
     {
         background = SKSpriteNode(texture: SKTexture(imageNamed: "stage_dark"))

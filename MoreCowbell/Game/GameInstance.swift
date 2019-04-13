@@ -10,6 +10,9 @@ import Foundation
 import SpriteKit
 
 class GameInstance {
+    
+    var conductor = Conductor()
+    
     var currentSong = 0
     
     var highscoreTable = [0,0,0]
