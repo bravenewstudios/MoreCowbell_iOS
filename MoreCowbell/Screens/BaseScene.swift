@@ -21,7 +21,7 @@ class BaseScene: SKScene {
         gameInstance = inst
     }
     
-    func OnSceneDisplay(){
+    func OnScenePresent(){
         // virtual function
     }
 }

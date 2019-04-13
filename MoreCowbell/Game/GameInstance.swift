@@ -16,18 +16,15 @@ class GameInstance {
     var musicVolume:Float = 1.0
     var sfxVolume:Float = 1.0
     
-    var viewSize:CGSize!
-    
     var startScreen:StartScreen!
     var mapScreen:MapScreen!
     var gameScreen:GameScreen!
     var resultScreen:ResultScreen!
     
-    init(viewSize:CGSize){
-        self.viewSize = viewSize
+    init(){
     }
     
-    func LoadScenes() {
+    func LoadScenes(viewSize:CGSize) {
         startScreen = StartScreen(size: viewSize)
         mapScreen = MapScreen(size: viewSize)
         gameScreen = GameScreen(size: viewSize)

@@ -167,6 +167,7 @@
 		18EDEBC622453B6400E64F66 /* MoreCowbell */ = {
 			isa = PBXGroup;
 			children = (
+				CEA75B6C226234CD00ECD15E /* Game */,
 				8400940E2249C0B900FED121 /* Audio */,
 				18EDEC05224544CE00E64F66 /* Conductor */,
 				18EDEC042245447000E64F66 /* Actors */,
@@ -219,7 +220,6 @@
 			children = (
 				1872AD712261217200F2511E /* Score.swift */,
 				18441142225BE8BC00F4CEF5 /* Dot.swift */,
-				184E73D5225C000500187D92 /* GameInstance.swift */,
 				189650FD225C1DC6005F42CB /* Slider.swift */,
 				186632C922494ABA009BE45A /* SpriteButton.swift */,
 			);
@@ -278,6 +278,14 @@
 				8400941D2249C45100FED121 /* cowbell.wav */,
 			);
 			path = Effects;
+			sourceTree = "<group>";
+		};
+		CEA75B6C226234CD00ECD15E /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				184E73D5225C000500187D92 /* GameInstance.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
