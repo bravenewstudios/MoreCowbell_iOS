@@ -133,7 +133,7 @@ class GameScreen: BaseScene {
                 //MARK: - If notification button is pressed
                 if n.name == "_exit" {
                     //print("YAY!")
-                    scene?.view?.presentScene(MapScreen(size: self.frame.size))
+                    scene?.view?.presentScene(gameInstance.gameScreen)
 //                    let mapScene:SKScene = MapScreen(size: self.frame.size)
 //                    let transition = SKTransition.push(with: .down, duration: 1)
 //                    self.view?.presentScene(mapScene, transition: transition)

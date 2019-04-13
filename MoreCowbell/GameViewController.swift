@@ -12,15 +12,17 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     var scene: StartScreen!
+    var gameInstance:GameInstance!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            scene = StartScreen(size: self.view.frame.size)
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene)
+            
+            gameInstance = GameInstance()
+            gameInstance.LoadScenes(viewSize: self.view.frame.size)
+
+            view.presentScene(gameInstance.startScreen)
             
 //            view.ignoresSiblingOrder = true
             

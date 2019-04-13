@@ -30,6 +30,11 @@ class GameInstance {
         gameScreen = GameScreen(size: viewSize)
         resultScreen = ResultScreen(size: viewSize)
         
+        startScreen.scaleMode = .aspectFill
+        mapScreen.scaleMode = .aspectFill
+        gameScreen.scaleMode = .aspectFill
+        resultScreen.scaleMode = .aspectFill
+        
         startScreen.SetGameInstance(inst: self)
         mapScreen.SetGameInstance(inst: self)
         gameScreen.SetGameInstance(inst: self)

@@ -198,7 +198,7 @@ class StartScreen: BaseScene {
                 if (!isOptionsOpen)
                 {
                     //print("YAY!")
-                    scene?.view?.presentScene(MapScreen(size: self.frame.size))
+                    scene?.view?.presentScene(gameInstance.mapScreen)
                 }
                 else
                 {
