@@ -49,9 +49,7 @@ class StartScreen: BaseScene {
     //TODO: - Add a main menu and play button
     override init(size: CGSize) {
         super.init(size: size)
-        let music = SKAudioNode(fileNamed: "title.mp3")
-        titleMusic = music // save reference for outside of this scope
-        
+      
         setBackground()
         setTitle()
         setOptionsMenu()
@@ -67,8 +65,12 @@ class StartScreen: BaseScene {
     }
     
     override func OnScenePresent() {
-        titleMusic.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0));
-        addChild(titleMusic)
+        let music = SKAudioNode(fileNamed: "title.mp3")
+        
+        music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0));
+        addChild(music)
+        
+        titleMusic = music // save reference for outside of this scope
     }
     
     // not sure of syntax for buttonAction, using this for now
