@@ -28,4 +28,9 @@ class BaseScene: SKScene {
     func OnScenePresent(){
         // virtual function
     }
+    
+    override func sceneDidLoad() {
+        //wrapper function to prevent naming confusion
+        OnScenePresent()
+    }
 }

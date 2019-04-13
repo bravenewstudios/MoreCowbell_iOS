@@ -40,6 +40,10 @@ class GameScreen: BaseScene {
         setupScore()
     }
     
+    override func OnScenePresent() {
+        
+    }
+    
     func setupBackground()
     {
         background = SKSpriteNode(texture: SKTexture(imageNamed: "stage_dark"))
@@ -120,10 +124,6 @@ class GameScreen: BaseScene {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
             let node = nodes(at: t.location(in: self))
@@ -146,5 +146,9 @@ class GameScreen: BaseScene {
                 }
             }
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

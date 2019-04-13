@@ -50,7 +50,6 @@ class StartScreen: BaseScene {
     override init(size: CGSize) {
         super.init(size: size)
         let music = SKAudioNode(fileNamed: "title.mp3")
-        addChild(music)
         titleMusic = music // save reference for outside of this scope
         
         setBackground()
@@ -65,6 +64,11 @@ class StartScreen: BaseScene {
 //        slider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
 //        slider.position = CGPoint(x: 2 * (UIScreen.main.bounds.width) / 3, y: UIScreen.main.bounds.height / 2)
 //        addChild(slider)
+    }
+    
+    override func OnScenePresent() {
+        titleMusic.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0));
+        addChild(titleMusic)
     }
     
     // not sure of syntax for buttonAction, using this for now
@@ -177,10 +181,6 @@ class StartScreen: BaseScene {
         addChild(optionsButton)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-    }
-    
     override func update(_ currentTime: TimeInterval) {
         //super.update(<#T##currentTime: TimeInterval##TimeInterval#>)
         slider.position.y = paper.position.y + paper.size.height*1.25/6
@@ -239,5 +239,8 @@ class StartScreen: BaseScene {
             
             
         }
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

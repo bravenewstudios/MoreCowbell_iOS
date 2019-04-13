@@ -32,6 +32,10 @@ class ResultScreen: BaseScene {
         
     }
     
+    override func OnScenePresent() {
+        
+    }
+    
     func setupResults() {
         NotePaper = SKSpriteNode(texture: SKTexture(imageNamed: "paper_narrow"))
     //NotePaper.size(screenHeight,screenWidth,0.8f,mainStage,"results_overlay.png");
@@ -110,4 +114,9 @@ class ResultScreen: BaseScene {
     background = SKSpriteNode(texture: SKTexture(imageNamed: "stage_dark.png"))
     addChild(background)
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

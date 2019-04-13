@@ -52,13 +52,16 @@ class MapScreen: BaseScene {
     {
         super.init(size: size)
         let music = SKAudioNode(fileNamed: "surf.mp3")
-        music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0))
-        addChild(music)
         mapMusic = music // save reference for outside of this scope
         
         setBackground()
         setButtons()
         mapSetup()
+    }
+    
+    override func OnScenePresent() {
+        mapMusic.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0));
+        addChild(mapMusic)
     }
     
     func setBackground()
@@ -76,10 +79,6 @@ class MapScreen: BaseScene {
         //optionsButton.setScale(0.5)
         //optionsButton.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(0.25), duration: 1)))
         //addChild(optionsButton)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     func mapSetup()
@@ -225,5 +224,9 @@ class MapScreen: BaseScene {
             //}
             
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
