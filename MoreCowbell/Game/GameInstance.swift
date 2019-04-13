@@ -53,6 +53,14 @@ class GameInstance {
          */
     }
     
+    func LoadSongs() {
+        var path = Bundle.main.path(forResource: "reaper",ofType: "json")
+        var data = try? Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
+        var json = try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
+        var song = json as! [String:Any]
+        LoadSongData(jsonSong: song)
+    }
+    
     func LoadSongData(jsonSong: [String:Any]) {
         let name = jsonSong["name"] as! String
         let bpm = jsonSong["bpm"] as! Double
