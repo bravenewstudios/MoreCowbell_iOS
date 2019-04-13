@@ -25,8 +25,7 @@ class Dot:SKSpriteNode {
     init(_ Bar: SKSpriteNode, _ screenHeight: CGFloat){
         let texture = SKTexture(imageNamed: "dot")
         let imgSize = CGSize(width: Bar.size.width * 0.1,height: Bar.size.width * 0.1)
-        startPoint.x = Bar.size.width + Bar.size.width / 2
-        startPoint.y = screenHeight * 0.5
+        startPoint = CGPoint(x: Bar.size.width + Bar.size.width / 2, y: screenHeight * 0.5)
         fadein = SKAction.fadeIn(withDuration: 0.2)
         fadeout = SKAction.fadeOut(withDuration: 0.2)
         movein = SKAction.moveTo(x: Bar.position.x + Bar.size.width * 0.07, duration: Conductor.DOTMOVETIME)
