@@ -14,8 +14,6 @@ var gameInstance = GameInstance()
 
 class GameViewController: UIViewController {
 
-    var scene: StartScreen!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
