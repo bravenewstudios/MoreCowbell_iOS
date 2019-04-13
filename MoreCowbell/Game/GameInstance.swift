@@ -46,18 +46,18 @@ class GameInstance {
          */
     }
     
-    func LoadSongData(json: [String:Any]) {
-        let name = json["name"] as! String
-        let bpm = json["bpm"] as! Double
-        let timeSigTop = json["timeSigTop"] as! Double
-        let timeSigBottom = json["timeSigBottom"] as! Double
-        let startOffset = json["startOffset"] as! Double
-        let fileName = json["fileName"] as! String
-        let fileType = json["fileType"] as! String
+    func LoadSongData(jsonSong: [String:Any]) {
+        let name = jsonSong["name"] as! String
+        let bpm = jsonSong["bpm"] as! Double
+        let timeSigTop = jsonSong["timeSigTop"] as! Double
+        let timeSigBottom = jsonSong["timeSigBottom"] as! Double
+        let startOffset = jsonSong["startOffset"] as! Double
+        let fileName = jsonSong["fileName"] as! String
+        let fileType = jsonSong["fileType"] as! String
         
         var song = Song(name: name, bpm: bpm, timeSigTop: timeSigTop, timeSigBottom: timeSigBottom, startOffset: startOffset, fileName: fileName, fileType: fileType)
         
-        let jsonBars = json["bars"] as! [[String:Any]]
+        let jsonBars = jsonSong["bars"] as! [[String:Any]]
         for jsonBar in jsonBars {
             var bar = Bar()
             let jsonNotes = jsonBar["notes"] as! [[String:Any]]
