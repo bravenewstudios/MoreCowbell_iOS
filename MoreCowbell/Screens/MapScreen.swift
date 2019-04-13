@@ -124,15 +124,15 @@ class MapScreen: BaseScene {
         exitSign.name = "exit"
         exitSign.setScale(signScale)
         exitSign.zPosition = stateMap.zPosition - 1
-        exitSign.position = CGPoint(x:exitSign.size.width/2 + 10, y: UIScreen.main.bounds.height / 2)
+        exitSign.position = CGPoint(x:exitSign.size.width/2 + 10, y: stateMap.size.height / 2)
                                     //y:UIScreen.main.bounds.height - exitSign.size.height)
-        signMove = SKAction.moveBy(x: 0, y: (UIScreen.main.bounds.height / 2.25) - exitSign.size.height, duration: 0.3)
+        signMove = SKAction.moveBy(x: 0, y: stateMap.size.height / 2 + exitSign.size.height / 3, duration: 0.3)
         
         startSign = SKSpriteNode(texture: SKTexture(imageNamed: "play_sign"))
         startSign.setScale(signScale)
         startSign.name = "start"
         startSign.zPosition = stateMap.zPosition - 1
-        startSign.position = CGPoint(x:UIScreen.main.bounds.width - (startSign.size.width/2 + 10), y: UIScreen.main.bounds.height / 2 - startSign.size.height / 8)//y:UIScreen.main.bounds.height - startSign.size.height)
+        startSign.position = CGPoint(x:UIScreen.main.bounds.width - (startSign.size.width/2 + 10), y: stateMap.size.height / 2.1)//y:UIScreen.main.bounds.height - startSign.size.height)
         
         paper = SKSpriteNode(texture: SKTexture(imageNamed: "paper_narrow"))
         paper.setScale(1.25)

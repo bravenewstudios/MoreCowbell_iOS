@@ -29,11 +29,10 @@ class ResultScreen: BaseScene {
         setupBackground()
         exit()
         setupResults()
-        GetResultData()
     }
     
     override func OnScenePresent() {
-//        GetResultData()
+        GetResultData()
     }
     
     func exit() {
@@ -73,6 +72,8 @@ class ResultScreen: BaseScene {
     }
     
     func GetResultData() {
+        if(gameInstance.songNotes != 0)
+        {
         let pct = gameInstance.notesHit * 100 / gameInstance.songNotes
         let accPct = String(pct)
 //    accuracy.setText(Integer.toString(pct));
@@ -119,6 +120,7 @@ class ResultScreen: BaseScene {
         accuracy.text = accPct
 //        score.text = String(gameInstance.scoreInfo.currScore)
 //        combo.text = String(gameInstance.scoreInfo.maxCombo)
+        }
     }
     
     func setupBackground()
