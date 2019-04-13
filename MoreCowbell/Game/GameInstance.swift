@@ -19,7 +19,7 @@ class GameInstance {
     var musicVolume:Float = 1.0
     var sfxVolume:Float = 1.0
         
-    var songNotes = 0
+    var songNotes = 1
     var notesHit = 0
     var scoreInfo = Score()
     

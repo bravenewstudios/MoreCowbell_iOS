@@ -33,7 +33,7 @@ class Dot:SKSpriteNode {
         enter = SKAction.group([fadein,movein])
         exit = SKAction.group([fadeout,moveout])
         sequence = SKAction.sequence([enter,exit])
-        super.init(texture: texture, color:UIColor.clear, size:bar.size)
+        super.init(texture: texture, color:UIColor.clear, size:Bar.size)
     }
     
     required init?(coder aDecoder: NSCoder) {
