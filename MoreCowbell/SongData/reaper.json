@@ -1,0 +1,779 @@
+{
+  "name": "reaper",
+  "bpm": 142.0,
+  "timeSigTop": 4.0,
+  "timeSigBottom": 4.0,
+  "startOffset": 0.0,
+  "fileName": "reaper",
+  "fileType": "wav",
+  "bars": [
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 1.0
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 1.0
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 1.0
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 1.0
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 1.0
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 1.0
+        }
+      ]
+    }
+  ]
+}

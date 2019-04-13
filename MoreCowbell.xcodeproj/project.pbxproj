@@ -44,6 +44,7 @@
 		840094282249C45200FED121 /* dontblowthis.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8400941F2249C45100FED121 /* dontblowthis.wav */; };
 		840094292249C45200FED121 /* reaper.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094202249C45200FED121 /* reaper.wav */; };
 		8400942A2249C45200FED121 /* morecowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094212249C45200FED121 /* morecowbell.wav */; };
+		CE895AA422626F410039A1EF /* reaper.json in Resources */ = {isa = PBXBuildFile; fileRef = CE895AA322626F410039A1EF /* reaper.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		8400941F2249C45100FED121 /* dontblowthis.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dontblowthis.wav; sourceTree = "<group>"; };
 		840094202249C45200FED121 /* reaper.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reaper.wav; sourceTree = "<group>"; };
 		840094212249C45200FED121 /* morecowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morecowbell.wav; sourceTree = "<group>"; };
+		CE895AA322626F410039A1EF /* reaper.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reaper.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 		18EDEBC622453B6400E64F66 /* MoreCowbell */ = {
 			isa = PBXGroup;
 			children = (
+				CE895AA222626EDB0039A1EF /* SongData */,
 				CEA75B6C226234CD00ECD15E /* Game */,
 				8400940E2249C0B900FED121 /* Audio */,
 				18EDEC05224544CE00E64F66 /* Conductor */,
@@ -278,6 +281,14 @@
 				8400941D2249C45100FED121 /* cowbell.wav */,
 			);
 			path = Effects;
+			sourceTree = "<group>";
+		};
+		CE895AA222626EDB0039A1EF /* SongData */ = {
+			isa = PBXGroup;
+			children = (
+				CE895AA322626F410039A1EF /* reaper.json */,
+			);
+			path = SongData;
 			sourceTree = "<group>";
 		};
 		CEA75B6C226234CD00ECD15E /* Game */ = {
@@ -406,6 +417,7 @@
 				840094262249C45200FED121 /* cowbell.wav in Resources */,
 				18EDEBD522453B6500E64F66 /* Assets.xcassets in Resources */,
 				840094282249C45200FED121 /* dontblowthis.wav in Resources */,
+				CE895AA422626F410039A1EF /* reaper.json in Resources */,
 				18EDEBD822453B6500E64F66 /* LaunchScreen.storyboard in Resources */,
 				8400942A2249C45200FED121 /* morecowbell.wav in Resources */,
 				18EDEBCC22453B6400E64F66 /* Actions.sks in Resources */,
