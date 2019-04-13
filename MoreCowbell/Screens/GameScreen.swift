@@ -27,6 +27,8 @@ class GameScreen: BaseScene {
     var MMLabel:SKLabelNode!
     var scoreAssets:Score!
     
+    var dots:[Dot] = [Dot]()
+    var dotIndex = 0
     
     //TODO: - Add a main menu and play button
     override init(size: CGSize)
@@ -46,14 +48,12 @@ class GameScreen: BaseScene {
     
     func SpawnDot() {
         //called by conductor
-        /*
-         dots[dotIndex].FireAction()
-         dotIndex += 1
-         if (dotIndex >= dots.count)
-         {
-         dotIndex = 0;
-         }
-         */
+        dots[dotIndex].FireAction()
+        dotIndex += 1
+        if (dotIndex >= dots.count)
+        {
+            dotIndex = 0;
+        }
     }
     
     func setupBackground()
