@@ -11,6 +11,8 @@ import SpriteKit
 
 public class Song {
     
+    var name = "null"
+    
     var bars:[Bar] = [Bar]()
     var numBars = 0;
     var totalNotes = 0;
@@ -23,12 +25,12 @@ public class Song {
     
     var songFile:String?
     
-    init(numBars:Int, bpm:Double, timeSigTop:Double, timeSigBottom:Double, startOffset:Double, fileName:String, fileType:String) {
+    init(name:String, bpm:Double, timeSigTop:Double, timeSigBottom:Double, startOffset:Double, fileName:String, fileType:String) {
         
         songFile = Bundle.main.path(forResource: fileName, ofType: fileType)
         
         self.totalNotes = 0;
-        self.numBars = numBars;
+        self.name = name
         self.bpm = bpm;
         self.timeSigTop = timeSigTop;
         self.timeSigBottom = timeSigBottom;

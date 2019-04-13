@@ -18,6 +18,10 @@ public class Bar {
     var notes:[Note] = [Note]()
     var numNotes = 0
     
+    init() {
+
+    }
+    
     init(numNotes:Int) {
         self.numNotes = numNotes;
         //self.notes = new Note[numNotes];
