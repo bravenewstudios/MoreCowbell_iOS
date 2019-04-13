@@ -19,6 +19,7 @@ class Score{
     
     var currScore:Int = 0
     var currCombo:Int = 0
+    var maxCombo:Int = 0
     
     var numberHolder: [SKTexture] = [SKTexture(imageNamed: "0.png"), SKTexture(imageNamed: "1.png"), SKTexture(imageNamed: "2.png"), SKTexture(imageNamed: "3.png"), SKTexture(imageNamed: "4.png"), SKTexture(imageNamed: "5.png"), SKTexture(imageNamed: "6.png"), SKTexture(imageNamed: "7.png"), SKTexture(imageNamed: "8.png"), SKTexture(imageNamed: "9.png")]
     
@@ -55,6 +56,9 @@ class Score{
             //            holder[i].sprite = numerals[scoreDigits[i]];
         }
         let c = combo
+        if c > maxCombo{
+            maxCombo = c
+        }
         let cTemp = Float(c)
         let cCount = 3
         for i in 0..<cCount
@@ -92,6 +96,7 @@ class Score{
     func scoreReset(){
         currScore = 0
         currCombo = 0
+        maxCombo = 0
         scoreUpdate(currScore, currCombo)
         }
     }

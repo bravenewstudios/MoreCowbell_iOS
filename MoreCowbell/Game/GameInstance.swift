@@ -18,6 +18,10 @@ class GameInstance {
     var highscoreTable = [0,0,0]
     var musicVolume:Float = 1.0
     var sfxVolume:Float = 1.0
+        
+    var songNotes = 0
+    var notesHit = 0
+    var scoreInfo = Score()
     
     var startScreen:StartScreen!
     var mapScreen:MapScreen!

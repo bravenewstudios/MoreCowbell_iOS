@@ -19,8 +19,7 @@ class ResultScreen: BaseScene {
     var accuracy:UILabel!
     var score:UILabel!
     var combo:UILabel!
-    var grade:UILabel!
-    var labelRect:CGRect!
+    var grade:SKSpriteNode!
     
     override init(size: CGSize)
     {
@@ -41,73 +40,71 @@ class ResultScreen: BaseScene {
     //NotePaper.size(screenHeight,screenWidth,0.8f,mainStage,"results_overlay.png");
         NotePaper.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height)
     
-        labelRect = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
-        accuracy = UILabel(frame: labelRect)
-        score = UILabel(frame: labelRect)
-        combo = UILabel(frame: labelRect)
-        grade = UILabel(frame: labelRect)//new Label("B", new Label.LabelStyle(resultsFont, Color.RED));
-        accuracy.frame(to: CGPoint(x:UIScreen.main.bounds.width * 0.655, y:UIScreen.main.bounds.height * 0.659))
+        accuracy = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        score = UILabel(frame: CGRect(x: 0, y: 200, width: 100, height: 100))
+        combo = UILabel(frame: CGRect(x: 0, y: 400, width: 100, height: 100))
+//        accuracy.frame(to: CGPoint(x:UIScreen.main.bounds.width * 0.655, y:UIScreen.main.bounds.height * 0.659))
         accuracy.font = resultsFont
-    combo.closestPosition(to: CGPoint(x:UIScreen.main.bounds.width * 0.49, y:UIScreen.main.bounds.height * 0.59))
+//    combo.closestPosition(to: CGPoint(x:UIScreen.main.bounds.width * 0.49, y:UIScreen.main.bounds.height * 0.59))
     combo.font = resultsFont
         //combo.setFontScale(2);
-    score.closestPosition(to: CGPoint(x:UIScreen.main.bounds.width * 0.7, y:UIScreen.main.bounds.height * 0.52))
+//    score.closestPosition(to: CGPoint(x:UIScreen.main.bounds.width * 0.7, y:UIScreen.main.bounds.height * 0.52))
     score.font = resultsFont
 //        score.setFontScale(2);
-    grade.closestPosition(to: CGPoint(x:UIScreen.main.bounds.width * 0.61, y:UIScreen.main.bounds.height * 0.38))
-    grade.font = resultsFont
         //grade.setFontScale(5);
-    addChild(accuracy);
-    addChild(score);
-    addChild(combo);
-    addChild(grade);
+        grade = SKSpriteNode(texture: SKTexture(imageNamed: "F.png"))
+        grade.position = CGPoint(x: -NotePaper.size.width / 4, y: -NotePaper.size.height / 4)
+        self.view?.addSubview(accuracy)
+        self.view?.addSubview(score)
+        self.view?.addSubview(combo)
+        NotePaper.addChild(grade)
     }
     
     func GetResultData() {
-    let pct = game.result.notesHit * 100 / game.result.totalNotes;
-    accuracy.setText(Integer.toString(pct));
-        var letter:String
+        let pct = gameInstance.notesHit * 100 / gameInstance.songNotes
+        let accPct = String(pct)
+//    accuracy.setText(Integer.toString(pct));
+        var letter:SKTexture!
         var music:SKAudioNode!
-    if (pct >= 80)
-    {
-    letter = "A"
         if (pct >= 90) {
-    music = SKAudioNode(fileNamed: "diapers.wav")
+            music = SKAudioNode(fileNamed: "diapers.wav")
+            letter = SKTexture(imageNamed: "RankAPlus.png")
         }
-        else {
-    music = SKAudioNode(fileNamed: "dynamiteSound.wav")
-    }
-    }
-    else if (pct >= 70)
-    {
-    letter = "B"
-    music = SKAudioNode(fileNamed: "couldusemore.wav")
-    }
-    else if (pct >= 60)
-    {
-    letter = "C"
-        music = SKAudioNode(fileNamed: "couldusemore.wav")
-    }
-    else if (pct >= 50)
-    {
-    letter = "D"
-        music = SKAudioNode(fileNamed: "couldusemore.wav")
-    }
-    else
-    {
-    letter = "F";
-        music = SKAudioNode(fileNamed: "couldusemore.wav")
-    }
-    if (pct == 0)
-    {
-    letter = "F";
-        music = SKAudioNode(fileNamed: "comeongene.wav")
-    }
+        else if (pct >= 80) {
+            letter = SKTexture(imageNamed: "RankA.png")
+            music = SKAudioNode(fileNamed: "dynamiteSound.wav")
+        }
+        else if (pct >= 70)
+        {
+            letter = SKTexture(imageNamed: "RankB.png")
+            music = SKAudioNode(fileNamed: "couldusemore.wav")
+        }
+        else if (pct >= 60)
+        {
+            letter = SKTexture(imageNamed: "RankC.png")
+            music = SKAudioNode(fileNamed: "couldusemore.wav")
+        }
+        else if (pct >= 50)
+        {
+            letter = SKTexture(imageNamed: "RankD.png")
+            music = SKAudioNode(fileNamed: "couldusemore.wav")
+        }
+        else
+        {
+            letter = SKTexture(imageNamed: "RankF.png")
+            music = SKAudioNode(fileNamed: "couldusemore.wav")
+        }
+        if (pct == 0)
+        {
+            letter = SKTexture(imageNamed: "RankF.png")
+            music = SKAudioNode(fileNamed: "comeongene.wav")
+        }
         music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0))
         addChild(music)
-    grade.setText(letter);
-    score.setText(Integer.toString(game.result.score));
-    combo.setText(Integer.toString(game.result.maxCombo));
+        grade.texture = letter
+        accuracy.text = accPct
+        score.text = String(gameInstance.scoreInfo.currScore)
+        combo.text = String(gameInstance.scoreInfo.maxCombo)
     }
     
     func SetupBackground() {
