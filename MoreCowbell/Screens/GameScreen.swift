@@ -40,6 +40,7 @@ class GameScreen: BaseScene {
         setupBar()
         setupButtons()
         setupScore()
+        setupDots()
     }
     
     override func OnScenePresent() {
@@ -53,6 +54,13 @@ class GameScreen: BaseScene {
         if (dotIndex >= dots.count)
         {
             dotIndex = 0;
+        }
+    }
+    
+    func setupDots() {
+        for i in 1...10 {
+            let dot = Dot(beatBar, UIScreen.main.bounds.height)
+            dots.append(dot)
         }
     }
     
