@@ -60,8 +60,9 @@ class MapScreen: BaseScene {
     }
     
     override func OnScenePresent() {
-        mapMusic.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0));
-        addChild(mapMusic)
+        let music = SKAudioNode(fileNamed: "title.mp3") //Temp
+        music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0))
+        addChild(music)
     }
     
     func setBackground()
@@ -100,7 +101,7 @@ class MapScreen: BaseScene {
         
         star1 = levelStar()
         star1.name = "star1"
-        star1.position = CGPoint(x: 90, y: -180)
+        star1.position = CGPoint(x:10, y: 0)
         levels.append(star1)
         
         star2 = levelStar()
@@ -110,7 +111,7 @@ class MapScreen: BaseScene {
         
         star3 = levelStar()
         star3.name = "star3"
-        star3.position = CGPoint(x:10, y: 0)
+        star3.position = CGPoint(x: 90, y: -180)
         levels.append(star3)
         
         for levelStar in levels
@@ -139,13 +140,13 @@ class MapScreen: BaseScene {
         paper.zPosition = 10;
         addChild(paper)
         
-        text1 = SKSpriteNode(texture: SKTexture(imageNamed: "venue_overlay"))
+        text1 = SKSpriteNode(texture: SKTexture(imageNamed: "Easy"))
         text1.zPosition = 11;
         
-        text2 = SKSpriteNode(texture: SKTexture(imageNamed: "venue_overlay"))
+        text2 = SKSpriteNode(texture: SKTexture(imageNamed: "Medium"))
         text2.zPosition = 11;
         
-        text3 = SKSpriteNode(texture: SKTexture(imageNamed: "venue_overlay"))
+        text3 = SKSpriteNode(texture: SKTexture(imageNamed: "Hard"))
         text3.zPosition = 11;
         
         xPaper = SKSpriteNode(texture: SKTexture(imageNamed: "Xbutton"))

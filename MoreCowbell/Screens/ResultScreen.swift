@@ -15,49 +15,61 @@ class ResultScreen: BaseScene {
     var background:SKSpriteNode!
     var NotePaper:SKSpriteNode!
     
-    let resultsFont = UIFont(name: "OLORT___", size: UIFont.labelFontSize)
-    var accuracy:UILabel!
-    var score:UILabel!
-    var combo:UILabel!
-    var grade:SKSpriteNode!
+//    guard let resultsFont = UIFont(name: "OLORT___.ttf", size: 50); else {
+//    fatalError("Nope.")
+//    }
+    var accuracy:UILabel!; var score:UILabel!; var combo:UILabel!
+    var labelArray: [UILabel] = [UILabel]()
+    var grade = SKSpriteNode(texture: SKTexture(imageNamed: "RankF.png"))
+    var exitButton:SKSpriteNode!
     
     override init(size: CGSize)
     {
         super.init(size: size)
-        
+        setupBackground()
+        exit()
         setupResults()
-        SetupBackground()
         GetResultData()
-        
     }
     
     override func OnScenePresent() {
-        
+//        GetResultData()
+    }
+    
+    func exit() {
+        exitButton = SKSpriteNode(texture: SKTexture(imageNamed: "exit"))
+        exitButton.position = CGPoint(x: 9 * (UIScreen.main.bounds.width) / 10, y: UIScreen.main.bounds.height / 13)
+        exitButton.setScale(0.2)
+        exitButton.name = "_exit"
+        addChild(exitButton)
     }
     
     func setupResults() {
         NotePaper = SKSpriteNode(texture: SKTexture(imageNamed: "paper_narrow"))
+        NotePaper.size = CGSize(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.height * 0.6)
     //NotePaper.size(screenHeight,screenWidth,0.8f,mainStage,"results_overlay.png");
-        NotePaper.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height)
+        NotePaper.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height/2)
+        addChild(NotePaper)
     
-        accuracy = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        score = UILabel(frame: CGRect(x: 0, y: 200, width: 100, height: 100))
-        combo = UILabel(frame: CGRect(x: 0, y: 400, width: 100, height: 100))
-//        accuracy.frame(to: CGPoint(x:UIScreen.main.bounds.width * 0.655, y:UIScreen.main.bounds.height * 0.659))
-        accuracy.font = resultsFont
-//    combo.closestPosition(to: CGPoint(x:UIScreen.main.bounds.width * 0.49, y:UIScreen.main.bounds.height * 0.59))
-    combo.font = resultsFont
-        //combo.setFontScale(2);
-//    score.closestPosition(to: CGPoint(x:UIScreen.main.bounds.width * 0.7, y:UIScreen.main.bounds.height * 0.52))
-    score.font = resultsFont
-//        score.setFontScale(2);
-        //grade.setFontScale(5);
-        grade = SKSpriteNode(texture: SKTexture(imageNamed: "F.png"))
-        grade.position = CGPoint(x: -NotePaper.size.width / 4, y: -NotePaper.size.height / 4)
-        self.view?.addSubview(accuracy)
-        self.view?.addSubview(score)
-        self.view?.addSubview(combo)
+        accuracy = UILabel(frame: CGRect(x: UIScreen.main.bounds.width / 2, y:UIScreen.main.bounds.height * 0.5, width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 10)); labelArray.append(accuracy)
+        score = UILabel(frame: CGRect(x: 0, y:0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)); labelArray.append(score)
+//        score = UILabel(frame: CGRect(x: UIScreen.main.bounds.width * 0.49, y:UIScreen.main.bounds.height * 0.59, width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 10)); labelArray.append(score)
+        combo = UILabel(frame: CGRect(x: UIScreen.main.bounds.width * 0.7, y:UIScreen.main.bounds.height * 0.52, width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 10)); labelArray.append(combo)
+        
+        grade.position = CGPoint(x: NotePaper.size.width / 4, y: -NotePaper.size.height / 4)
+//        self.view?.addSubview(accuracy)
+//        self.view?.addSubview(score)
+//        self.view?.addSubview(combo)
         NotePaper.addChild(grade)
+        
+        for t in labelArray{
+            t.font = UIFont(name: "AmericanTypewriter", size: 25)
+            t.textColor = UIColor.white
+            t.textAlignment = .center
+            t.text = "TESTESETESETESTEST"
+            self.view?.addSubview(t)
+            self.view?.bringSubview(toFront: t)
+        }
     }
     
     func GetResultData() {
@@ -65,7 +77,7 @@ class ResultScreen: BaseScene {
         let accPct = String(pct)
 //    accuracy.setText(Integer.toString(pct));
         var letter:SKTexture!
-        var music:SKAudioNode!
+        var music = SKAudioNode(fileNamed: "cowbell.wav")
         if (pct >= 90) {
             music = SKAudioNode(fileNamed: "diapers.wav")
             letter = SKTexture(imageNamed: "RankAPlus.png")
@@ -99,17 +111,40 @@ class ResultScreen: BaseScene {
             letter = SKTexture(imageNamed: "RankF.png")
             music = SKAudioNode(fileNamed: "comeongene.wav")
         }
+        music.autoplayLooped = false
         music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0))
         addChild(music)
+        music.run(SKAction.play())
         grade.texture = letter
         accuracy.text = accPct
-        score.text = String(gameInstance.scoreInfo.currScore)
-        combo.text = String(gameInstance.scoreInfo.maxCombo)
+//        score.text = String(gameInstance.scoreInfo.currScore)
+//        combo.text = String(gameInstance.scoreInfo.maxCombo)
     }
     
-    func SetupBackground() {
-    background = SKSpriteNode(texture: SKTexture(imageNamed: "stage_dark.png"))
-    addChild(background)
+    func setupBackground()
+    {
+        background = SKSpriteNode(texture: SKTexture(imageNamed: "stage_dark"))
+        background.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
+        background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        addChild(background)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches {
+            let node = nodes(at: t.location(in: self))
+            
+            for n in node {
+                
+                //MARK: - If notification button is pressed
+                if n.name == "_exit" {
+                    //print("YAY!")
+                    scene?.view?.presentScene(gameInstance.startScreen)
+                    //                    let mapScene:SKScene = MapScreen(size: self.frame.size)
+                    //                    let transition = SKTransition.push(with: .down, duration: 1)
+                    //                    self.view?.presentScene(mapScene, transition: transition)
+                }
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

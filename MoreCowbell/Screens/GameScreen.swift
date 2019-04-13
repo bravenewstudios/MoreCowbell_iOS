@@ -73,19 +73,19 @@ class GameScreen: BaseScene {
         
         
         
-//        scoreCounter = SKSpriteNode(texture: SKTexture(imageNamed: "score_counter"))
-//        scoreCounter.position = CGPoint(x: (UIScreen.main.bounds.width) / 4, y: UIScreen.main.bounds.height / 13)
-//        //scoreCounter.size.width =
-//        //scoreCounter.size.height =
-//        scoreCounter.setScale(0.2)
-//        scoreCounter.yScale = 0.15
-//        addChild(scoreCounter)
-//
-//        comboCounter = SKSpriteNode(texture: SKTexture(imageNamed: "combo_counter"))
-//        comboCounter.position = CGPoint(x: scoreCounter.position.x * 0.60, y: scoreCounter.position.y + scoreCounter.size.height)
-//        comboCounter.setScale(0.2)
-//        comboCounter.yScale = 0.15
-//        addChild(comboCounter)
+        scoreCounter = SKSpriteNode(texture: SKTexture(imageNamed: "ScoreCounter"))
+        scoreCounter.position = CGPoint(x: (UIScreen.main.bounds.width) / 4, y: UIScreen.main.bounds.height / 13)
+        //scoreCounter.size.width =
+        //scoreCounter.size.height =
+        scoreCounter.setScale(0.3)
+        scoreCounter.zPosition = 5
+        addChild(scoreCounter)
+        
+        comboCounter = SKSpriteNode(texture: SKTexture(imageNamed: "ComboCounter"))
+        comboCounter.setScale(0.3)
+        comboCounter.position = CGPoint(x: scoreCounter.position.x - (scoreCounter.size.width - comboCounter.size.width) / 2, y: scoreCounter.position.y + scoreCounter.size.height)
+        comboCounter.zPosition = 5
+        addChild(comboCounter)
     }
     
     func setupCowbell()
@@ -117,7 +117,7 @@ class GameScreen: BaseScene {
     func setupScore()
     {
         scoreAssets = Score()
-        score0 = scoreAssets.scoreCountArray[0]; scoreCountArray.append(score0)
+        score0 = scoreAssets.scoreCountArray[0]; scoreCountArray.append(score0); score0.name = "score"
         score1 = scoreAssets.scoreCountArray[1]; scoreCountArray.append(score1)
         score2 = scoreAssets.scoreCountArray[2]; scoreCountArray.append(score2)
         score3 = scoreAssets.scoreCountArray[3]; scoreCountArray.append(score3)
@@ -129,17 +129,19 @@ class GameScreen: BaseScene {
         
         for s in 0...5 {
             scoreCountArray[s].setScale(0.3)
-            let i = scoreCountArray[s].size.width * CGFloat(2 * s + 2)
+            let i = (scoreCountArray[s].size.width + 1.5) * CGFloat(2 * s) + 35
             let r = 3 * (0.5 - drand48())
-            scoreCountArray[s].position = CGPoint(x: i / 2, y: UIScreen.main.bounds.height / 7 - scoreCountArray[s].size.height * 1.5 + CGFloat(r))
+            scoreCountArray[s].position = CGPoint(x: scoreCounter.position.x - scoreCounter.size.width / 2 + i / 2, y: scoreCounter.position.y - scoreCounter.size.height / 8 + CGFloat(r))
+            scoreCountArray[s].zPosition = scoreCounter.zPosition - 1
             addChild(scoreCountArray[s])
         }
         
         for c in 0...2 {
             comboCountArray[c].setScale(0.3)
-            let i = comboCountArray[c].size.width * CGFloat(2 * c + 2)
+            let i = (comboCountArray[c].size.width + 1.5) * CGFloat(2 * c) + 35
             let r = 3 * (0.5 - drand48())
-            comboCountArray[c].position = CGPoint(x: i / 2, y: UIScreen.main.bounds.height / 7 + comboCountArray[c].size.height * 1.5 + CGFloat(r))
+            comboCountArray[c].position = CGPoint(x: comboCounter.position.x - comboCounter.size.width / 2 + i / 2, y: comboCounter.position.y - comboCounter.size.height / 8 + CGFloat(r))
+            comboCountArray[c].zPosition = comboCounter.zPosition - 1
             addChild(comboCountArray[c])
         }
     }
@@ -153,16 +155,20 @@ class GameScreen: BaseScene {
                 //MARK: - If notification button is pressed
                 if n.name == "_exit" {
                     //print("YAY!")
-                    scene?.view?.presentScene(gameInstance.gameScreen)
-//                    let mapScene:SKScene = MapScreen(size: self.frame.size)
-//                    let transition = SKTransition.push(with: .down, duration: 1)
-//                    self.view?.presentScene(mapScene, transition: transition)
+                    scene?.view?.presentScene(gameInstance.startScreen)
+                    //                    let mapScene:SKScene = MapScreen(size: self.frame.size)
+                    //                    let transition = SKTransition.push(with: .down, duration: 1)
+                    //                    self.view?.presentScene(mapScene, transition: transition)
                 }
                 
                 if n.name == "cowbell" {
                     //if it's a valid "hit"
                     scoreAssets.gainPoints(1)
                     //else
+                }
+                
+                if n.name == "score" {
+                    scene?.view?.presentScene(gameInstance.resultScreen)
                 }
             }
         }
