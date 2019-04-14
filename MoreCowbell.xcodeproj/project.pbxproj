@@ -111,6 +111,7 @@
 		8400941F2249C45100FED121 /* dontblowthis.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dontblowthis.wav; sourceTree = "<group>"; };
 		840094202249C45200FED121 /* reaper.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reaper.wav; sourceTree = "<group>"; };
 		840094212249C45200FED121 /* morecowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morecowbell.wav; sourceTree = "<group>"; };
+		84672A092263BB0700FE902A /* McHandwriting.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = McHandwriting.otf; sourceTree = "<group>"; };
 		CE895AA322626F410039A1EF /* reaper.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reaper.json; sourceTree = "<group>"; };
 		CE96E753226327CD008FD03F /* lowrider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lowrider.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +185,7 @@
 				18EDEBCB22453B6400E64F66 /* Actions.sks */,
 				18EDEBCD22453B6400E64F66 /* GameScene.swift */,
 				349870AA2263B16500E0F077 /* OLORT.TTF */,
+				84672A092263BB0700FE902A /* McHandwriting.otf */,
 				18EDEBCF22453B6400E64F66 /* GameViewController.swift */,
 				18EDEBD122453B6400E64F66 /* Main.storyboard */,
 				18EDEBD422453B6500E64F66 /* Assets.xcassets */,
