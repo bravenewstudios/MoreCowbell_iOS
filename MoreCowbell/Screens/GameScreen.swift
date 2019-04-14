@@ -57,7 +57,7 @@ class GameScreen: BaseScene {
     override func update(_ currentTime: TimeInterval) {
         // returns true at end of song
         if gameInstance.conductor.Update(){
-            gameInstance.wasLevelCleared = true
+            gameInstance.scoreInfo.wasLevelCleared = true
             scene?.view?.presentScene(gameInstance.resultScreen)
         }
     }
