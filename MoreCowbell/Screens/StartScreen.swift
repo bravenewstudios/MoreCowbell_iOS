@@ -14,6 +14,7 @@ import GameplayKit
 class StartScreen: BaseScene {
     
     var sliderActiveLength:CGFloat = 0.0
+    var sliderActiveLength2:CGFloat = 0.0
     
     lazy var optionsButton:SpriteButton = {
         var button = SpriteButton(imageName: "gear", buttonAction: {
@@ -30,8 +31,10 @@ class StartScreen: BaseScene {
     var titleMore:SKSpriteNode!
     var titleCowbell:SKSpriteNode!
     var walkenHead:SKSpriteNode!
-    var sliderBar:SKSpriteNode!
-    var slider:SKSpriteNode!
+    var volumeBar:SKSpriteNode!
+    var soundBar:SKSpriteNode!
+    var volumeSlider:SKSpriteNode!
+    var soundSlider:SKSpriteNode!
     var MMLabel:SKLabelNode!
     
     var paper:SKSpriteNode!
@@ -161,23 +164,37 @@ class StartScreen: BaseScene {
         
         text = SKSpriteNode(texture: SKTexture(imageNamed: "OptionsOverlay"))
         text.zPosition = 11
-        //paper.addChild(text)
+        paper.addChild(text)
         
-        sliderBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
-        //sliderBar.setScale(0.9)
-        sliderBar.position = CGPoint(x:(UIScreen.main.bounds.width/2), y:paper.size.height/2)
-        sliderBar.anchorPoint = CGPoint(x:0.5, y:0.5)
-        sliderBar.zPosition = 12;
-        addChild(sliderBar)
+        volumeBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
+        //volumeBar.setScale(0.9)
+        volumeBar.position = CGPoint(x:(UIScreen.main.bounds.width/1.9), y:paper.size.height/4)
+        volumeBar.anchorPoint = CGPoint(x:0.5, y:0.5)
+        volumeBar.zPosition = 12;
+        addChild(volumeBar)
         
-        slider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
-        //slider.setScale(0.9)
-        sliderActiveLength = sliderBar.size.width - 2*slider.size.width
-        slider.position = CGPoint(x: sliderBar.position.x + (sliderActiveLength / 4), y:0)
-        slider.zPosition = 13
-        //slider.anchorPoint = CGPoint(x:0.5, y:0.5)
-        addChild(slider)
-       
+        volumeSlider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
+        //volumeSlider.setScale(0.9)
+        sliderActiveLength = volumeBar.size.width - 2*volumeSlider.size.width
+        volumeSlider.position = CGPoint(x: volumeBar.position.x + (sliderActiveLength / 4), y:0)
+        volumeSlider.zPosition = 13
+        //volumeSlider.anchorPoint = CGPoint(x:0.5, y:0.5)
+        addChild(volumeSlider)
+        
+        soundBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
+        //soundBar.setScale(0.9)
+        soundBar.position = CGPoint(x:(UIScreen.main.bounds.width/1.9), y:paper.size.height/4)
+        soundBar.anchorPoint = CGPoint(x:0.5, y:0.5)
+        soundBar.zPosition = 12;
+        addChild(soundBar)
+        
+        soundSlider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
+        //volumeSlider.setScale(0.9)
+        sliderActiveLength2 = soundBar.size.width - 2*soundSlider.size.width
+        soundSlider.position = CGPoint(x: soundBar.position.x + (sliderActiveLength2 / 4), y:0)
+        soundSlider.zPosition = 13
+        //soundSlider.anchorPoint = CGPoint(x:0.5, y:0.5)
+        addChild(soundSlider)
         
         optionsDropDown = SKAction.moveTo(y: UIScreen.main.bounds.height * 0.5, duration: 0.3)
         optionsSlideUp = SKAction.moveTo(y: UIScreen.main.bounds.height + paper.size.height * 0.5, duration: 0.3)
@@ -194,8 +211,11 @@ class StartScreen: BaseScene {
     
     override func update(_ currentTime: TimeInterval) {
         //super.update(<#T##currentTime: TimeInterval##TimeInterval#>)
-        slider.position.y = paper.position.y + paper.size.height*1.25/6
-        sliderBar.position.y = paper.position.y + paper.size.height*1.25/6
+        volumeSlider.position.y = paper.position.y
+        volumeBar.position.y = paper.position.y
+        
+        soundSlider.position.y = paper.position.y - (paper.size.height/3)
+        soundBar.position.y = paper.position.y - (paper.size.height/3)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -203,6 +223,7 @@ class StartScreen: BaseScene {
         for t in touches {
             let node = nodes(at: t.location(in: self))
             let location = t.location(in: self)
+            let location2 = t.location(in: self)
             
             for n in node {
                 
@@ -213,9 +234,13 @@ class StartScreen: BaseScene {
                 }
                 else
                 {
-                    if sliderBar.frame.contains(t.preciseLocation(in: inputView))
+                    if volumeBar.frame.contains(t.preciseLocation(in: inputView))
                     {
-                        slider.position.x = location.x
+                        volumeSlider.position.x = location.x
+                    }
+                    if soundBar.frame.contains(t.preciseLocation(in: inputView))
+                    {
+                        soundSlider.position.x = location2.x
                     }
                 }
                 if n.name == "x"
@@ -237,18 +262,27 @@ class StartScreen: BaseScene {
     {
         for t in touches {
             let location = t.location(in: self)
+            let location2 = t.location(in: self)
             
-            slider.position.x = location.x //- sliderBar.size.width
-            if (slider.position.x > sliderBar.position.x + sliderActiveLength*0.5)
+            volumeSlider.position.x = location.x //- volumeBar.size.width
+            if (volumeSlider.position.x > volumeBar.position.x + sliderActiveLength*0.5)
             {
-                slider.position.x = sliderBar.position.x + sliderActiveLength*0.5
+                volumeSlider.position.x = volumeBar.position.x + sliderActiveLength*0.5
             }
-            else if (slider.position.x < sliderBar.position.x - sliderActiveLength*0.5)
+            else if (volumeSlider.position.x < volumeBar.position.x - sliderActiveLength*0.5)
             {
-                slider.position.x = sliderBar.position.x - sliderActiveLength*0.5
+                volumeSlider.position.x = volumeBar.position.x - sliderActiveLength*0.5
             }
             
-            
+            soundSlider.position.x = location2.x //- soundBar.size.width
+            if (soundSlider.position.x > soundBar.position.x + sliderActiveLength2*0.5)
+            {
+                soundSlider.position.x = soundBar.position.x + sliderActiveLength2*0.5
+            }
+            else if (soundSlider.position.x < soundBar.position.x - sliderActiveLength2*0.5)
+            {
+                soundSlider.position.x = soundBar.position.x - sliderActiveLength2*0.5
+            }
         }
     }
     required init?(coder aDecoder: NSCoder) {
