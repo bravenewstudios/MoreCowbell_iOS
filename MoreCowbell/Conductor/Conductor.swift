@@ -71,6 +71,7 @@ class Conductor {
     
     private func SpawnDot() {
         gameInstance.gameScreen.SpawnDot()
+        gameInstance.scoreInfo.totalNotes += 1
     }
     
     private func AdvanceBeat() {

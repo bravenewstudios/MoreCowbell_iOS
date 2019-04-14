@@ -19,9 +19,6 @@ class GameInstance {
     var musicVolume:Float = 1.0
     var sfxVolume:Float = 1.0
     
-    var wasLevelCleared = false
-    var songNotes = 0
-    var notesHit = 0
     var scoreInfo = Score()
     
     var startScreen:StartScreen!
@@ -60,6 +57,12 @@ class GameInstance {
         var json = try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
         var song = json as! [String:Any]
         LoadSongData(jsonSong: song)
+        
+        path = Bundle.main.path(forResource: "lowrider",ofType: "json")
+        data = try? Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
+        json = try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
+        song = json as! [String:Any]
+        LoadSongData(jsonSong: song)
     }
     
     func LoadSongData(jsonSong: [String:Any]) {
@@ -83,6 +86,7 @@ class GameInstance {
                 let unadjustedTime = jsonNote["time"] as! Double
                 note.time = song.beat * song.timeSigBottom * unadjustedTime
                 bar.notes.append(note)
+                song.totalNotes += 1
             }
             bar.numNotes = bar.notes.count
             song.bars.append(bar)
@@ -98,9 +102,7 @@ class GameInstance {
         }
     
     func ResetResults(){
-        wasLevelCleared = false
-        notesHit = 0
-        songNotes = 0
+        scoreInfo.scoreReset()
     }
     
     func sfxVolumeChange(_ vol:Float){

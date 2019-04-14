@@ -30,6 +30,9 @@ class GameScreen: BaseScene {
     var dots:[Dot] = [Dot]()
     var dotIndex = 0
     
+    var hitPositionX:CGFloat!
+    var hitTolerance:CGFloat!
+    
     //TODO: - Add a main menu and play button
     override init(size: CGSize)
     {
@@ -54,9 +57,17 @@ class GameScreen: BaseScene {
     override func update(_ currentTime: TimeInterval) {
         // returns true at end of song
         if gameInstance.conductor.Update(){
-            gameInstance.wasLevelCleared = true
+            gameInstance.scoreInfo.wasLevelCleared = true
             scene?.view?.presentScene(gameInstance.resultScreen)
         }
+    }
+    
+    func OnHit() {
+        
+    }
+    
+    func OnMiss() {
+    
     }
     
     func SpawnDot() {
@@ -70,11 +81,13 @@ class GameScreen: BaseScene {
     }
     
     func setupDots() {
-        for i in 1...16 {
+        for _ in 1...16 {
             let dot = Dot(beatBar, UIScreen.main.bounds)
             addChild(dot)
             dots.append(dot)
         }
+        hitPositionX = UIScreen.main.bounds.width / 2 - (beatBar.size.width / 2) * 0.78
+        hitTolerance = dots[0].size.width / 2
     }
     
     func setupBackground()
@@ -83,8 +96,6 @@ class GameScreen: BaseScene {
         background.position = CGPoint(x: (UIScreen.main.bounds.width) / 2, y: UIScreen.main.bounds.height / 2)
         background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         addChild(background)
-        
-        
         
         scoreCounter = SKSpriteNode(texture: SKTexture(imageNamed: "ScoreCounter"))
         scoreCounter.position = CGPoint(x: (UIScreen.main.bounds.width) / 4, y: UIScreen.main.bounds.height / 13)
