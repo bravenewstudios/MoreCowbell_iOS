@@ -150,7 +150,7 @@ class StartScreen: BaseScene {
         addChild(paper)
         paper.addChild(xPaper)
         
-        text = SKSpriteNode(texture: SKTexture(imageNamed: "options_template_text"))
+        text = SKSpriteNode(texture: SKTexture(imageNamed: "OptionsOverlay"))
         text.zPosition = 11
         //paper.addChild(text)
         

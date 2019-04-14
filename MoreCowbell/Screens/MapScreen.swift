@@ -141,13 +141,13 @@ class MapScreen: BaseScene {
         paper.zPosition = 10;
         addChild(paper)
         
-        text1 = SKSpriteNode(texture: SKTexture(imageNamed: "Easy"))
+        text1 = SKSpriteNode(texture: SKTexture(imageNamed: "VenueOverlay_Easy"))
         text1.zPosition = 11;
         
-        text2 = SKSpriteNode(texture: SKTexture(imageNamed: "Medium"))
+        text2 = SKSpriteNode(texture: SKTexture(imageNamed: "VenueOverlay_Medium"))
         text2.zPosition = 11;
         
-        text3 = SKSpriteNode(texture: SKTexture(imageNamed: "Hard"))
+        text3 = SKSpriteNode(texture: SKTexture(imageNamed: "VenueOverlay_Hard"))
         text3.zPosition = 11;
         
         xPaper = SKSpriteNode(texture: SKTexture(imageNamed: "Xbutton"))
