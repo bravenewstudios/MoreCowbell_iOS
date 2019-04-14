@@ -45,6 +45,7 @@
 		840094292249C45200FED121 /* reaper.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094202249C45200FED121 /* reaper.wav */; };
 		8400942A2249C45200FED121 /* morecowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094212249C45200FED121 /* morecowbell.wav */; };
 		CE895AA422626F410039A1EF /* reaper.json in Resources */ = {isa = PBXBuildFile; fileRef = CE895AA322626F410039A1EF /* reaper.json */; };
+		CE96E754226327CD008FD03F /* lowrider.json in Resources */ = {isa = PBXBuildFile; fileRef = CE96E753226327CD008FD03F /* lowrider.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		840094202249C45200FED121 /* reaper.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reaper.wav; sourceTree = "<group>"; };
 		840094212249C45200FED121 /* morecowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morecowbell.wav; sourceTree = "<group>"; };
 		CE895AA322626F410039A1EF /* reaper.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reaper.json; sourceTree = "<group>"; };
+		CE96E753226327CD008FD03F /* lowrider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lowrider.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +288,7 @@
 		CE895AA222626EDB0039A1EF /* SongData */ = {
 			isa = PBXGroup;
 			children = (
+				CE96E753226327CD008FD03F /* lowrider.json */,
 				CE895AA322626F410039A1EF /* reaper.json */,
 			);
 			path = SongData;
@@ -415,6 +418,7 @@
 				840094162249C44300FED121 /* reaper.mp3 in Resources */,
 				18EDEBCA22453B6400E64F66 /* GameScene.sks in Resources */,
 				840094262249C45200FED121 /* cowbell.wav in Resources */,
+				CE96E754226327CD008FD03F /* lowrider.json in Resources */,
 				18EDEBD522453B6500E64F66 /* Assets.xcassets in Resources */,
 				840094282249C45200FED121 /* dontblowthis.wav in Resources */,
 				CE895AA422626F410039A1EF /* reaper.json in Resources */,
