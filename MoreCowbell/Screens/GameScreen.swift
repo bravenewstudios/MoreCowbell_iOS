@@ -26,12 +26,19 @@ class GameScreen: BaseScene {
     var cowbell:SKSpriteNode!
     var MMLabel:SKLabelNode!
     var scoreInfo = gameInstance.scoreInfo
+    var fire:[SKEmitterNode] = [SKEmitterNode]()
+    var burst:SKEmitterNode!
+    var fireIndex = 0
     
     var dots:[Dot] = [Dot]()
     var dotIndex = 0
     
     var hitPositionX:CGFloat!
     var hitTolerance:CGFloat!
+    
+    var prescription = SKAction.playSoundFileNamed("prescription.wav", waitForCompletion: false)
+    var blow = SKAction.playSoundFileNamed("dontblowthis.wav", waitForCompletion: false)
+    var more = SKAction.playSoundFileNamed("couldusemore.wav", waitForCompletion: false)
     
     //TODO: - Add a main menu and play button
     override init(size: CGSize)
@@ -44,6 +51,7 @@ class GameScreen: BaseScene {
         setupButtons()
         setupScore()
         setupDots()
+        setupParticles()
     }
     
     override func OnScenePresent() {
@@ -61,18 +69,30 @@ class GameScreen: BaseScene {
         }
     }
     
-    func OnHit() {
+    func OnHit(dot:Dot) {
         scoreInfo.gainPoints(scoreInfo.currCombo / 10 + 1)
+        fire[fireIndex].position = dot.position
+        fire[fireIndex].resetSimulation()
+        dot.hit = true
+        if(scoreInfo.currCombo > 1 && scoreInfo.currCombo % 10 == 0){
+            playBurst()
+        }
+    }
+    
+    func playBurst(){
+        burst.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height * 0.7)
+        burst.resetSimulation()
+        run(prescription)
     }
     
     func OnMiss() {
         scoreInfo.miss()
         if(scoreInfo.health == 30 || scoreInfo.health == 25){
-            SKAction.playSoundFileNamed("dontblowthis.wav", waitForCompletion: false)
+            run(blow)
         }
         else if (scoreInfo.health == 60 || scoreInfo.health == 55)
         {
-            SKAction.playSoundFileNamed("couldusemore.wav", waitForCompletion: false)
+            run(more)
         }
         if (scoreInfo.health <= 30)
         {
@@ -110,6 +130,16 @@ class GameScreen: BaseScene {
         }
         hitPositionX = UIScreen.main.bounds.width / 2 - (beatBar.size.width / 2) * 0.78
         hitTolerance = dots[0].size.width / 2
+    }
+    
+    func setupParticles() {
+        for _ in 1...16 {
+            let f1 = SKEmitterNode(fileNamed: "Fire.sks")!
+            addChild(f1)
+            fire.append(f1)
+        }
+        burst = SKEmitterNode(fileNamed: "Nova.sks")
+        addChild(burst)
     }
     
     func setupBackground()
@@ -201,7 +231,7 @@ class GameScreen: BaseScene {
                     //if it's a valid "hit"
                     for dot in dots {
                         if dot.position.x >= hitPositionX - hitTolerance && dot.position.x <= hitPositionX + hitTolerance {
-                            OnHit()
+                            OnHit(dot: dot)
                             return;
                         }
                     }
