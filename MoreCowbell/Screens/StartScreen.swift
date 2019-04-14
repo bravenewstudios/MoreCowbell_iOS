@@ -230,7 +230,7 @@ class StartScreen: BaseScene {
                 if (!isOptionsOpen)
                 {
                     //print("YAY!")
-                    scene?.view?.presentScene(gameInstance.mapScreen)
+                    scene?.view?.presentScene(gameInstance.mapScreen, transition: .fade(withDuration: 0))
                 }
                 else
                 {
