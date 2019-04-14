@@ -32,6 +32,7 @@
 		18EDEBFE2245431600E64F66 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEBFD2245431600E64F66 /* MapScreen.swift */; };
 		18EDEC002245436D00E64F66 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEBFF2245436D00E64F66 /* GameScreen.swift */; };
 		18EDEC02224543A600E64F66 /* ResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEC01224543A600E64F66 /* ResultScreen.swift */; };
+		349870AB2263B55A00E0F077 /* OLORT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 349870AA2263B16500E0F077 /* OLORT.TTF */; };
 		840094162249C44300FED121 /* reaper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 840094132249C44200FED121 /* reaper.mp3 */; };
 		840094172249C44300FED121 /* surf.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 840094142249C44300FED121 /* surf.mp3 */; };
 		840094182249C44300FED121 /* title.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 840094152249C44300FED121 /* title.mp3 */; };
@@ -97,6 +98,7 @@
 		18EDEBFD2245431600E64F66 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		18EDEBFF2245436D00E64F66 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		18EDEC01224543A600E64F66 /* ResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreen.swift; sourceTree = "<group>"; };
+		349870AA2263B16500E0F077 /* OLORT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = OLORT.TTF; path = Assets.xcassets/fonts/counterFont.dataset/OLORT.TTF; sourceTree = "<group>"; };
 		840094132249C44200FED121 /* reaper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reaper.mp3; sourceTree = "<group>"; };
 		840094142249C44300FED121 /* surf.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = surf.mp3; sourceTree = "<group>"; };
 		840094152249C44300FED121 /* title.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = title.mp3; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				18EDEBC922453B6400E64F66 /* GameScene.sks */,
 				18EDEBCB22453B6400E64F66 /* Actions.sks */,
 				18EDEBCD22453B6400E64F66 /* GameScene.swift */,
+				349870AA2263B16500E0F077 /* OLORT.TTF */,
 				18EDEBCF22453B6400E64F66 /* GameViewController.swift */,
 				18EDEBD122453B6400E64F66 /* Main.storyboard */,
 				18EDEBD422453B6500E64F66 /* Assets.xcassets */,
@@ -407,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				840094172249C44300FED121 /* surf.mp3 in Resources */,
+				349870AB2263B55A00E0F077 /* OLORT.TTF in Resources */,
 				840094252249C45200FED121 /* dynamitesound.wav in Resources */,
 				840094182249C44300FED121 /* title.mp3 in Resources */,
 				840094272249C45200FED121 /* couldusemore.wav in Resources */,
