@@ -46,8 +46,8 @@
 		840094282249C45200FED121 /* dontblowthis.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8400941F2249C45100FED121 /* dontblowthis.wav */; };
 		840094292249C45200FED121 /* reaper.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094202249C45200FED121 /* reaper.wav */; };
 		8400942A2249C45200FED121 /* morecowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094212249C45200FED121 /* morecowbell.wav */; };
-		84672A0B2263C7AA00FE902A /* lowRider.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84672A0A2263C7AA00FE902A /* lowRider.mp3 */; };
 		84672A0D2263C9B300FE902A /* honkyTonkWomen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84672A0C2263C9B300FE902A /* honkyTonkWomen.mp3 */; };
+		CE77326F2263D53B002664BF /* lowrider.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE77326E2263D53B002664BF /* lowrider.mp3 */; };
 		CE895AA422626F410039A1EF /* reaper.json in Resources */ = {isa = PBXBuildFile; fileRef = CE895AA322626F410039A1EF /* reaper.json */; };
 		CE96E754226327CD008FD03F /* lowrider.json in Resources */ = {isa = PBXBuildFile; fileRef = CE96E753226327CD008FD03F /* lowrider.json */; };
 /* End PBXBuildFile section */
@@ -115,8 +115,8 @@
 		840094202249C45200FED121 /* reaper.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reaper.wav; sourceTree = "<group>"; };
 		840094212249C45200FED121 /* morecowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morecowbell.wav; sourceTree = "<group>"; };
 		84672A092263BB0700FE902A /* McHandwriting.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = McHandwriting.otf; sourceTree = "<group>"; };
-		84672A0A2263C7AA00FE902A /* lowRider.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lowRider.mp3; sourceTree = "<group>"; };
 		84672A0C2263C9B300FE902A /* honkyTonkWomen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = honkyTonkWomen.mp3; sourceTree = "<group>"; };
+		CE77326E2263D53B002664BF /* lowrider.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lowrider.mp3; sourceTree = "<group>"; };
 		CE895AA322626F410039A1EF /* reaper.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reaper.json; sourceTree = "<group>"; };
 		CE96E753226327CD008FD03F /* lowrider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lowrider.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,7 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				84672A0C2263C9B300FE902A /* honkyTonkWomen.mp3 */,
-				84672A0A2263C7AA00FE902A /* lowRider.mp3 */,
+				CE77326E2263D53B002664BF /* lowrider.mp3 */,
 				840094132249C44200FED121 /* reaper.mp3 */,
 				840094142249C44300FED121 /* surf.mp3 */,
 				840094152249C44300FED121 /* title.mp3 */,
@@ -436,11 +436,11 @@
 				CE96E754226327CD008FD03F /* lowrider.json in Resources */,
 				18EDEBD522453B6500E64F66 /* Assets.xcassets in Resources */,
 				840094282249C45200FED121 /* dontblowthis.wav in Resources */,
+				CE77326F2263D53B002664BF /* lowrider.mp3 in Resources */,
 				CE895AA422626F410039A1EF /* reaper.json in Resources */,
 				18EDEBD822453B6500E64F66 /* LaunchScreen.storyboard in Resources */,
 				8400942A2249C45200FED121 /* morecowbell.wav in Resources */,
 				18EDEBCC22453B6400E64F66 /* Actions.sks in Resources */,
-				84672A0B2263C7AA00FE902A /* lowRider.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
