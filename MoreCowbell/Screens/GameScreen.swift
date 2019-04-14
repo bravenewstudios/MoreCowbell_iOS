@@ -73,6 +73,10 @@ class GameScreen: BaseScene {
         scoreInfo.gainPoints(scoreInfo.currCombo / 10 + 1)
         fire[fireIndex].position = dot.position
         fire[fireIndex].resetSimulation()
+        fireIndex += 1
+        if(fireIndex > fire.count){
+            fireIndex = 0
+        }
         dot.hit = true
         if(scoreInfo.currCombo > 1 && scoreInfo.currCombo % 10 == 0){
             playBurst()
