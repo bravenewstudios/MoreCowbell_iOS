@@ -173,6 +173,7 @@ class StartScreen: BaseScene {
         volumeBar.position = CGPoint(x:(UIScreen.main.bounds.width/1.9), y:paper.size.height/4)
         volumeBar.anchorPoint = CGPoint(x:0.5, y:0.5)
         volumeBar.zPosition = 12;
+        volumeBar.name = "volume"
         addChild(volumeBar)
         
         volumeSlider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
@@ -188,6 +189,7 @@ class StartScreen: BaseScene {
         soundBar.position = CGPoint(x:(UIScreen.main.bounds.width/1.9), y:paper.size.height/4)
         soundBar.anchorPoint = CGPoint(x:0.5, y:0.5)
         soundBar.zPosition = 12;
+        soundBar.name = "sound"
         addChild(soundBar)
         
         soundSlider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
@@ -236,17 +238,18 @@ class StartScreen: BaseScene {
                 }
                 else
                 {
-                    if soundBar.frame.contains(t.preciseLocation(in: inputView))
-                    {
-                        //soundSlider.position.x = location2.x
-                        usingSoundBar = true
-                    }
-                    if volumeBar.frame.contains(t.preciseLocation(in: inputView))
+                    if n.name == "volume"
                     {
                         //volumeSlider.position.x = location.x
                         usingVolumeBar = true
+                        print("Volume True")
                     }
-                    
+                    if n.name == "sound"
+                    {
+                        //soundSlider.position.x = location2.x
+                        usingSoundBar = true
+                        print("Sound True")
+                    }
                 }
                 if n.name == "x"
                 { //WIP - closing the paper
@@ -260,7 +263,7 @@ class StartScreen: BaseScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         for t in touches {
-            /*if usingVolumeBar {
+            if usingVolumeBar {
                 
                 let location = t.location(in: self)
                 
@@ -273,7 +276,7 @@ class StartScreen: BaseScene {
                 {
                     volumeSlider.position.x = volumeBar.position.x - sliderActiveLength*0.5
                 }
-            }*/
+            }
             if usingSoundBar {
                 
                 let location2 = t.location(in: self)
