@@ -77,7 +77,16 @@ class StartScreen: BaseScene {
 //        addChild(slider)
     }
     
+    override func SetScene() {
+        //setBackground()
+        //setTitle()
+        //setOptionsMenu()
+        //setButtons()
+    }
+    
     override func OnScenePresent() {
+        // SetScene()
+        
         musicPlayer.volume = gameInstance.musicVolume
         musicPlayer.currentTime = 0.0
         musicPlayer.play()
