@@ -15,17 +15,16 @@ class ResultScreen: BaseScene {
     var background:SKSpriteNode!
     var NotePaper:SKSpriteNode!
     
-//    guard let resultsFont = UIFont(name: "OLORT___.ttf", size: 50); else {
-//    fatalError("Nope.")
-//    }
-    var accuracy:UILabel!; var score:UILabel!; var combo:UILabel!
-    var labelArray: [UILabel] = [UILabel]()
+    let resultsFont = UIFont(name: "OloronTryout", size: 50)
+    var accuracy:SKLabelNode!; var score:SKLabelNode!; var combo:SKLabelNode!
+    var labelArray: [SKLabelNode] = [SKLabelNode]()
     var grade = SKSpriteNode(texture: SKTexture(imageNamed: "RankF.png"))
     var exitButton:SKSpriteNode!
     
     override init(size: CGSize)
     {
         super.init(size: size)
+        
         setupBackground()
         exit()
         setupResults()
@@ -50,10 +49,12 @@ class ResultScreen: BaseScene {
         NotePaper.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height/2)
         addChild(NotePaper)
     
-        accuracy = UILabel(frame: CGRect(x: UIScreen.main.bounds.width / 2, y:UIScreen.main.bounds.height * 0.5, width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 10)); labelArray.append(accuracy)
-        score = UILabel(frame: CGRect(x: 0, y:0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)); labelArray.append(score)
-//        score = UILabel(frame: CGRect(x: UIScreen.main.bounds.width * 0.49, y:UIScreen.main.bounds.height * 0.59, width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 10)); labelArray.append(score)
-        combo = UILabel(frame: CGRect(x: UIScreen.main.bounds.width * 0.7, y:UIScreen.main.bounds.height * 0.52, width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 10)); labelArray.append(combo)
+        accuracy = SKLabelNode(fontNamed: "OloronTryout"); labelArray.append(accuracy)
+        score = SKLabelNode(fontNamed: "OloronTryout"); labelArray.append(score)
+        combo = SKLabelNode(fontNamed: "OloronTryout"); labelArray.append(combo)
+        accuracy.position = CGPoint(x: UIScreen.main.bounds.width / 2, y:UIScreen.main.bounds.height * 0.5)
+        score.position = CGPoint(x: UIScreen.main.bounds.width * 0.49, y:UIScreen.main.bounds.height * 0.59)
+        combo.position = CGPoint(x: UIScreen.main.bounds.width * 0.7, y:UIScreen.main.bounds.height * 0.52)
         
         grade.position = CGPoint(x: NotePaper.size.width / 4, y: -NotePaper.size.height / 4)
 //        self.view?.addSubview(accuracy)
@@ -62,12 +63,10 @@ class ResultScreen: BaseScene {
         NotePaper.addChild(grade)
         
         for t in labelArray{
-            t.font = UIFont(name: "AmericanTypewriter", size: 25)
-            t.textColor = UIColor.white
-            t.textAlignment = .center
+            t.horizontalAlignmentMode = .center
+            t.color = .black
             t.text = "TESTESETESETESTEST"
-            self.view?.addSubview(t)
-            self.view?.bringSubview(toFront: t)
+            addChild(t)
         }
     }
     
@@ -75,7 +74,7 @@ class ResultScreen: BaseScene {
         if(gameInstance.songNotes != 0)
         {
         let pct = gameInstance.notesHit * 100 / gameInstance.songNotes
-        let accPct = String(pct)
+        let accPct = String(Int(pct))
 //    accuracy.setText(Integer.toString(pct));
         var letter:SKTexture!
         var music = SKAudioNode(fileNamed: "cowbell.wav")
@@ -118,8 +117,8 @@ class ResultScreen: BaseScene {
         music.run(SKAction.play())
         grade.texture = letter
         accuracy.text = accPct
-//        score.text = String(gameInstance.scoreInfo.currScore)
-//        combo.text = String(gameInstance.scoreInfo.maxCombo)
+        score.text = String(gameInstance.scoreInfo.currScore)
+        combo.text = String(gameInstance.scoreInfo.maxCombo)
         }
     }
     
