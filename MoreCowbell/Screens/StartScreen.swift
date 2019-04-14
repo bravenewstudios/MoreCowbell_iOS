@@ -74,6 +74,7 @@ class StartScreen: BaseScene {
     
     override func OnScenePresent() {
         musicPlayer.volume = gameInstance.musicVolume
+        musicPlayer.currentTime = 0.0
         musicPlayer.play()
     }
     

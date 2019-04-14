@@ -69,6 +69,7 @@ class MapScreen: BaseScene {
     
     override func OnScenePresent() {
         musicPlayer.volume = gameInstance.musicVolume
+        musicPlayer.currentTime = 0.0
         musicPlayer.play()
     }
     
@@ -228,7 +229,7 @@ class MapScreen: BaseScene {
                 else if n.name == "exit" {
                     //print("YAY!")
                     let transition = SKTransition.doorsOpenHorizontal(withDuration: 0.5)
-                    self.view?.presentScene(gameInstance.gameScreen, transition: transition)
+                    self.view?.presentScene(gameInstance.startScreen, transition: transition)
                     //                    scene?.view?.presentScene(GameScreen(size: self.frame.size))
                 }
             }
