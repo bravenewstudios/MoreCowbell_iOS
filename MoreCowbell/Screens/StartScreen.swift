@@ -42,6 +42,8 @@ class StartScreen: BaseScene {
     var optionsDropDown:SKAction!
     var optionsSlideUp:SKAction!
     var isOptionsOpen = false
+    var usingVolumeBar = false
+    var usingSoundBar = false
     var xPaper:SKSpriteNode!
     
     var musicPlayer = AVAudioPlayer()
@@ -222,8 +224,8 @@ class StartScreen: BaseScene {
     {
         for t in touches {
             let node = nodes(at: t.location(in: self))
-            let location = t.location(in: self)
-            let location2 = t.location(in: self)
+            //let location = t.location(in: self)
+            //let location2 = t.location(in: self)
             
             for n in node {
                 
@@ -234,14 +236,17 @@ class StartScreen: BaseScene {
                 }
                 else
                 {
-                    if volumeBar.frame.contains(t.preciseLocation(in: inputView))
-                    {
-                        volumeSlider.position.x = location.x
-                    }
                     if soundBar.frame.contains(t.preciseLocation(in: inputView))
                     {
-                        soundSlider.position.x = location2.x
+                        //soundSlider.position.x = location2.x
+                        usingSoundBar = true
                     }
+                    if volumeBar.frame.contains(t.preciseLocation(in: inputView))
+                    {
+                        //volumeSlider.position.x = location.x
+                        usingVolumeBar = true
+                    }
+                    
                 }
                 if n.name == "x"
                 { //WIP - closing the paper
@@ -249,42 +254,48 @@ class StartScreen: BaseScene {
                     //isOptionsOpen = false
                 }
             }
-            //TODO: - Create a transition
-            //            if walkenHead.frame.contains(t.preciseLocation(in: inputView)){
-            //                scene?.view?.presentScene(MapScreen(size: self.frame.size))
-            //
-            //            }
-            
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         for t in touches {
-            let location = t.location(in: self)
-            let location2 = t.location(in: self)
-            
-            volumeSlider.position.x = location.x //- volumeBar.size.width
-            if (volumeSlider.position.x > volumeBar.position.x + sliderActiveLength*0.5)
-            {
-                volumeSlider.position.x = volumeBar.position.x + sliderActiveLength*0.5
-            }
-            else if (volumeSlider.position.x < volumeBar.position.x - sliderActiveLength*0.5)
-            {
-                volumeSlider.position.x = volumeBar.position.x - sliderActiveLength*0.5
-            }
-            
-            soundSlider.position.x = location2.x //- soundBar.size.width
-            if (soundSlider.position.x > soundBar.position.x + sliderActiveLength2*0.5)
-            {
-                soundSlider.position.x = soundBar.position.x + sliderActiveLength2*0.5
-            }
-            else if (soundSlider.position.x < soundBar.position.x - sliderActiveLength2*0.5)
-            {
-                soundSlider.position.x = soundBar.position.x - sliderActiveLength2*0.5
+            /*if usingVolumeBar {
+                
+                let location = t.location(in: self)
+                
+                volumeSlider.position.x = location.x //- volumeBar.size.width
+                if (volumeSlider.position.x > volumeBar.position.x + sliderActiveLength*0.5)
+                {
+                    volumeSlider.position.x = volumeBar.position.x + sliderActiveLength*0.5
+                }
+                else if (volumeSlider.position.x < volumeBar.position.x - sliderActiveLength*0.5)
+                {
+                    volumeSlider.position.x = volumeBar.position.x - sliderActiveLength*0.5
+                }
+            }*/
+            if usingSoundBar {
+                
+                let location2 = t.location(in: self)
+                
+                soundSlider.position.x = location2.x //- soundBar.size.width
+                if (soundSlider.position.x > soundBar.position.x + sliderActiveLength2*0.5)
+                {
+                    soundSlider.position.x = soundBar.position.x + sliderActiveLength2*0.5
+                }
+                else if (soundSlider.position.x < soundBar.position.x - sliderActiveLength2*0.5)
+                {
+                    soundSlider.position.x = soundBar.position.x - sliderActiveLength2*0.5
+                }
             }
         }
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        usingVolumeBar = false
+        usingSoundBar = false
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
