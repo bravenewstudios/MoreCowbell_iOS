@@ -18,7 +18,8 @@ class GameInstance {
     var highscoreTable = [0,0,0]
     var musicVolume:Float = 1.0
     var sfxVolume:Float = 1.0
-        
+    
+    var wasLevelCleared = false
     var songNotes = 0
     var notesHit = 0
     var scoreInfo = Score()
@@ -94,6 +95,12 @@ class GameInstance {
                 highscoreTable[level] = score
             }
         }
+    
+    func ResetResults(){
+        wasLevelCleared = false
+        notesHit = 0
+        songNotes = 0
+    }
     
     func sfxVolumeChange(_ vol:Float){
         sfxVolume = vol

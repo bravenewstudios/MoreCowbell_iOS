@@ -44,7 +44,15 @@ class GameScreen: BaseScene {
     }
     
     override func OnScenePresent() {
-        
+        gameInstance.conductor.Start()
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        // returns true at end of song
+        if gameInstance.conductor.Update(){
+            gameInstance.wasLevelCleared = true
+            scene?.view?.presentScene(gameInstance.resultScreen)
+        }
     }
     
     func SpawnDot() {
@@ -58,8 +66,9 @@ class GameScreen: BaseScene {
     }
     
     func setupDots() {
-        for i in 1...10 {
+        for i in 1...16 {
             let dot = Dot(beatBar, UIScreen.main.bounds.height)
+            addChild(dot)
             dots.append(dot)
         }
     }
@@ -153,7 +162,13 @@ class GameScreen: BaseScene {
             for n in node {
                 
                 //MARK: - If notification button is pressed
-                if n.name == "_exit" {
+                if n == cowbell {
+                    //if it's a valid "hit"
+                    scoreAssets.gainPoints(1)
+                    //else
+                }
+                
+                else if n.name == "_exit" {
                     //print("YAY!")
                     scene?.view?.presentScene(gameInstance.startScreen)
                     //                    let mapScene:SKScene = MapScreen(size: self.frame.size)
@@ -161,13 +176,9 @@ class GameScreen: BaseScene {
                     //                    self.view?.presentScene(mapScene, transition: transition)
                 }
                 
-                if n.name == "cowbell" {
-                    //if it's a valid "hit"
-                    scoreAssets.gainPoints(1)
-                    //else
-                }
                 
-                if n.name == "score" {
+                
+                else if n.name == "score" {
                     scene?.view?.presentScene(gameInstance.resultScreen)
                 }
             }
