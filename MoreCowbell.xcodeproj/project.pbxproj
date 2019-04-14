@@ -48,6 +48,8 @@
 		8400942A2249C45200FED121 /* morecowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094212249C45200FED121 /* morecowbell.wav */; };
 		84672A0D2263C9B300FE902A /* honkyTonkWomen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84672A0C2263C9B300FE902A /* honkyTonkWomen.mp3 */; };
 		CE77326F2263D53B002664BF /* lowrider.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE77326E2263D53B002664BF /* lowrider.mp3 */; };
+		CE7732732263DD7E002664BF /* Nova.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE7732712263DD7E002664BF /* Nova.sks */; };
+		CE7732742263DD7E002664BF /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE7732722263DD7E002664BF /* Fire.sks */; };
 		CE895AA422626F410039A1EF /* reaper.json in Resources */ = {isa = PBXBuildFile; fileRef = CE895AA322626F410039A1EF /* reaper.json */; };
 		CE96E754226327CD008FD03F /* lowrider.json in Resources */ = {isa = PBXBuildFile; fileRef = CE96E753226327CD008FD03F /* lowrider.json */; };
 /* End PBXBuildFile section */
@@ -117,6 +119,8 @@
 		84672A092263BB0700FE902A /* McHandwriting.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = McHandwriting.otf; sourceTree = "<group>"; };
 		84672A0C2263C9B300FE902A /* honkyTonkWomen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = honkyTonkWomen.mp3; sourceTree = "<group>"; };
 		CE77326E2263D53B002664BF /* lowrider.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lowrider.mp3; sourceTree = "<group>"; };
+		CE7732712263DD7E002664BF /* Nova.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Nova.sks; sourceTree = "<group>"; };
+		CE7732722263DD7E002664BF /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
 		CE895AA322626F410039A1EF /* reaper.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reaper.json; sourceTree = "<group>"; };
 		CE96E753226327CD008FD03F /* lowrider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lowrider.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +183,7 @@
 		18EDEBC622453B6400E64F66 /* MoreCowbell */ = {
 			isa = PBXGroup;
 			children = (
+				CE7732702263DCFA002664BF /* Particles */,
 				CE895AA222626EDB0039A1EF /* SongData */,
 				CEA75B6C226234CD00ECD15E /* Game */,
 				8400940E2249C0B900FED121 /* Audio */,
@@ -295,6 +300,15 @@
 				8400941D2249C45100FED121 /* cowbell.wav */,
 			);
 			path = Effects;
+			sourceTree = "<group>";
+		};
+		CE7732702263DCFA002664BF /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				CE7732722263DD7E002664BF /* Fire.sks */,
+				CE7732712263DD7E002664BF /* Nova.sks */,
+			);
+			path = Particles;
 			sourceTree = "<group>";
 		};
 		CE895AA222626EDB0039A1EF /* SongData */ = {
@@ -421,6 +435,7 @@
 				840094172249C44300FED121 /* surf.mp3 in Resources */,
 				349870AB2263B55A00E0F077 /* OLORT.TTF in Resources */,
 				840094252249C45200FED121 /* dynamitesound.wav in Resources */,
+				CE7732732263DD7E002664BF /* Nova.sks in Resources */,
 				840094182249C44300FED121 /* title.mp3 in Resources */,
 				840094272249C45200FED121 /* couldusemore.wav in Resources */,
 				840094232249C45200FED121 /* comeongene.wav in Resources */,
@@ -430,6 +445,7 @@
 				840094242249C45200FED121 /* prescription.wav in Resources */,
 				84672A0D2263C9B300FE902A /* honkyTonkWomen.mp3 in Resources */,
 				349870AC2263BD0400E0F077 /* McHandwriting.otf in Resources */,
+				CE7732742263DD7E002664BF /* Fire.sks in Resources */,
 				840094162249C44300FED121 /* reaper.mp3 in Resources */,
 				18EDEBCA22453B6400E64F66 /* GameScene.sks in Resources */,
 				840094262249C45200FED121 /* cowbell.wav in Resources */,
