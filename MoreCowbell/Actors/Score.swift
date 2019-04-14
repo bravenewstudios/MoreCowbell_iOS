@@ -21,6 +21,7 @@ class Score{
     var currCombo:Int = 0
     var maxCombo:Int = 0
     var totalNotes:Int = 0
+    var health:Int = 100
     var notesHit:Int = 0
     var wasLevelCleared:Bool = false
     
@@ -41,11 +42,13 @@ class Score{
         currCombo += 1
         currScore += points
         notesHit += 1
+        health = min(100, health + 5)
         scoreUpdate(currScore, currCombo)
     }
     
-    func resetCombo(){
+    func miss(){
         currCombo = 0
+        health -= 10
         scoreUpdate(currScore, currCombo)
     }
     
@@ -103,6 +106,7 @@ class Score{
         maxCombo = 0
         notesHit = 0
         totalNotes = 0
+        health = 100
         scoreUpdate(currScore, currCombo)
         }
     }

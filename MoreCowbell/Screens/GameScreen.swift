@@ -25,7 +25,7 @@ class GameScreen: BaseScene {
     var beatBar:SKSpriteNode!
     var cowbell:SKSpriteNode!
     var MMLabel:SKLabelNode!
-    var scoreAssets:Score!
+    var scoreInfo = gameInstance.scoreInfo
     
     var dots:[Dot] = [Dot]()
     var dotIndex = 0
@@ -57,17 +57,39 @@ class GameScreen: BaseScene {
     override func update(_ currentTime: TimeInterval) {
         // returns true at end of song
         if gameInstance.conductor.Update(){
-            gameInstance.scoreInfo.wasLevelCleared = true
-            scene?.view?.presentScene(gameInstance.resultScreen)
+            endLevel(bool: true)
         }
     }
     
     func OnHit() {
-        scoreAssets.gainPoints(1)
+        scoreInfo.gainPoints(scoreInfo.currCombo / 10 + 1)
     }
     
     func OnMiss() {
+        scoreInfo.miss()
+        if(scoreInfo.health == 30 || scoreInfo.health == 25){
+            SKAction.playSoundFileNamed("dontblowthis.wav", waitForCompletion: false)
+        }
+        else if (scoreInfo.health == 60 || scoreInfo.health == 55)
+        {
+            SKAction.playSoundFileNamed("couldusemore.wav", waitForCompletion: false)
+        }
+        if (scoreInfo.health <= 30)
+        {
+//            dangerOverlay.clearActions();
+//            dangerOverlay.getColor().a = 0.8f;
+//            dangerFlash = Actions.alpha(0.0f, 1.0f);
+//            dangerOverlay.addAction(dangerFlash);
+        }
+        if (scoreInfo.health <= 0)
+        {
+            endLevel(bool: false)
+        }
+    }
     
+    func endLevel(bool:Bool){
+        scoreInfo.wasLevelCleared = bool
+        scene?.view?.presentScene(gameInstance.resultScreen)
     }
     
     func SpawnDot() {
@@ -140,16 +162,15 @@ class GameScreen: BaseScene {
     
     func setupScore()
     {
-        scoreAssets = Score()
-        score0 = scoreAssets.scoreCountArray[0]; scoreCountArray.append(score0); score0.name = "score"
-        score1 = scoreAssets.scoreCountArray[1]; scoreCountArray.append(score1)
-        score2 = scoreAssets.scoreCountArray[2]; scoreCountArray.append(score2)
-        score3 = scoreAssets.scoreCountArray[3]; scoreCountArray.append(score3)
-        score4 = scoreAssets.scoreCountArray[4]; scoreCountArray.append(score4)
-        score5 = scoreAssets.scoreCountArray[5]; scoreCountArray.append(score5)
-        combo0 = scoreAssets.comboCountArray[0]; comboCountArray.append(combo0)
-        combo1 = scoreAssets.comboCountArray[1]; comboCountArray.append(combo1)
-        combo2 = scoreAssets.comboCountArray[2]; comboCountArray.append(combo2)
+        score0 = scoreInfo.scoreCountArray[0]; scoreCountArray.append(score0); score0.name = "score"
+        score1 = scoreInfo.scoreCountArray[1]; scoreCountArray.append(score1)
+        score2 = scoreInfo.scoreCountArray[2]; scoreCountArray.append(score2)
+        score3 = scoreInfo.scoreCountArray[3]; scoreCountArray.append(score3)
+        score4 = scoreInfo.scoreCountArray[4]; scoreCountArray.append(score4)
+        score5 = scoreInfo.scoreCountArray[5]; scoreCountArray.append(score5)
+        combo0 = scoreInfo.comboCountArray[0]; comboCountArray.append(combo0)
+        combo1 = scoreInfo.comboCountArray[1]; comboCountArray.append(combo1)
+        combo2 = scoreInfo.comboCountArray[2]; comboCountArray.append(combo2)
         
         for s in 0...5 {
             scoreCountArray[s].setScale(0.3)
