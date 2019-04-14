@@ -75,12 +75,13 @@ class GameInstance {
         
         let jsonBars = jsonSong["bars"] as! [[String:Any]]
         for jsonBar in jsonBars {
-            var bar = Bar()
+            let bar = Bar()
             let jsonNotes = jsonBar["notes"] as! [[String:Any]]
             for jsonNote in jsonNotes {
-                var note = Note()
+                let note = Note()
                 note.isRest = jsonNote["isRest"] as! Bool
-                note.time = jsonNote["time"] as! Double
+                let unadjustedTime = jsonNote["time"] as! Double
+                note.time = song.beat * song.timeSigBottom * unadjustedTime
                 bar.notes.append(note)
             }
             bar.numNotes = bar.notes.count
