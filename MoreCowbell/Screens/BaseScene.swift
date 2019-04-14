@@ -29,8 +29,16 @@ class BaseScene: SKScene {
         // virtual function
     }
     
-    override func sceneDidLoad() {
+    func OnSceneExit() {
+        // virtual function
+    }
+    
+    override func didMove(to view: SKView) {
         //wrapper function to prevent naming confusion
         OnScenePresent()
+    }
+    
+    override func willMove(from view: SKView) {
+        OnSceneExit()
     }
 }

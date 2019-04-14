@@ -7,6 +7,7 @@
 //
 
 // import Foundation
+import AVFoundation
 import SpriteKit
 import GameplayKit
 
@@ -45,25 +46,34 @@ class MapScreen: BaseScene {
     var dropDown:SKAction!
     var signMove:SKAction!
     
-    var mapMusic:SKAudioNode!
+    var musicPlayer = AVAudioPlayer()
     var songSelection = "null"
 
     //TODO: - Add a main menu and play button
     override init(size: CGSize)
     {
         super.init(size: size)
-        let music = SKAudioNode(fileNamed: "surf.mp3")
-        mapMusic = music // save reference for outside of this scope
-        
+
         setBackground()
         setButtons()
         mapSetup()
+        
+        do {
+            let songFile = Bundle.main.path(forResource: "surf", ofType: "mp3")
+            musicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: songFile!))
+        }
+        catch {
+            print("failed to load mapScreen musicPlayer")
+        }
     }
     
     override func OnScenePresent() {
-        let music = SKAudioNode(fileNamed: "title.mp3") //Temp
-        music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0))
-        addChild(music)
+        musicPlayer.volume = gameInstance.musicVolume
+        musicPlayer.play()
+    }
+    
+    override func OnSceneExit() {
+        musicPlayer.stop()
     }
     
     func setBackground()

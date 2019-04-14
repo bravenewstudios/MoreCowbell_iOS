@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 import SpriteKit
 import GameplayKit
 
@@ -40,7 +41,7 @@ class StartScreen: BaseScene {
     var isOptionsOpen = false
     var xPaper:SKSpriteNode!
     
-    var titleMusic:SKAudioNode!
+    var musicPlayer = AVAudioPlayer()
     
 //    private var spinnyNode : SKShapeNode?
 //    private var label : SKLabelNode?
@@ -54,8 +55,15 @@ class StartScreen: BaseScene {
         setTitle()
         setOptionsMenu()
         setButtons()
-
-//        sliderBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
+        
+        do {
+            let songFile = Bundle.main.path(forResource: "title", ofType: "mp3")
+            musicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: songFile!))
+        }
+        catch {
+            print("failed to load startScreen musicPlayer")
+        }
+        //        sliderBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
 //        sliderBar.position = CGPoint(x: 2 * (UIScreen.main.bounds.width) / 3, y: UIScreen.main.bounds.height / 2)
 //        addChild(sliderBar)
 //
@@ -65,12 +73,12 @@ class StartScreen: BaseScene {
     }
     
     override func OnScenePresent() {
-        let music = SKAudioNode(fileNamed: "title.mp3")
-        
-        music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0));
-        addChild(music)
-        
-        titleMusic = music // save reference for outside of this scope
+        musicPlayer.volume = gameInstance.musicVolume
+        musicPlayer.play()
+    }
+    
+    override func OnSceneExit() {
+        musicPlayer.stop()
     }
     
     // not sure of syntax for buttonAction, using this for now

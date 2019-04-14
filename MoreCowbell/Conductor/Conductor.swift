@@ -11,7 +11,7 @@ import AVFoundation
 
 class Conductor {
     var song:Song!
-    var audioPlayer = AVAudioPlayer()
+    var musicPlayer = AVAudioPlayer()
     
     static let DOTMOVETIME = 1.5
     
@@ -35,20 +35,20 @@ class Conductor {
         noteIndex = 0;
         self.song = song
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: song.songFile!))
+            musicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: song.songFile!))
         }
         catch {
-            print("failed to load audioPlayer")
+            print("failed to load conductor musicPlayer at init")
         }
     }
     
     func SelectSong(song:Song) {
         self.song = song
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: song.songFile!))
+            musicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: song.songFile!))
         }
         catch {
-            print("failed to load audioPlayer")
+            print("failed to load conductor musicPlayer at SelectSong")
         }
     }
     
@@ -58,15 +58,15 @@ class Conductor {
         numNotes = song.bars[barIndex].numNotes;
         nextBeatTime = song.startOffset - Conductor.DOTMOVETIME;
         isRest = song.bars[barIndex].notes[noteIndex].isRest;
-        audioPlayer.volume = gameInstance.musicVolume
-        audioPlayer.play()
+        musicPlayer.volume = gameInstance.musicVolume
+        musicPlayer.play()
     }
     
     func Stop() {
         barIndex = 0;
         noteIndex = 0;
         isFinished = false;
-        audioPlayer.stop()
+        musicPlayer.stop()
     }
     
     private func SpawnDot() {
@@ -94,9 +94,9 @@ class Conductor {
     }
     
     func Update() -> Bool {
-        if (audioPlayer.isPlaying && !isFinished)
+        if (musicPlayer.isPlaying && !isFinished)
         {
-            if (audioPlayer.currentTime >= nextBeatTime)
+            if (musicPlayer.currentTime >= nextBeatTime)
             {
                 if (!isRest) {
                     //Gdx.app.error("Beat", "Index: " + Integer.toString(noteIndex) + "Time: " + Float.toString(nextBeatTime));

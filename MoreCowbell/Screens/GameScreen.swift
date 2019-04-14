@@ -47,6 +47,10 @@ class GameScreen: BaseScene {
         gameInstance.conductor.Start()
     }
     
+    override func OnSceneExit() {
+        gameInstance.conductor.Stop()
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         // returns true at end of song
         if gameInstance.conductor.Update(){
