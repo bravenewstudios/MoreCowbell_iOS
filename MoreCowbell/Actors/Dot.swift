@@ -22,18 +22,19 @@ class Dot:SKSpriteNode {
     var startPoint:CGPoint!
     var hit = false
     
-    init(_ Bar: SKSpriteNode, _ screenHeight: CGFloat){
+    init(_ Bar: SKSpriteNode, _ screenSize: CGRect){
         let texture = SKTexture(imageNamed: "dot")
         let imgSize = CGSize(width: Bar.size.width * 0.1,height: Bar.size.width * 0.1)
-        startPoint = CGPoint(x: Bar.size.width + Bar.size.width / 2, y: screenHeight * 0.5)
+        startPoint = CGPoint(x: screenSize.width / 2 + Bar.size.width / 2, y: Bar.position.y)
         fadein = SKAction.fadeIn(withDuration: 0.2)
         fadeout = SKAction.fadeOut(withDuration: 0.2)
-        movein = SKAction.moveTo(x: Bar.position.x + Bar.size.width * 0.07, duration: Conductor.DOTMOVETIME)
-        moveout = SKAction.moveTo(x: Bar.position.x - imgSize.width, duration: 0.2 * Conductor.DOTMOVETIME)
+        movein = SKAction.moveTo(x: Bar.position.x - (Bar.size.width / 2) * 0.93, duration: Conductor.DOTMOVETIME)
+        moveout = SKAction.moveTo(x: Bar.position.x - (Bar.size.width / 2), duration: 0.2 * Conductor.DOTMOVETIME)
         enter = SKAction.group([fadein,movein])
         exit = SKAction.group([fadeout,moveout])
         sequence = SKAction.sequence([enter,exit])
-        super.init(texture: texture, color:UIColor.clear, size:Bar.size)
+        super.init(texture: texture, color:UIColor.clear, size:imgSize)
+        self.position = CGPoint(x: -screenSize.width, y: -screenSize.height)
     }
     
     required init?(coder aDecoder: NSCoder) {

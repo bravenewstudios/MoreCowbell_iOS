@@ -71,7 +71,7 @@ class GameScreen: BaseScene {
     
     func setupDots() {
         for i in 1...16 {
-            let dot = Dot(beatBar, UIScreen.main.bounds.height)
+            let dot = Dot(beatBar, UIScreen.main.bounds)
             addChild(dot)
             dots.append(dot)
         }
