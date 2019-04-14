@@ -181,23 +181,25 @@ class MapScreen: BaseScene {
                     paper.run(dropDown)
                     songSelection = "reaper"
                 }
-                if (n.name == "star2" && starActive){
+                else if (n.name == "star2" && starActive){
                     addChild(startSign)
                     startSign.run(signMove)
                     starActive = false
                     paper.addChild(text2)
                     paper.addChild(xPaper)
                     paper.run(dropDown)
+                    songSelection = "reaper"
                 }
-                if (n.name == "star3" && starActive){
+                else if (n.name == "star3" && starActive){
                     addChild(startSign)
                     startSign.run(signMove)
                     starActive = false
                     paper.addChild(text3)
                     paper.addChild(xPaper)
                     paper.run(dropDown)
+                    songSelection = "reaper"
                 }
-                if (n.name == "x" && !starActive)
+                else if (n.name == "x" && !starActive)
                 { //WIP - closing the paper
                     startSign.run(signMove.reversed(), completion:
                         { self.startSign.removeFromParent() })
@@ -206,14 +208,14 @@ class MapScreen: BaseScene {
                     
                     starActive = true
                 }
-                if n.name == "start" {
+                else if n.name == "start" {
                     //print("YAY!")
                     gameInstance.conductor.SelectSong(song: gameInstance.album[songSelection]!)
                     let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
                     self.view?.presentScene(gameInstance.gameScreen, transition: transition)
 //                    scene?.view?.presentScene(GameScreen(size: self.frame.size))
                 }
-                if n.name == "exit" {
+                else if n.name == "exit" {
                     //print("YAY!")
                     let transition = SKTransition.doorsOpenHorizontal(withDuration: 0.5)
                     self.view?.presentScene(gameInstance.gameScreen, transition: transition)
