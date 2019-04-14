@@ -15,7 +15,7 @@ class ResultScreen: BaseScene {
     var background:SKSpriteNode!
     var NotePaper:SKSpriteNode!
     
-    let resultsFont = UIFont(name: "OloronTryout", size: 50)
+    let resultsFont = UIFont(name: "McHandwriting", size: 50)
     var accuracy:SKLabelNode!; var score:SKLabelNode!; var combo:SKLabelNode!
     var labelArray: [SKLabelNode] = [SKLabelNode]()
     var grade = SKSpriteNode(texture: SKTexture(imageNamed: "RankF.png"))
@@ -49,12 +49,12 @@ class ResultScreen: BaseScene {
         NotePaper.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height/2)
         addChild(NotePaper)
     
-        accuracy = SKLabelNode(fontNamed: "OloronTryout"); labelArray.append(accuracy)
-        score = SKLabelNode(fontNamed: "OloronTryout"); labelArray.append(score)
-        combo = SKLabelNode(fontNamed: "OloronTryout"); labelArray.append(combo)
-        accuracy.position = CGPoint(x: UIScreen.main.bounds.width / 2, y:UIScreen.main.bounds.height * 0.5)
-        score.position = CGPoint(x: UIScreen.main.bounds.width * 0.49, y:UIScreen.main.bounds.height * 0.59)
-        combo.position = CGPoint(x: UIScreen.main.bounds.width * 0.7, y:UIScreen.main.bounds.height * 0.52)
+        accuracy = SKLabelNode(fontNamed: "McHandwriting"); labelArray.append(accuracy)
+        score = SKLabelNode(fontNamed: "McHandwriting"); labelArray.append(score)
+        combo = SKLabelNode(fontNamed: "McHandwriting"); labelArray.append(combo)
+        accuracy.position = CGPoint(x: NotePaper.size.width / 7, y:NotePaper.size.height * 17/144)
+        score.position = CGPoint(x: NotePaper.size.width / 7, y:NotePaper.size.height * 9/144)
+        combo.position = CGPoint(x: NotePaper.size.width / 7, y:NotePaper.size.height / 144)
         
         grade.position = CGPoint(x: NotePaper.size.width / 4, y: -NotePaper.size.height / 4)
 //        self.view?.addSubview(accuracy)
@@ -64,61 +64,62 @@ class ResultScreen: BaseScene {
         
         for t in labelArray{
             t.horizontalAlignmentMode = .center
-            t.color = .black
-            t.text = "TESTESETESETESTEST"
-            addChild(t)
+            t.fontColor = UIColor.black
+            t.text = "TEST: 000000"
+            NotePaper.addChild(t)
         }
     }
     
     func GetResultData() {
-        if(gameInstance.songNotes != 0)
+        if(gameInstance.scoreInfo.totalNotes != 0)
         {
-        let pct = gameInstance.notesHit * 100 / gameInstance.songNotes
-        let accPct = String(Int(pct))
+            let pct = gameInstance.scoreInfo.notesHit * 100 / gameInstance.scoreInfo.totalNotes
+            let accPct = String(Int(pct))
 //    accuracy.setText(Integer.toString(pct));
-        var letter:SKTexture!
-        var music = SKAudioNode(fileNamed: "cowbell.wav")
-        if (pct >= 90) {
-            music = SKAudioNode(fileNamed: "diapers.wav")
-            letter = SKTexture(imageNamed: "RankAPlus.png")
-        }
-        else if (pct >= 80) {
-            letter = SKTexture(imageNamed: "RankA.png")
-            music = SKAudioNode(fileNamed: "dynamiteSound.wav")
-        }
-        else if (pct >= 70)
-        {
-            letter = SKTexture(imageNamed: "RankB.png")
-            music = SKAudioNode(fileNamed: "couldusemore.wav")
-        }
-        else if (pct >= 60)
-        {
-            letter = SKTexture(imageNamed: "RankC.png")
-            music = SKAudioNode(fileNamed: "couldusemore.wav")
-        }
-        else if (pct >= 50)
-        {
-            letter = SKTexture(imageNamed: "RankD.png")
-            music = SKAudioNode(fileNamed: "couldusemore.wav")
-        }
-        else
-        {
-            letter = SKTexture(imageNamed: "RankF.png")
-            music = SKAudioNode(fileNamed: "couldusemore.wav")
-        }
-        if (pct == 0)
-        {
-            letter = SKTexture(imageNamed: "RankF.png")
-            music = SKAudioNode(fileNamed: "comeongene.wav")
-        }
-        music.autoplayLooped = false
-        music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0))
-        addChild(music)
-        music.run(SKAction.play())
-        grade.texture = letter
-        accuracy.text = accPct
-        score.text = String(gameInstance.scoreInfo.currScore)
-        combo.text = String(gameInstance.scoreInfo.maxCombo)
+            var letter:SKTexture!
+            var music = SKAudioNode(fileNamed: "cowbell.wav")
+            if (!gameInstance.scoreInfo.wasLevelCleared)
+            {
+                letter = SKTexture(imageNamed: "RankF.png")
+                music = SKAudioNode(fileNamed: "comeongene.wav")
+            }
+            else if (pct >= 90) {
+                music = SKAudioNode(fileNamed: "diapers.wav")
+                letter = SKTexture(imageNamed: "RankAPlus.png")
+            }
+            else if (pct >= 80) {
+                letter = SKTexture(imageNamed: "RankA.png")
+                music = SKAudioNode(fileNamed: "dynamiteSound.wav")
+            }
+            else if (pct >= 70)
+            {
+                letter = SKTexture(imageNamed: "RankB.png")
+                music = SKAudioNode(fileNamed: "couldusemore.wav")
+            }
+            else if (pct >= 60)
+            {
+                letter = SKTexture(imageNamed: "RankC.png")
+                music = SKAudioNode(fileNamed: "couldusemore.wav")
+            }
+            else if (pct >= 50)
+            {
+                letter = SKTexture(imageNamed: "RankD.png")
+                music = SKAudioNode(fileNamed: "couldusemore.wav")
+            }
+            else
+            {
+                letter = SKTexture(imageNamed: "RankF.png")
+                music = SKAudioNode(fileNamed: "couldusemore.wav")
+            }
+            
+            music.autoplayLooped = false
+            music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0))
+            addChild(music)
+            music.run(SKAction.play())
+            grade.texture = letter
+            accuracy.text = "Accuracy: " + accPct
+            score.text = "Score: " + String(gameInstance.scoreInfo.currScore)
+            combo.text = "Max Combo: " + String(gameInstance.scoreInfo.maxCombo)
         }
     }
     

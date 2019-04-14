@@ -33,6 +33,7 @@
 		18EDEC002245436D00E64F66 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEBFF2245436D00E64F66 /* GameScreen.swift */; };
 		18EDEC02224543A600E64F66 /* ResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEC01224543A600E64F66 /* ResultScreen.swift */; };
 		349870AB2263B55A00E0F077 /* OLORT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 349870AA2263B16500E0F077 /* OLORT.TTF */; };
+		349870AC2263BD0400E0F077 /* McHandwriting.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84672A092263BB0700FE902A /* McHandwriting.otf */; };
 		840094162249C44300FED121 /* reaper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 840094132249C44200FED121 /* reaper.mp3 */; };
 		840094172249C44300FED121 /* surf.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 840094142249C44300FED121 /* surf.mp3 */; };
 		840094182249C44300FED121 /* title.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 840094152249C44300FED121 /* title.mp3 */; };
@@ -421,6 +422,7 @@
 				18EDEBD322453B6400E64F66 /* Main.storyboard in Resources */,
 				840094222249C45200FED121 /* diapers.wav in Resources */,
 				840094242249C45200FED121 /* prescription.wav in Resources */,
+				349870AC2263BD0400E0F077 /* McHandwriting.otf in Resources */,
 				840094162249C44300FED121 /* reaper.mp3 in Resources */,
 				18EDEBCA22453B6400E64F66 /* GameScene.sks in Resources */,
 				840094262249C45200FED121 /* cowbell.wav in Resources */,
