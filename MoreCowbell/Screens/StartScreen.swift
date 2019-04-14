@@ -77,7 +77,16 @@ class StartScreen: BaseScene {
 //        addChild(slider)
     }
     
+    override func SetScene() {
+        //setBackground()
+        //setTitle()
+        //setOptionsMenu()
+        //setButtons()
+    }
+    
     override func OnScenePresent() {
+        // SetScene()
+        
         musicPlayer.volume = gameInstance.musicVolume
         musicPlayer.currentTime = 0.0
         musicPlayer.play()
@@ -234,7 +243,7 @@ class StartScreen: BaseScene {
                 if (!isOptionsOpen)
                 {
                     //print("YAY!")
-                    scene?.view?.presentScene(gameInstance.mapScreen)
+                    scene?.view?.presentScene(gameInstance.mapScreen, transition: .fade(withDuration: 0))
                 }
                 else
                 {

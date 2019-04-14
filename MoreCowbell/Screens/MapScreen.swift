@@ -199,7 +199,7 @@ class MapScreen: BaseScene {
                     paper.addChild(text2)
                     paper.addChild(xPaper)
                     paper.run(dropDown)
-                    songSelection = "reaper"
+                    songSelection = "lowrider"
                 }
                 else if (n.name == "star3" && starActive){
                     addChild(startSign)

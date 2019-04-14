@@ -63,7 +63,7 @@ class GameScreen: BaseScene {
     }
     
     func OnHit() {
-        
+        scoreAssets.gainPoints(1)
     }
     
     func OnMiss() {
@@ -176,11 +176,16 @@ class GameScreen: BaseScene {
             
             for n in node {
                 
-                //MARK: - If notification button is pressed
                 if n == cowbell {
                     //if it's a valid "hit"
-                    scoreAssets.gainPoints(1)
-                    //else
+                    for dot in dots {
+                        if dot.position.x >= hitPositionX - hitTolerance && dot.position.x <= hitPositionX + hitTolerance {
+                            OnHit()
+                            return;
+                        }
+                    }
+                    OnMiss()
+                    return;
                 }
                 
                 else if n.name == "_exit" {

@@ -15,6 +15,7 @@ class BaseScene: SKScene {
     
     override init(size: CGSize) {
         super.init(size: size)
+        SetScene()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,6 +24,10 @@ class BaseScene: SKScene {
     
     func SetGameInstance(inst:GameInstance) {
         //gameInstance = inst
+    }
+    
+    func SetScene() {
+        // virtual function
     }
     
     func OnScenePresent(){
