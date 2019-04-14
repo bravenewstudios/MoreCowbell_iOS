@@ -47,6 +47,7 @@
 		840094292249C45200FED121 /* reaper.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094202249C45200FED121 /* reaper.wav */; };
 		8400942A2249C45200FED121 /* morecowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094212249C45200FED121 /* morecowbell.wav */; };
 		84672A0B2263C7AA00FE902A /* lowRider.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84672A0A2263C7AA00FE902A /* lowRider.mp3 */; };
+		84672A0D2263C9B300FE902A /* honkyTonkWomen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84672A0C2263C9B300FE902A /* honkyTonkWomen.mp3 */; };
 		CE895AA422626F410039A1EF /* reaper.json in Resources */ = {isa = PBXBuildFile; fileRef = CE895AA322626F410039A1EF /* reaper.json */; };
 		CE96E754226327CD008FD03F /* lowrider.json in Resources */ = {isa = PBXBuildFile; fileRef = CE96E753226327CD008FD03F /* lowrider.json */; };
 /* End PBXBuildFile section */
@@ -115,6 +116,7 @@
 		840094212249C45200FED121 /* morecowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morecowbell.wav; sourceTree = "<group>"; };
 		84672A092263BB0700FE902A /* McHandwriting.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = McHandwriting.otf; sourceTree = "<group>"; };
 		84672A0A2263C7AA00FE902A /* lowRider.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lowRider.mp3; sourceTree = "<group>"; };
+		84672A0C2263C9B300FE902A /* honkyTonkWomen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = honkyTonkWomen.mp3; sourceTree = "<group>"; };
 		CE895AA322626F410039A1EF /* reaper.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reaper.json; sourceTree = "<group>"; };
 		CE96E753226327CD008FD03F /* lowrider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lowrider.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,6 +280,7 @@
 		840094122249C43200FED121 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				84672A0C2263C9B300FE902A /* honkyTonkWomen.mp3 */,
 				84672A0A2263C7AA00FE902A /* lowRider.mp3 */,
 				840094132249C44200FED121 /* reaper.mp3 */,
 				840094142249C44300FED121 /* surf.mp3 */,
@@ -425,6 +428,7 @@
 				18EDEBD322453B6400E64F66 /* Main.storyboard in Resources */,
 				840094222249C45200FED121 /* diapers.wav in Resources */,
 				840094242249C45200FED121 /* prescription.wav in Resources */,
+				84672A0D2263C9B300FE902A /* honkyTonkWomen.mp3 in Resources */,
 				349870AC2263BD0400E0F077 /* McHandwriting.otf in Resources */,
 				840094162249C44300FED121 /* reaper.mp3 in Resources */,
 				18EDEBCA22453B6400E64F66 /* GameScene.sks in Resources */,
