@@ -29,7 +29,6 @@ public class Song {
         
         songFile = Bundle.main.path(forResource: fileName, ofType: fileType)
         
-        self.totalNotes = 0;
         self.name = name
         self.bpm = bpm;
         self.timeSigTop = timeSigTop;
