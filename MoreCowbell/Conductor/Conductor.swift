@@ -42,7 +42,7 @@ class Conductor {
         }
     }
     
-    func LoadSong(song:Song) {
+    func SelectSong(song:Song) {
         self.song = song
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: song.songFile!))

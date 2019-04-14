@@ -46,6 +46,7 @@ class MapScreen: BaseScene {
     var signMove:SKAction!
     
     var mapMusic:SKAudioNode!
+    var songSelection = "null"
 
     //TODO: - Add a main menu and play button
     override init(size: CGSize)
@@ -178,6 +179,7 @@ class MapScreen: BaseScene {
                     paper.addChild(text1)
                     paper.addChild(xPaper)
                     paper.run(dropDown)
+                    songSelection = "reaper"
                 }
                 if (n.name == "star2" && starActive){
                     addChild(startSign)
@@ -206,16 +208,15 @@ class MapScreen: BaseScene {
                 }
                 if n.name == "start" {
                     //print("YAY!")
-                    let gameScreen:SKScene = GameScreen(size: self.frame.size)
+                    gameInstance.conductor.SelectSong(song: gameInstance.album[songSelection]!)
                     let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
-                    self.view?.presentScene(gameScreen, transition: transition)
+                    self.view?.presentScene(gameInstance.gameScreen, transition: transition)
 //                    scene?.view?.presentScene(GameScreen(size: self.frame.size))
                 }
                 if n.name == "exit" {
                     //print("YAY!")
-                    let gameScreen:SKScene = StartScreen(size: self.frame.size)
                     let transition = SKTransition.doorsOpenHorizontal(withDuration: 0.5)
-                    self.view?.presentScene(gameScreen, transition: transition)
+                    self.view?.presentScene(gameInstance.gameScreen, transition: transition)
                     //                    scene?.view?.presentScene(GameScreen(size: self.frame.size))
                 }
             }

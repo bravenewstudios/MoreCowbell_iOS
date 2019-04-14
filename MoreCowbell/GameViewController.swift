@@ -19,6 +19,7 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             
+            gameInstance.LoadSongs()
             gameInstance.LoadScenes(viewSize: self.view.frame.size)
 
             view.presentScene(gameInstance.startScreen)
