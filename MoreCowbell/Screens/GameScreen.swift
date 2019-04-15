@@ -268,7 +268,7 @@ class GameScreen: BaseScene {
                 
                 
                 else if n.name == "score" {
-                    scene?.view?.presentScene(gameInstance.resultScreen)
+                    endLevel(bool: true)
                 }
             }
         }
