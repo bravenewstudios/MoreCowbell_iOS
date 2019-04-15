@@ -111,7 +111,7 @@ class MapScreen: BaseScene {
         
         
         dropDown = SKAction.moveBy(x: 0,y: -(UIScreen.main.bounds.height + stateMap.size.height/2), duration: 0.3)
-        let delay = SKAction.wait(forDuration: 1)
+        let delay = SKAction.wait(forDuration: 1.7 / 2)
         
         starSize = SKSpriteNode(texture: SKTexture(imageNamed: "star"))
         let starScale = CGFloat.maximum(stateMap.size.width/5/starSize.size.width, stateMap.size.height/5/starSize.size.height)
@@ -179,7 +179,7 @@ class MapScreen: BaseScene {
         xPaper.name = "x"
         xPaper.position = CGPoint(x:paper.size.width/2 - xPaper.size.width * 1.75, y:paper.size.height/2 - xPaper.size.height * 2)
         
-        stateMap.run(SKAction.sequence([delay, dropDown, delay, delay]), completion: {
+        stateMap.run(SKAction.sequence([delay, dropDown, delay]), completion: {
             for levelStar in self.levels
             {
                 self.stateMap.addChild(levelStar)
