@@ -202,15 +202,15 @@ class GameScreen: BaseScene {
         bruceHead = SKSpriteNode(texture: SKTexture(imageNamed: "Walken_head"))
         bruceHead.setScale(0.3)
         bruceHead.position = CGPoint(x: UIScreen.main.bounds.width + bruceHead.size.width, y: UIScreen.main.bounds.height * 0.9)
-        bruceHead.zRotation = CGFloat(Double.pi / 9)
-        guitarHead = SKSpriteNode(texture: SKTexture(imageNamed: "guitar_head"))
+        bruceHead.zRotation = CGFloat(Double.pi / 18)
+        guitarHead = SKSpriteNode(texture: SKTexture(imageNamed: "guitarist"))
         guitarHead.setScale(0.5)
         guitarHead.position = CGPoint(x: -guitarHead.size.width, y: UIScreen.main.bounds.height * 0.9)
         guitarHead.zRotation = CGFloat(-Double.pi / 9)
         addChild(bruceHead)
         addChild(guitarHead)
         
-        brucePeek = SKAction.sequence([SKAction.move(by: CGVector(dx: -bruceHead.size.width * 1.2, dy: CGFloat(0)), duration: 0.1),SKAction.wait(forDuration: 3.2), SKAction.move(by: CGVector(dx: bruceHead.size.width * 1.2, dy: CGFloat(0)), duration: 0.1)])
+        brucePeek = SKAction.sequence([SKAction.move(by: CGVector(dx: -bruceHead.size.width * 1.3, dy: CGFloat(0)), duration: 0.1),SKAction.wait(forDuration: 3.2), SKAction.move(by: CGVector(dx: bruceHead.size.width * 1.3, dy: CGFloat(0)), duration: 0.1)])
         
         guitarPeek = SKAction.sequence([SKAction.move(by: CGVector(dx: guitarHead.size.width * 1.2, dy: CGFloat(0)), duration: 0.1),SKAction.wait(forDuration: 1.5), SKAction.move(by: CGVector(dx: -guitarHead.size.width * 1.2, dy: CGFloat(0)), duration: 0.1)])
     }
