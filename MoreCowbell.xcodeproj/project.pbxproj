@@ -32,6 +32,7 @@
 		18EDEBFE2245431600E64F66 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEBFD2245431600E64F66 /* MapScreen.swift */; };
 		18EDEC002245436D00E64F66 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEBFF2245436D00E64F66 /* GameScreen.swift */; };
 		18EDEC02224543A600E64F66 /* ResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEC01224543A600E64F66 /* ResultScreen.swift */; };
+		3420903F2264320C00AE6967 /* lowrider.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3420903E2264320C00AE6967 /* lowrider.mp3 */; };
 		349870AB2263B55A00E0F077 /* OLORT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 349870AA2263B16500E0F077 /* OLORT.TTF */; };
 		349870AC2263BD0400E0F077 /* McHandwriting.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84672A092263BB0700FE902A /* McHandwriting.otf */; };
 		349870B42264298700E0F077 /* honky.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 349870B32264298600E0F077 /* honky.mp3 */; };
@@ -49,7 +50,6 @@
 		8400942A2249C45200FED121 /* morecowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 840094212249C45200FED121 /* morecowbell.wav */; };
 		84672A0F226425A500FE902A /* honky.json in Resources */ = {isa = PBXBuildFile; fileRef = 84672A0E226425A500FE902A /* honky.json */; };
 		84672A11226425B400FE902A /* spinach.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84672A10226425B400FE902A /* spinach.mp3 */; };
-		CE77326F2263D53B002664BF /* lowrider.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE77326E2263D53B002664BF /* lowrider.mp3 */; };
 		CE7732732263DD7E002664BF /* Nova.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE7732712263DD7E002664BF /* Nova.sks */; };
 		CE7732742263DD7E002664BF /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE7732722263DD7E002664BF /* Fire.sks */; };
 		CE895AA422626F410039A1EF /* reaper.json in Resources */ = {isa = PBXBuildFile; fileRef = CE895AA322626F410039A1EF /* reaper.json */; };
@@ -105,6 +105,7 @@
 		18EDEBFD2245431600E64F66 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		18EDEBFF2245436D00E64F66 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		18EDEC01224543A600E64F66 /* ResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreen.swift; sourceTree = "<group>"; };
+		3420903E2264320C00AE6967 /* lowrider.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lowrider.mp3; sourceTree = "<group>"; };
 		349870AA2263B16500E0F077 /* OLORT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = OLORT.TTF; path = Assets.xcassets/fonts/counterFont.dataset/OLORT.TTF; sourceTree = "<group>"; };
 		349870B32264298600E0F077 /* honky.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = honky.mp3; sourceTree = "<group>"; };
 		840094132249C44200FED121 /* reaper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reaper.mp3; sourceTree = "<group>"; };
@@ -122,7 +123,6 @@
 		84672A092263BB0700FE902A /* McHandwriting.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = McHandwriting.otf; sourceTree = "<group>"; };
 		84672A0E226425A500FE902A /* honky.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = honky.json; sourceTree = "<group>"; };
 		84672A10226425B400FE902A /* spinach.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spinach.mp3; sourceTree = "<group>"; };
-		CE77326E2263D53B002664BF /* lowrider.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lowrider.mp3; sourceTree = "<group>"; };
 		CE7732712263DD7E002664BF /* Nova.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Nova.sks; sourceTree = "<group>"; };
 		CE7732722263DD7E002664BF /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
 		CE895AA322626F410039A1EF /* reaper.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reaper.json; sourceTree = "<group>"; };
@@ -290,7 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				349870B32264298600E0F077 /* honky.mp3 */,
-				CE77326E2263D53B002664BF /* lowrider.mp3 */,
+				3420903E2264320C00AE6967 /* lowrider.mp3 */,
 				840094132249C44200FED121 /* reaper.mp3 */,
 				840094142249C44300FED121 /* surf.mp3 */,
 				84672A10226425B400FE902A /* spinach.mp3 */,
@@ -460,8 +460,8 @@
 				84672A11226425B400FE902A /* spinach.mp3 in Resources */,
 				18EDEBD522453B6500E64F66 /* Assets.xcassets in Resources */,
 				840094282249C45200FED121 /* dontblowthis.wav in Resources */,
-				CE77326F2263D53B002664BF /* lowrider.mp3 in Resources */,
 				CE895AA422626F410039A1EF /* reaper.json in Resources */,
+				3420903F2264320C00AE6967 /* lowrider.mp3 in Resources */,
 				18EDEBD822453B6500E64F66 /* LaunchScreen.storyboard in Resources */,
 				8400942A2249C45200FED121 /* morecowbell.wav in Resources */,
 				18EDEBCC22453B6400E64F66 /* Actions.sks in Resources */,
