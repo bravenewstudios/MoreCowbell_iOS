@@ -45,6 +45,7 @@ class MapScreen: BaseScene {
     var starActive = true
     var dropDown:SKAction!
     var signMove:SKAction!
+    var highscoreText:SKLabelNode!
     
     var musicPlayer = AVAudioPlayer()
     var songSelection = "null"
@@ -71,6 +72,9 @@ class MapScreen: BaseScene {
         musicPlayer.volume = gameInstance.musicVolume
         musicPlayer.currentTime = 0.0
         musicPlayer.play()
+        if(!starActive){
+            highscoreText.text = "High Score: " + String(gameInstance.highscoreTable[gameInstance.currentSong])
+        }
     }
     
     override func OnSceneExit() {
@@ -103,6 +107,7 @@ class MapScreen: BaseScene {
         stateMap.zRotation = CGFloat(-Double.pi / 18)//or 10
         stateMap.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height + stateMap.size.height)
         addChild(stateMap)
+        
         
         dropDown = SKAction.moveBy(x: 0,y: -(UIScreen.main.bounds.height + stateMap.size.height/2), duration: 0.3)
         let delay = SKAction.wait(forDuration: 1)
@@ -152,6 +157,12 @@ class MapScreen: BaseScene {
         paper.zPosition = 10;
         addChild(paper)
         
+        highscoreText = SKLabelNode(fontNamed: "McHandwriting")
+        highscoreText.fontSize = 20
+        highscoreText.fontColor = UIColor.black
+        
+        highscoreText.position = CGPoint(x: -paper.size.width / 14, y: -paper.size.height * 33/144)
+        
         text1 = SKSpriteNode(texture: SKTexture(imageNamed: "VenueOverlay_Easy"))
         text1.zPosition = 11;
         
@@ -189,6 +200,8 @@ class MapScreen: BaseScene {
                     starActive = false
                     paper.addChild(text1)
                     paper.addChild(xPaper)
+                    highscoreText.text = "High Score: " + String(gameInstance.highscoreTable[0])
+                    paper.addChild(highscoreText)
                     paper.run(dropDown)
                     songSelection = "reaper"
                 }
@@ -198,6 +211,8 @@ class MapScreen: BaseScene {
                     starActive = false
                     paper.addChild(text2)
                     paper.addChild(xPaper)
+                    highscoreText.text = "High Score: " + String(gameInstance.highscoreTable[1])
+                    paper.addChild(highscoreText)
                     paper.run(dropDown)
                     songSelection = "lowrider"
                 }
@@ -207,6 +222,8 @@ class MapScreen: BaseScene {
                     starActive = false
                     paper.addChild(text3)
                     paper.addChild(xPaper)
+                    highscoreText.text = "High Score: " + String(gameInstance.highscoreTable[2])
+                    paper.addChild(highscoreText)
                     paper.run(dropDown)
                     songSelection = "reaper"
                 }
@@ -223,6 +240,16 @@ class MapScreen: BaseScene {
                     //print("YAY!")
                     gameInstance.conductor.SelectSong(song: gameInstance.album[songSelection]!)
                     let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
+                    gameInstance.ResetResults()
+                    if(songSelection == "reaper"){
+                        gameInstance.currentSong = 0
+                    }
+                    else if(songSelection == "lowrider"){
+                        gameInstance.currentSong = 1
+                    }
+                    else if(songSelection == "reaper"){ //NEED TO UPDATE
+                        gameInstance.currentSong = 2
+                    }
                     self.view?.presentScene(gameInstance.gameScreen, transition: transition)
 //                    scene?.view?.presentScene(GameScreen(size: self.frame.size))
                 }

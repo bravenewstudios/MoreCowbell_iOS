@@ -22,16 +22,25 @@ class GameScreen: BaseScene {
     var scoreCountArray: [SKSpriteNode] = [SKSpriteNode]()
     var comboCountArray: [SKSpriteNode] = [SKSpriteNode]()
     var comboCounter:SKSpriteNode!
+    var dangerOverlay:SKSpriteNode!
     var beatBar:SKSpriteNode!
     var cowbell:SKSpriteNode!
     var MMLabel:SKLabelNode!
-    var scoreAssets:Score!
+    var scoreInfo = gameInstance.scoreInfo
+    var fire:[SKEmitterNode] = [SKEmitterNode]()
+    var burst:SKEmitterNode!
+    var dangerFade:SKAction!
+    var fireIndex = 0
     
     var dots:[Dot] = [Dot]()
     var dotIndex = 0
     
     var hitPositionX:CGFloat!
     var hitTolerance:CGFloat!
+    
+    var prescription = SKAction.playSoundFileNamed("prescription.wav", waitForCompletion: false)
+    var blow = SKAction.playSoundFileNamed("dontblowthis.wav", waitForCompletion: false)
+    var more = SKAction.playSoundFileNamed("couldusemore.wav", waitForCompletion: false)
     
     //TODO: - Add a main menu and play button
     override init(size: CGSize)
@@ -44,6 +53,7 @@ class GameScreen: BaseScene {
         setupButtons()
         setupScore()
         setupDots()
+        setupParticles()
     }
     
     override func OnScenePresent() {
@@ -52,22 +62,64 @@ class GameScreen: BaseScene {
     
     override func OnSceneExit() {
         gameInstance.conductor.Stop()
+        dangerOverlay.removeAllActions()
+        dangerOverlay.alpha = 0
+        gameInstance.updateHighscore(gameInstance.scoreInfo.currScore, level: gameInstance.currentSong)
     }
     
     override func update(_ currentTime: TimeInterval) {
         // returns true at end of song
         if gameInstance.conductor.Update(){
-            gameInstance.scoreInfo.wasLevelCleared = true
-            scene?.view?.presentScene(gameInstance.resultScreen)
+            endLevel(bool: true)
         }
     }
     
-    func OnHit() {
-        scoreAssets.gainPoints(1)
+    func OnHit(dot:Dot) {
+        scoreInfo.gainPoints(scoreInfo.currCombo / 10 + 1)
+        fire[fireIndex].position = dot.position
+        fire[fireIndex].resetSimulation()
+        fireIndex += 1
+        if(fireIndex >= fire.count){
+            fireIndex = 0
+        }
+        dot.hit = true
+        if(scoreInfo.currCombo > 1 && scoreInfo.currCombo % 10 == 0){
+            playBurst()
+        }
+        if(dangerOverlay.alpha > 0) {
+            dangerOverlay.removeAllActions()
+            dangerOverlay.alpha = 0
+        }
+    }
+    
+    func playBurst(){
+        burst.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height * 0.7)
+        burst.resetSimulation()
+        run(prescription)
     }
     
     func OnMiss() {
+        scoreInfo.miss()
+        if(scoreInfo.health == 30 || scoreInfo.health == 25){
+            run(blow)
+        }
+        else if (scoreInfo.health == 60 || scoreInfo.health == 55)
+        {
+            run(more)
+        }
+        if (scoreInfo.health <= 30)
+        {
+            dangerOverlay.run(SKAction.repeatForever(dangerFade))
+        }
+        if (scoreInfo.health <= 0)
+        {
+            endLevel(bool: false)
+        }
+    }
     
+    func endLevel(bool:Bool){
+        scoreInfo.wasLevelCleared = bool
+        scene?.view?.presentScene(gameInstance.resultScreen)
     }
     
     func SpawnDot() {
@@ -90,6 +142,16 @@ class GameScreen: BaseScene {
         hitTolerance = dots[0].size.width / 2
     }
     
+    func setupParticles() {
+        for _ in 1...16 {
+            let f1 = SKEmitterNode(fileNamed: "Fire.sks")!
+            addChild(f1)
+            fire.append(f1)
+        }
+        burst = SKEmitterNode(fileNamed: "Nova.sks")
+        addChild(burst)
+    }
+    
     func setupBackground()
     {
         background = SKSpriteNode(texture: SKTexture(imageNamed: "stage_dark"))
@@ -110,6 +172,14 @@ class GameScreen: BaseScene {
         comboCounter.position = CGPoint(x: scoreCounter.position.x - (scoreCounter.size.width - comboCounter.size.width) / 2, y: scoreCounter.position.y + scoreCounter.size.height)
         comboCounter.zPosition = 5
         addChild(comboCounter)
+        
+        dangerOverlay = SKSpriteNode(texture: SKTexture(imageNamed: "danger_overlay"))
+        dangerOverlay.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+        dangerOverlay.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        dangerOverlay.alpha = 0.0
+        addChild(dangerOverlay)
+        
+        dangerFade = SKAction.sequence([SKAction.fadeIn(withDuration: 0.5), SKAction.fadeAlpha(to: 0.1, duration: 0.5)])
     }
     
     func setupCowbell()
@@ -140,16 +210,15 @@ class GameScreen: BaseScene {
     
     func setupScore()
     {
-        scoreAssets = Score()
-        score0 = scoreAssets.scoreCountArray[0]; scoreCountArray.append(score0); score0.name = "score"
-        score1 = scoreAssets.scoreCountArray[1]; scoreCountArray.append(score1)
-        score2 = scoreAssets.scoreCountArray[2]; scoreCountArray.append(score2)
-        score3 = scoreAssets.scoreCountArray[3]; scoreCountArray.append(score3)
-        score4 = scoreAssets.scoreCountArray[4]; scoreCountArray.append(score4)
-        score5 = scoreAssets.scoreCountArray[5]; scoreCountArray.append(score5)
-        combo0 = scoreAssets.comboCountArray[0]; comboCountArray.append(combo0)
-        combo1 = scoreAssets.comboCountArray[1]; comboCountArray.append(combo1)
-        combo2 = scoreAssets.comboCountArray[2]; comboCountArray.append(combo2)
+        score0 = scoreInfo.scoreCountArray[0]; scoreCountArray.append(score0); score0.name = "score"
+        score1 = scoreInfo.scoreCountArray[1]; scoreCountArray.append(score1)
+        score2 = scoreInfo.scoreCountArray[2]; scoreCountArray.append(score2)
+        score3 = scoreInfo.scoreCountArray[3]; scoreCountArray.append(score3)
+        score4 = scoreInfo.scoreCountArray[4]; scoreCountArray.append(score4)
+        score5 = scoreInfo.scoreCountArray[5]; scoreCountArray.append(score5)
+        combo0 = scoreInfo.comboCountArray[0]; comboCountArray.append(combo0)
+        combo1 = scoreInfo.comboCountArray[1]; comboCountArray.append(combo1)
+        combo2 = scoreInfo.comboCountArray[2]; comboCountArray.append(combo2)
         
         for s in 0...5 {
             scoreCountArray[s].setScale(0.3)
@@ -180,7 +249,7 @@ class GameScreen: BaseScene {
                     //if it's a valid "hit"
                     for dot in dots {
                         if dot.position.x >= hitPositionX - hitTolerance && dot.position.x <= hitPositionX + hitTolerance {
-                            OnHit()
+                            OnHit(dot: dot)
                             return;
                         }
                     }
@@ -199,7 +268,7 @@ class GameScreen: BaseScene {
                 
                 
                 else if n.name == "score" {
-                    scene?.view?.presentScene(gameInstance.resultScreen)
+                    endLevel(bool: true)
                 }
             }
         }

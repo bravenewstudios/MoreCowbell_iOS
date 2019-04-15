@@ -52,11 +52,12 @@ class ResultScreen: BaseScene {
         accuracy = SKLabelNode(fontNamed: "McHandwriting"); labelArray.append(accuracy)
         score = SKLabelNode(fontNamed: "McHandwriting"); labelArray.append(score)
         combo = SKLabelNode(fontNamed: "McHandwriting"); labelArray.append(combo)
-        accuracy.position = CGPoint(x: NotePaper.size.width / 7, y:NotePaper.size.height * 17/144)
-        score.position = CGPoint(x: NotePaper.size.width / 7, y:NotePaper.size.height * 9/144)
+        accuracy.position = CGPoint(x: NotePaper.size.width / 7, y:NotePaper.size.height * 33/144)
+        score.position = CGPoint(x: NotePaper.size.width / 7, y:NotePaper.size.height * 17/144)
         combo.position = CGPoint(x: NotePaper.size.width / 7, y:NotePaper.size.height / 144)
         
         grade.position = CGPoint(x: NotePaper.size.width / 4, y: -NotePaper.size.height / 4)
+        grade.setScale(2)
 //        self.view?.addSubview(accuracy)
 //        self.view?.addSubview(score)
 //        self.view?.addSubview(combo)
@@ -65,7 +66,7 @@ class ResultScreen: BaseScene {
         for t in labelArray{
             t.horizontalAlignmentMode = .center
             t.fontColor = UIColor.black
-            t.text = "TEST: 000000"
+            t.text = ""
             NotePaper.addChild(t)
         }
     }
@@ -117,7 +118,7 @@ class ResultScreen: BaseScene {
             addChild(music)
             music.run(SKAction.play())
             grade.texture = letter
-            accuracy.text = "Accuracy: " + accPct
+            accuracy.text = "Accuracy: " + accPct + "%"
             score.text = "Score: " + String(gameInstance.scoreInfo.currScore)
             combo.text = "Max Combo: " + String(gameInstance.scoreInfo.maxCombo)
         }

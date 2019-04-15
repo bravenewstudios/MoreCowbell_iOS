@@ -1,9 +1,9 @@
 {
   "name": "reaper",
-  "bpm": 142.0,
+  "bpm": 142.015,
   "timeSigTop": 4.0,
   "timeSigBottom": 4.0,
-  "startOffset": 3.0,
+  "startOffset": 3.25,
   "fileName": "reaper",
   "fileType": "mp3",
   "bars": [
