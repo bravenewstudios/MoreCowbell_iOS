@@ -1,0 +1,975 @@
+{
+  "name": "honky",
+  "bpm": 121.0,
+  "timeSigTop": 4.0,
+  "timeSigBottom": 4.0,
+  "startOffset": 3.0,
+  "fileName": "honky",
+  "fileType": "mp3",
+  "bars": [
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.5
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.25
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        },
+        {
+          "isRest": true,
+          "time": 0.125
+        },
+        {
+          "isRest": false,
+          "time": 0.125
+        }
+      ]
+    }
+  ]
+}

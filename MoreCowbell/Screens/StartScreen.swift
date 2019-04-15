@@ -67,7 +67,7 @@ class StartScreen: BaseScene {
         setButtons()
         
         do {
-            let songFile = Bundle.main.path(forResource: "title", ofType: "mp3")
+            let songFile = Bundle.main.path(forResource: "Spinach", ofType: "mp3")
             musicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: songFile!))
         }
         catch {
