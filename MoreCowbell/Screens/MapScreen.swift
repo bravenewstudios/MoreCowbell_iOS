@@ -45,6 +45,7 @@ class MapScreen: BaseScene {
     var starActive = true
     var dropDown:SKAction!
     var signMove:SKAction!
+    var highscoreText:SKLabelNode!
     
     var musicPlayer = AVAudioPlayer()
     var songSelection = "null"
@@ -104,6 +105,7 @@ class MapScreen: BaseScene {
         stateMap.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height + stateMap.size.height)
         addChild(stateMap)
         
+        
         dropDown = SKAction.moveBy(x: 0,y: -(UIScreen.main.bounds.height + stateMap.size.height/2), duration: 0.3)
         let delay = SKAction.wait(forDuration: 1)
         
@@ -152,6 +154,13 @@ class MapScreen: BaseScene {
         paper.zPosition = 10;
         addChild(paper)
         
+        highscoreText = SKLabelNode(fontNamed: "McHandwriting")
+        highscoreText.fontSize = 20
+        highscoreText.fontColor = UIColor.black
+        
+        highscoreText.position = CGPoint(x: -paper.size.width / 14, y: -paper.size.height * 33/144)
+        paper.addChild(highscoreText)
+        
         text1 = SKSpriteNode(texture: SKTexture(imageNamed: "VenueOverlay_Easy"))
         text1.zPosition = 11;
         
@@ -191,6 +200,7 @@ class MapScreen: BaseScene {
                     paper.addChild(xPaper)
                     paper.run(dropDown)
                     songSelection = "reaper"
+                    highscoreText.text = "High Score: " + String(gameInstance.highscoreTable[0])
                 }
                 else if (n.name == "star2" && starActive){
                     addChild(startSign)
@@ -200,6 +210,7 @@ class MapScreen: BaseScene {
                     paper.addChild(xPaper)
                     paper.run(dropDown)
                     songSelection = "lowrider"
+                    highscoreText.text = "High Score: " + String(gameInstance.highscoreTable[1])
                 }
                 else if (n.name == "star3" && starActive){
                     addChild(startSign)
@@ -209,6 +220,7 @@ class MapScreen: BaseScene {
                     paper.addChild(xPaper)
                     paper.run(dropDown)
                     songSelection = "reaper"
+                    highscoreText.text = "High Score: " + String(gameInstance.highscoreTable[2])
                 }
                 else if (n.name == "x" && !starActive)
                 { //WIP - closing the paper
