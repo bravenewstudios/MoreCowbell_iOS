@@ -74,7 +74,7 @@ class GameScreen: BaseScene {
         fire[fireIndex].position = dot.position
         fire[fireIndex].resetSimulation()
         fireIndex += 1
-        if(fireIndex > fire.count){
+        if(fireIndex >= fire.count){
             fireIndex = 0
         }
         dot.hit = true

@@ -66,7 +66,7 @@ class ResultScreen: BaseScene {
         for t in labelArray{
             t.horizontalAlignmentMode = .center
             t.fontColor = UIColor.black
-            t.text = "TEST: 000000"
+            t.text = ""
             NotePaper.addChild(t)
         }
     }
