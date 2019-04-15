@@ -101,6 +101,7 @@ class StartScreen: BaseScene {
         // SetScene()
         musicPlayer.volume = gameInstance.musicVolume
         musicPlayer.currentTime = 0.0
+        musicPlayer.numberOfLoops = -1
         musicPlayer.play()
     }
     

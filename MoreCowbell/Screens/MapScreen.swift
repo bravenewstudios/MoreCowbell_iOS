@@ -71,6 +71,7 @@ class MapScreen: BaseScene {
     override func OnScenePresent() {
         musicPlayer.volume = gameInstance.musicVolume
         musicPlayer.currentTime = 0.0
+        musicPlayer.numberOfLoops = -1
         musicPlayer.play()
         if(!starActive){
             highscoreText.text = "High Score: " + String(gameInstance.highscoreTable[gameInstance.currentSong])
