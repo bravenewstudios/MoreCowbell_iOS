@@ -22,12 +22,14 @@ class GameScreen: BaseScene {
     var scoreCountArray: [SKSpriteNode] = [SKSpriteNode]()
     var comboCountArray: [SKSpriteNode] = [SKSpriteNode]()
     var comboCounter:SKSpriteNode!
+    var dangerOverlay:SKSpriteNode!
     var beatBar:SKSpriteNode!
     var cowbell:SKSpriteNode!
     var MMLabel:SKLabelNode!
     var scoreInfo = gameInstance.scoreInfo
     var fire:[SKEmitterNode] = [SKEmitterNode]()
     var burst:SKEmitterNode!
+    var dangerFade:SKAction!
     var fireIndex = 0
     
     var dots:[Dot] = [Dot]()
@@ -60,6 +62,9 @@ class GameScreen: BaseScene {
     
     override func OnSceneExit() {
         gameInstance.conductor.Stop()
+        dangerOverlay.removeAllActions()
+        dangerOverlay.alpha = 0
+        gameInstance.updateHighscore(gameInstance.scoreInfo.currScore, level: gameInstance.currentSong)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -81,6 +86,10 @@ class GameScreen: BaseScene {
         if(scoreInfo.currCombo > 1 && scoreInfo.currCombo % 10 == 0){
             playBurst()
         }
+        if(dangerOverlay.alpha > 0) {
+            dangerOverlay.removeAllActions()
+            dangerOverlay.alpha = 0
+        }
     }
     
     func playBurst(){
@@ -100,10 +109,7 @@ class GameScreen: BaseScene {
         }
         if (scoreInfo.health <= 30)
         {
-//            dangerOverlay.clearActions();
-//            dangerOverlay.getColor().a = 0.8f;
-//            dangerFlash = Actions.alpha(0.0f, 1.0f);
-//            dangerOverlay.addAction(dangerFlash);
+            dangerOverlay.run(SKAction.repeatForever(dangerFade))
         }
         if (scoreInfo.health <= 0)
         {
@@ -166,6 +172,14 @@ class GameScreen: BaseScene {
         comboCounter.position = CGPoint(x: scoreCounter.position.x - (scoreCounter.size.width - comboCounter.size.width) / 2, y: scoreCounter.position.y + scoreCounter.size.height)
         comboCounter.zPosition = 5
         addChild(comboCounter)
+        
+        dangerOverlay = SKSpriteNode(texture: SKTexture(imageNamed: "danger_overlay"))
+        dangerOverlay.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+        dangerOverlay.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        dangerOverlay.alpha = 0.0
+        addChild(dangerOverlay)
+        
+        dangerFade = SKAction.sequence([SKAction.fadeIn(withDuration: 0.5), SKAction.fadeAlpha(to: 0.1, duration: 0.5)])
     }
     
     func setupCowbell()
