@@ -24,6 +24,7 @@ class Conductor {
     
     var isRest = false;
     var isFinished = false;
+    var isPlaying = false;
     
     init() {
         barIndex = 0;
@@ -54,6 +55,7 @@ class Conductor {
     
     func Start() {
         isFinished = false;
+        isPlaying = true;
         numBars = song.numBars;
         numNotes = song.bars[barIndex].numNotes;
         nextBeatTime = song.startOffset - Conductor.DOTMOVETIME;
@@ -66,6 +68,7 @@ class Conductor {
         barIndex = 0;
         noteIndex = 0;
         isFinished = false;
+        isPlaying = false;
         musicPlayer.stop()
     }
     

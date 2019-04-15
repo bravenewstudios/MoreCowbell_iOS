@@ -47,6 +47,14 @@ class Dot:SKSpriteNode {
 //        enter = SKAction.group([fadein, movein])
 //        exit = SKAction.group([fadeout, moveout])
 //        sequence = SKAction.group([enter,exit])
-        run(sequence)
+        run(sequence, completion: { self.OnComplete() })
+    }
+    
+    func OnComplete() {
+        if hit == false {
+            if (gameInstance.conductor.isPlaying) {
+                gameInstance.gameScreen.OnMiss()
+            }
+        }
     }
 }
