@@ -31,10 +31,15 @@ class StartScreen: BaseScene {
     var titleMore:SKSpriteNode!
     var titleCowbell:SKSpriteNode!
     var walkenHead:SKSpriteNode!
-    var volumeBar:SKSpriteNode!
+    var musicBar:SKSpriteNode!
     var soundBar:SKSpriteNode!
-    var volumeSlider:SKSpriteNode!
+    var musicSlider:SKSpriteNode!
     var soundSlider:SKSpriteNode!
+    var musicSliderValue:Float = 100.0
+    var soundSliderValue:Float = 100.0
+    var absSliderStartPos:Float = 0.0
+    var absSliderEndPos:Float = 0.0
+    var tempSliderValue:Float = 0.0
     var MMLabel:SKLabelNode!
     
     var paper:SKSpriteNode!
@@ -42,7 +47,7 @@ class StartScreen: BaseScene {
     var optionsDropDown:SKAction!
     var optionsSlideUp:SKAction!
     var isOptionsOpen = false
-    var usingVolumeBar = false
+    var usingMusicBar = false
     var usingSoundBar = false
     var xPaper:SKSpriteNode!
     
@@ -75,6 +80,14 @@ class StartScreen: BaseScene {
 //        slider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
 //        slider.position = CGPoint(x: 2 * (UIScreen.main.bounds.width) / 3, y: UIScreen.main.bounds.height / 2)
 //        addChild(slider)
+        absSliderStartPos = Float((musicBar.position.x - (musicBar.size.width/2)) + musicSlider.size.width)
+        absSliderEndPos = Float((musicBar.position.x + (musicBar.size.width/2)) - musicSlider.size.width)
+        print(absSliderStartPos)
+        print(absSliderEndPos)
+        musicSliderValue = gameInstance.musicVolume
+        soundSliderValue = gameInstance.sfxVolume
+        musicSlider.position.x = CGFloat(absSliderEndPos)
+        soundSlider.position.x = CGFloat(absSliderEndPos)
     }
     
     override func SetScene() {
@@ -86,7 +99,6 @@ class StartScreen: BaseScene {
     
     override func OnScenePresent() {
         // SetScene()
-        
         musicPlayer.volume = gameInstance.musicVolume
         musicPlayer.currentTime = 0.0
         musicPlayer.play()
@@ -177,21 +189,21 @@ class StartScreen: BaseScene {
         text.zPosition = 11
         paper.addChild(text)
         
-        volumeBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
-        //volumeBar.setScale(0.9)
-        volumeBar.position = CGPoint(x:(UIScreen.main.bounds.width/1.9), y:paper.size.height/4)
-        volumeBar.anchorPoint = CGPoint(x:0.5, y:0.5)
-        volumeBar.zPosition = 12;
-        volumeBar.name = "volume"
-        addChild(volumeBar)
+        musicBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
+        //musicBar.setScale(0.9)
+        musicBar.position = CGPoint(x:(UIScreen.main.bounds.width/1.9), y:paper.size.height/4)
+        musicBar.anchorPoint = CGPoint(x:0.5, y:0.5)
+        musicBar.zPosition = 12;
+        musicBar.name = "volume"
+        addChild(musicBar)
         
-        volumeSlider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
-        //volumeSlider.setScale(0.9)
-        sliderActiveLength = volumeBar.size.width - 2*volumeSlider.size.width
-        volumeSlider.position = CGPoint(x: volumeBar.position.x + (sliderActiveLength / 4), y:0)
-        volumeSlider.zPosition = 13
-        //volumeSlider.anchorPoint = CGPoint(x:0.5, y:0.5)
-        addChild(volumeSlider)
+        musicSlider = SKSpriteNode(texture: SKTexture(imageNamed: "slider"))
+        //musicSlider.setScale(0.9)
+        sliderActiveLength = musicBar.size.width - 2*musicSlider.size.width
+        musicSlider.position = CGPoint(x: musicBar.position.x + (sliderActiveLength / 4), y:0)
+        musicSlider.zPosition = 13
+        //musicSlider.anchorPoint = CGPoint(x:0.5, y:0.5)
+        addChild(musicSlider)
         
         soundBar = SKSpriteNode(texture: SKTexture(imageNamed: "slider_bar"))
         //soundBar.setScale(0.9)
@@ -224,18 +236,32 @@ class StartScreen: BaseScene {
     
     override func update(_ currentTime: TimeInterval) {
         //super.update(<#T##currentTime: TimeInterval##TimeInterval#>)
-        volumeSlider.position.y = paper.position.y
-        volumeBar.position.y = paper.position.y
+        musicSlider.position.y = paper.position.y
+        musicBar.position.y = paper.position.y
+        
+        if usingMusicBar{
+            tempSliderValue = Float(musicSlider.position.x)
+            musicSliderValue = (tempSliderValue - absSliderStartPos) / (absSliderEndPos - absSliderStartPos)
+            print(musicSliderValue)
+            gameInstance.musicVolume = musicSliderValue
+        }
+        if usingSoundBar{
+            tempSliderValue = Float(soundSlider.position.x)
+            soundSliderValue = (tempSliderValue - absSliderStartPos) / (absSliderEndPos - absSliderStartPos)
+            print(musicSliderValue)
+            gameInstance.sfxVolume = soundSliderValue
+        }
         
         soundSlider.position.y = paper.position.y - (paper.size.height/3)
         soundBar.position.y = paper.position.y - (paper.size.height/3)
+        musicPlayer.volume = gameInstance.musicVolume
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         for t in touches {
             let node = nodes(at: t.location(in: self))
-            //let location = t.location(in: self)
+            let location = t.location(in: self)
             //let location2 = t.location(in: self)
             
             for n in node {
@@ -250,14 +276,14 @@ class StartScreen: BaseScene {
                     if n.name == "volume"
                     {
                         //volumeSlider.position.x = location.x
-                        usingVolumeBar = true
-                        print("Volume True")
+                        usingMusicBar = true
+                        print(location)
                     }
                     if n.name == "sound"
                     {
                         //soundSlider.position.x = location2.x
                         usingSoundBar = true
-                        print("Sound True")
+                        //print("Sound True")
                     }
                 }
                 if n.name == "x"
@@ -272,23 +298,24 @@ class StartScreen: BaseScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         for t in touches {
-            if usingVolumeBar {
+            if usingMusicBar {
                 
                 let location = t.location(in: self)
                 
-                volumeSlider.position.x = location.x //- volumeBar.size.width
-                if (volumeSlider.position.x > volumeBar.position.x + sliderActiveLength*0.5)
+                musicSlider.position.x = location.x //- musicBar.size.width
+                if (musicSlider.position.x > musicBar.position.x + sliderActiveLength*0.5)
                 {
-                    volumeSlider.position.x = volumeBar.position.x + sliderActiveLength*0.5
+                    musicSlider.position.x = musicBar.position.x + sliderActiveLength*0.5
                 }
-                else if (volumeSlider.position.x < volumeBar.position.x - sliderActiveLength*0.5)
+                else if (musicSlider.position.x < musicBar.position.x - sliderActiveLength*0.5)
                 {
-                    volumeSlider.position.x = volumeBar.position.x - sliderActiveLength*0.5
+                    musicSlider.position.x = musicBar.position.x - sliderActiveLength*0.5
                 }
             }
             if usingSoundBar {
                 
                 let location2 = t.location(in: self)
+                print(location2)
                 
                 soundSlider.position.x = location2.x //- soundBar.size.width
                 if (soundSlider.position.x > soundBar.position.x + sliderActiveLength2*0.5)
@@ -304,7 +331,7 @@ class StartScreen: BaseScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        usingVolumeBar = false
+        usingMusicBar = false
         usingSoundBar = false
     }
     
