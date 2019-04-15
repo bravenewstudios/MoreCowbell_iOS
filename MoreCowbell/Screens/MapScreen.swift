@@ -247,7 +247,7 @@ class MapScreen: BaseScene {
                     else if(songSelection == "lowrider"){
                         gameInstance.currentSong = 1
                     }
-                    else if(songSelection == "reaper"){ //NEED TO UPDATE
+                    else if(songSelection == "honky"){ //NEED TO UPDATE
                         gameInstance.currentSong = 2
                     }
                     self.view?.presentScene(gameInstance.gameScreen, transition: transition)
