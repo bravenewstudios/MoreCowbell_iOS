@@ -38,7 +38,8 @@ class GameScreen: BaseScene {
     var hitPositionX:CGFloat!
     var hitTolerance:CGFloat!
     
-    var prescription = SKAction.playSoundFileNamed("prescription.wav", waitForCompletion: false)
+    var sfxArray:[SKAction] = [SKAction]()
+    var prescription = SKAction.playSoundFileNamed("prescription.wav", waitForCompletion: false);
     var blow = SKAction.playSoundFileNamed("dontblowthis.wav", waitForCompletion: false)
     var more = SKAction.playSoundFileNamed("couldusemore.wav", waitForCompletion: false)
     
@@ -180,6 +181,10 @@ class GameScreen: BaseScene {
         addChild(dangerOverlay)
         
         dangerFade = SKAction.sequence([SKAction.fadeIn(withDuration: 0.5), SKAction.fadeAlpha(to: 0.1, duration: 0.5)])
+        
+        sfxArray.append(prescription)
+        sfxArray.append(blow)
+        sfxArray.append(more)
     }
     
     func setupCowbell()

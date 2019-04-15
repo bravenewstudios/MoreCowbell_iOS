@@ -63,6 +63,12 @@ class GameInstance {
         json = try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
         song = json as! [String:Any]
         LoadSongData(jsonSong: song)
+        
+        path = Bundle.main.path(forResource: "honky",ofType: "json")
+        data = try? Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
+        json = try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
+        song = json as! [String:Any]
+        LoadSongData(jsonSong: song)
     }
     
     func LoadSongData(jsonSong: [String:Any]) {
