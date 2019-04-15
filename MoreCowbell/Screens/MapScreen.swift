@@ -225,7 +225,7 @@ class MapScreen: BaseScene {
                     highscoreText.text = "High Score: " + String(gameInstance.highscoreTable[2])
                     paper.addChild(highscoreText)
                     paper.run(dropDown)
-                    songSelection = "reaper"
+                    songSelection = "honky"
                 }
                 else if (n.name == "x" && !starActive)
                 { //WIP - closing the paper
