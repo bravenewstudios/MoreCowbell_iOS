@@ -114,7 +114,7 @@ class ResultScreen: BaseScene {
             }
             
             music.autoplayLooped = false
-            music.run(SKAction.changeVolume(to: gameInstance.musicVolume, duration: 0.0))
+            music.run(SKAction.changeVolume(to: gameInstance.sfxVolume, duration: 0.0))
             addChild(music)
             music.run(SKAction.play())
             grade.texture = letter
