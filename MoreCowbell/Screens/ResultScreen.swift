@@ -122,6 +122,9 @@ class ResultScreen: BaseScene {
             score.text = "Score: " + String(gameInstance.scoreInfo.currScore)
             combo.text = "Max Combo: " + String(gameInstance.scoreInfo.maxCombo)
         }
+        else {
+            scene?.view?.presentScene(gameInstance.startScreen)
+        }
     }
     
     func setupBackground()
@@ -139,7 +142,7 @@ class ResultScreen: BaseScene {
             for n in node {
                 
                 //MARK: - If notification button is pressed
-                if n.name == "_exit" {
+                if n == exitButton {
                     //print("YAY!")
                     scene?.view?.presentScene(gameInstance.startScreen)
                     //                    let mapScene:SKScene = MapScreen(size: self.frame.size)

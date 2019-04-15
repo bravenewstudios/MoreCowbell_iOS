@@ -110,6 +110,7 @@ class GameScreen: BaseScene {
     
     func OnMiss() {
         scoreInfo.miss()
+        
         if(scoreInfo.health == 30 || scoreInfo.health == 25){
             if(!guitarHead.hasActions()){
                 run(blow)
@@ -209,9 +210,9 @@ class GameScreen: BaseScene {
         addChild(bruceHead)
         addChild(guitarHead)
         
-        brucePeek = SKAction.sequence([SKAction.move(by: CGVector(dx: -bruceHead.size.width * 1.5, dy: CGFloat(0)), duration: 0.1),SKAction.wait(forDuration: 3.2), SKAction.move(by: CGVector(dx: bruceHead.size.width * 1.5, dy: CGFloat(0)), duration: 0.1)])
+        brucePeek = SKAction.sequence([SKAction.move(by: CGVector(dx: -bruceHead.size.width * 1.2, dy: CGFloat(0)), duration: 0.1),SKAction.wait(forDuration: 3.2), SKAction.move(by: CGVector(dx: bruceHead.size.width * 1.2, dy: CGFloat(0)), duration: 0.1)])
         
-        guitarPeek = SKAction.sequence([SKAction.move(by: CGVector(dx: guitarHead.size.width * 1.5, dy: CGFloat(0)), duration: 0.1),SKAction.wait(forDuration: 1.5), SKAction.move(by: CGVector(dx: -guitarHead.size.width * 1.5, dy: CGFloat(0)), duration: 0.1)])
+        guitarPeek = SKAction.sequence([SKAction.move(by: CGVector(dx: guitarHead.size.width * 1.2, dy: CGFloat(0)), duration: 0.1),SKAction.wait(forDuration: 1.5), SKAction.move(by: CGVector(dx: -guitarHead.size.width * 1.2, dy: CGFloat(0)), duration: 0.1)])
     }
     
     func setupCowbell()
@@ -289,7 +290,7 @@ class GameScreen: BaseScene {
                     return;
                 }
                 
-                else if n.name == "_exit" {
+                else if n == exitButton {
                     //print("YAY!")
                     scene?.view?.presentScene(gameInstance.startScreen)
                     //                    let mapScene:SKScene = MapScreen(size: self.frame.size)
@@ -297,11 +298,9 @@ class GameScreen: BaseScene {
                     //                    self.view?.presentScene(mapScene, transition: transition)
                 }
                 
-                
-                
-                else if n.name == "score" {
-                    endLevel(bool: true)
-                }
+//                else if n.name == "score" {
+//                    endLevel(bool: true)
+//                }
             }
         }
     }
