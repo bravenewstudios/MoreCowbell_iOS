@@ -38,6 +38,12 @@ class GameScreen: BaseScene {
     var hitPositionX:CGFloat!
     var hitTolerance:CGFloat!
     
+    var bruceHead:SKSpriteNode!
+    var guitarHead:SKSpriteNode!
+    
+    var guitarPeek:SKAction!
+    var brucePeek:SKAction!
+    
     var sfxArray:[SKAction] = [SKAction]()
     var prescription = SKAction.playSoundFileNamed("prescription.wav", waitForCompletion: false);
     var blow = SKAction.playSoundFileNamed("dontblowthis.wav", waitForCompletion: false)
@@ -96,13 +102,19 @@ class GameScreen: BaseScene {
     func playBurst(){
         burst.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height * 0.7)
         burst.resetSimulation()
+        if(!bruceHead.hasActions()){
         run(prescription)
+        bruceHead.run(brucePeek)
+        }
     }
     
     func OnMiss() {
         scoreInfo.miss()
         if(scoreInfo.health == 30 || scoreInfo.health == 25){
-            run(blow)
+            if(!guitarHead.hasActions()){
+                run(blow)
+                guitarHead.run(guitarPeek)
+            }
         }
         else if (scoreInfo.health == 60 || scoreInfo.health == 55)
         {
@@ -185,6 +197,21 @@ class GameScreen: BaseScene {
         sfxArray.append(prescription)
         sfxArray.append(blow)
         sfxArray.append(more)
+        
+        bruceHead = SKSpriteNode(texture: SKTexture(imageNamed: "Walken_head"))
+        bruceHead.setScale(0.3)
+        bruceHead.position = CGPoint(x: UIScreen.main.bounds.width + bruceHead.size.width, y: UIScreen.main.bounds.height * 0.9)
+        bruceHead.zRotation = CGFloat(Double.pi / 9)
+        guitarHead = SKSpriteNode(texture: SKTexture(imageNamed: "guitar_head"))
+        guitarHead.setScale(0.5)
+        guitarHead.position = CGPoint(x: -guitarHead.size.width, y: UIScreen.main.bounds.height * 0.9)
+        guitarHead.zRotation = CGFloat(-Double.pi / 9)
+        addChild(bruceHead)
+        addChild(guitarHead)
+        
+        brucePeek = SKAction.sequence([SKAction.move(by: CGVector(dx: -bruceHead.size.width * 1.5, dy: CGFloat(0)), duration: 0.1),SKAction.wait(forDuration: 3.2), SKAction.move(by: CGVector(dx: bruceHead.size.width * 1.5, dy: CGFloat(0)), duration: 0.1)])
+        
+        guitarPeek = SKAction.sequence([SKAction.move(by: CGVector(dx: guitarHead.size.width * 1.5, dy: CGFloat(0)), duration: 0.1),SKAction.wait(forDuration: 1.5), SKAction.move(by: CGVector(dx: -guitarHead.size.width * 1.5, dy: CGFloat(0)), duration: 0.1)])
     }
     
     func setupCowbell()
