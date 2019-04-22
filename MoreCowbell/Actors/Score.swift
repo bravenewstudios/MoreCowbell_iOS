@@ -100,7 +100,7 @@ class Score{
 //        }
 //    }
     
-    func scoreReset(){
+    func Reset(){
         currScore = 0
         currCombo = 0
         maxCombo = 0

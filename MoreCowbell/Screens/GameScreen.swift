@@ -64,6 +64,7 @@ class GameScreen: BaseScene {
     }
     
     override func OnScenePresent() {
+        gameInstance.scoreInfo.Reset()
         gameInstance.conductor.Start()
     }
     
